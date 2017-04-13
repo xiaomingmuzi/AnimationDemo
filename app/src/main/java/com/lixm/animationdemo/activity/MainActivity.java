@@ -14,6 +14,11 @@ import android.widget.TextView;
 
 import com.lixm.animationdemo.R;
 
+/**
+ * http://blog.csdn.net/guolin_blog/article/details/43536355  上篇
+ * http://blog.csdn.net/guolin_blog/article/details/43816093  中篇
+ * http://blog.csdn.net/guolin_blog/article/details/44171115  下篇
+ */
 public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
 
