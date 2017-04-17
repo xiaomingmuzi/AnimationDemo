@@ -1,6 +1,7 @@
 package com.lixm.animationdemo.animator;
 
 import android.animation.TypeEvaluator;
+import android.util.Log;
 
 import com.lixm.animationdemo.bean.Point;
 
@@ -19,6 +20,9 @@ public class PointEvaluator implements TypeEvaluator {
         float x=startPoint.getX()+fraction*(endPoint.getX()-startPoint.getX()) ;
         float y=startPoint.getY()+fraction*(endPoint.getY()-startPoint.getY());
         Point point=new Point(x,y);
+        Log.e("Tag","test");
+
+
         return point;
     }
 }
