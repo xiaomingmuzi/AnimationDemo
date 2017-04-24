@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ObjectAnimation1Activity" />
-        <activity android:name=".activity.ObjectAnimation2Activity"></activity>
+        <activity android:name=".activity.ObjectAnimation2Activity" />
+        <activity android:name=".activity.BezierActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.lixm.animationdemo.animator;
 
 import android.animation.TypeEvaluator;
+import android.graphics.PointF;
 import android.util.Log;
 
 import com.lixm.animationdemo.bean.Point;
@@ -12,15 +13,16 @@ import com.lixm.animationdemo.bean.Point;
  */
 
 public class PointEvaluator implements TypeEvaluator {
+    private String TAG=getClass().getName();
     @Override
     public Object evaluate(float fraction, Object startValue, Object endValue) {
         //fraction  完成度
-        Point startPoint= (Point) startValue;
-        Point endPoint= (Point) endValue;
-        float x=startPoint.getX()+fraction*(endPoint.getX()-startPoint.getX()) ;
-        float y=startPoint.getY()+fraction*(endPoint.getY()-startPoint.getY());
-        Point point=new Point(x,y);
-        Log.e("Tag","test");
+        PointF startPoint= (PointF) startValue;
+        PointF endPoint= (PointF) endValue;
+        float x=startPoint.x+fraction*(endPoint.x-startPoint.x) ;
+        float y=startPoint.y+fraction*(endPoint.y-startPoint.y);
+        PointF point=new PointF(x,y);
+        Log.e(TAG,"=================PointEvaluator==========");
 
 
         return point;

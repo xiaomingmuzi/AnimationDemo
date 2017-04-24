@@ -1,53 +1,65 @@
 package com.lixm.animationdemo.animator;
 
 import android.animation.TypeEvaluator;
+import android.graphics.PointF;
+import android.util.Log;
 
 import com.lixm.animationdemo.bean.Point;
+
+import static android.R.attr.width;
 
 /**
  * Created by zhuxuanmuyu on 2017/4/16.
  */
 
-public class BezierTypeEvaluator implements TypeEvaluator<Point> {
+public class BezierTypeEvaluator implements TypeEvaluator<PointF> {
+private String TAG=getClass().getName();
+    private PointF mPointF1;
+    private PointF mPointF2;
 
-    private int width;
-    private int height;
-
-    public void BezierTypeEvaluator(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public BezierTypeEvaluator(PointF pointF1, PointF pointF2) {
+        this.mPointF1 = pointF1;
+        this.mPointF2 = pointF2;
     }
 
 
     @Override
-    public Point evaluate(float fraction, Point startValue, Point endValue) {
+    public PointF evaluate(float fraction, PointF startValue, PointF endValue) {
 
-        final float t = fraction;
-        float oneMinusT = 1.0f - t;
-        Point point = new Point();
+//        final float t = fraction;
+//        float oneMinusT = 1.0f - t;
+//        PointF point = new PointF();
+//
+//        PointF point0 = (PointF)startValue;
+//
+//        PointF point1 = new PointF();
+//        point1.set(width, 0);
+//
+//        PointF point2 = new PointF();
+//        point2.set(0, height);
+//
+//        PointF point3 = (PointF)endValue;
+//
+//        point.x = oneMinusT * oneMinusT * oneMinusT * (point0.x)
+//                + 3 * oneMinusT * oneMinusT * t * (point1.x)
+//                + 3 * oneMinusT * t * t * (point2.x)
+//                + t * t * t * (point3.x);
+//
+//        point.y = oneMinusT * oneMinusT * oneMinusT * (point0.y)
+//                + 3 * oneMinusT * oneMinusT * t * (point1.y)
+//                + 3 * oneMinusT * t * t * (point2.y)
+//                + t * t * t * (point3.y);
+        float time = 1 - fraction;
+        PointF point = new PointF();// 结果
 
-        Point point0 = (Point) startValue;
+        point.x = time * time * time * startValue.x + 3 * mPointF1.x * time
+                * time * fraction + 3 * mPointF2.x * fraction * fraction * time
+                + endValue.x * fraction * fraction * fraction;
 
-        Point point1 = new Point();
-        point1.setX(width);
-        point1.setY(0);
-
-        Point point2 = new Point();
-        point2.setX(0);
-        point2.setY(height);
-
-
-        Point point3 = (Point) endValue;
-
-        point.setX(oneMinusT * oneMinusT * oneMinusT * (point0.getX())
-                + 3 * oneMinusT * oneMinusT * t * (point1.getX())
-                + 3 * oneMinusT * t * t * (point2.getX())
-                + t * t * t * (point3.getX()));
-
-        point.setY( oneMinusT * oneMinusT * oneMinusT * (point0.getY())
-                + 3 * oneMinusT * oneMinusT * t * (point1.getY())
-                + 3 * oneMinusT * t * t * (point2.getY())
-                + t * t * t * (point3.getY()));
+        point.y = time * time * time * startValue.y + 3 * mPointF1.y * time
+                * time * fraction + 3 * mPointF2.y * fraction * fraction * time
+                + endValue.y * fraction * fraction * fraction;
+        Log.i(TAG,point.x+"===="+point.y);
         return point;
     }
 }

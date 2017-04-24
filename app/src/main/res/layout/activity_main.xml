@@ -20,11 +20,11 @@
         />
 
     <Button
-        android:id="@+id/rotation_btn"
+        android:id="@+id/bezier_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/point_animation_btn"
-        android:text="rotation"
+        android:text="bezier"
         />
 
     <Button
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/translationX_btn"
         android:text="translationX"
-        android:layout_below="@id/rotation_btn"
+        android:layout_below="@id/bezier_btn"
         />
 
     <Button
