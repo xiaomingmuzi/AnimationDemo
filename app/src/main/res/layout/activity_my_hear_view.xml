@@ -17,5 +17,6 @@
         android:id="@+id/my_heart_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></com.lixm.animationdemo.customview.MyHeartView>
+        >
+    </com.lixm.animationdemo.customview.MyHeartView>
 </RelativeLayout>

@@ -59,7 +59,6 @@ private String TAG=getClass().getName();
         point.y = time * time * time * startValue.y + 3 * mPointF1.y * time
                 * time * fraction + 3 * mPointF2.y * fraction * fraction * time
                 + endValue.y * fraction * fraction * fraction;
-        Log.i(TAG,point.x+"===="+point.y);
         return point;
     }
 }
