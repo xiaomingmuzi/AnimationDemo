@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".activity.ObjectAnimation1Activity" />
         <activity android:name=".activity.ObjectAnimation2Activity" />
-        <activity android:name=".activity.BezierActivity"></activity>
+        <activity android:name=".activity.BezierActivity" />
+        <activity android:name=".activity.MyHeartViewActivity"></activity>
     </application>
 
 </manifest>

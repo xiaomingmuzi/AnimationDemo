@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.lixm.animationdemo.R;
+import com.lixm.animationdemo.customview.MyHeartView;
 
 /**
  * http://blog.csdn.net/guolin_blog/article/details/43536355  上篇
@@ -45,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,BezierActivity.class));
+            }
+        });
+        findViewById(R.id.my_heart_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MyHeartViewActivity.class));
             }
         });
     }

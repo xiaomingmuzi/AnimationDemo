@@ -30,8 +30,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/translationX_btn"
-        android:text="translationX"
+        android:id="@+id/my_heart_view"
+        android:text="myheart"
         android:layout_below="@id/bezier_btn"
         />
 
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/scaleX_btn"
         android:text="scaleX"
-        android:layout_below="@id/translationX_btn"
+        android:layout_below="@id/my_heart_view"
         />
     <Button
         android:layout_width="wrap_content"
