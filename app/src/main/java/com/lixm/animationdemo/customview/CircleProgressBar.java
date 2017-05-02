@@ -14,7 +14,7 @@ import android.view.View;
 /**
  * @author Lixm
  * @date 2017/5/2
- * @detail
+ * @detail  https://github.com/Alex-Cin/CircleProgressBar
  */
 
 public class CircleProgressBar extends View {
