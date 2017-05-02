@@ -54,5 +54,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MyHeartViewActivity.class));
             }
         });
+
+        findViewById(R.id.circle_progress_bar_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,CircleProgressBarActivity.class));
+            }
+        });
     }
 }

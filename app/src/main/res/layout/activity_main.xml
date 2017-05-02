@@ -38,8 +38,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scaleX_btn"
-        android:text="scaleX"
+        android:id="@+id/circle_progress_bar_btn"
+        android:text="圆形进度条"
         android:layout_below="@id/my_heart_view"
         />
     <Button
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/animation_set_btn"
         android:text="animation_set"
-        android:layout_below="@id/scaleX_btn"
+        android:layout_below="@id/circle_progress_bar_btn"
         />
 
     <Button
