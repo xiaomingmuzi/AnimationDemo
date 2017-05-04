@@ -45,8 +45,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/animation_set_btn"
-        android:text="animation_set"
+        android:id="@+id/animation_frame_btn"
+        android:text="属性动画代替帧动画"
         android:layout_below="@id/circle_progress_bar_btn"
         />
 
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/animation_set_xml_btn"
         android:text="animation_set_xml"
-        android:layout_below="@id/animation_set_btn"
+        android:layout_below="@id/animation_frame_btn"
         />
 
 </RelativeLayout>

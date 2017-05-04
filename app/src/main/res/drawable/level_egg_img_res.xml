@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@mipmap/rotten_egg_1"
+        android:maxLevel="1" />
+    <item
+        android:drawable="@mipmap/rotten_egg_2"
+        android:maxLevel="2" />
+    <item
+        android:drawable="@mipmap/rotten_egg_3"
+        android:maxLevel="3" />
+    <item
+        android:drawable="@mipmap/rotten_egg_4"
+        android:maxLevel="4" />
+    <item
+        android:drawable="@mipmap/rotten_egg_5"
+        android:maxLevel="5" />
+    <item
+        android:drawable="@mipmap/rotten_egg_6"
+        android:maxLevel="6" />
+    <item
+        android:drawable="@mipmap/rotten_egg_7"
+        android:maxLevel="7" />
+    <item
+        android:drawable="@mipmap/rotten_egg_8"
+        android:maxLevel="8" />
+    <item
+        android:drawable="@mipmap/rotten_egg_9"
+        android:maxLevel="9" />
+    <item
+        android:drawable="@mipmap/rotten_egg_10"
+        android:maxLevel="10" />
+    <item
+        android:drawable="@mipmap/rotten_egg_11"
+        android:maxLevel="11" />
+    <item
+        android:drawable="@mipmap/rotten_egg_12"
+        android:maxLevel="12" />
+    <item
+        android:drawable="@mipmap/rotten_egg_13"
+        android:maxLevel="13" />
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_14"-->
+        <!--android:maxLevel="14" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_15"-->
+        <!--android:maxLevel="15" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_16"-->
+        <!--android:maxLevel="16" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_17"-->
+        <!--android:maxLevel="17" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_18"-->
+        <!--android:maxLevel="18" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_19"-->
+        <!--android:maxLevel="19" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_20"-->
+        <!--android:maxLevel="20" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_21"-->
+        <!--android:maxLevel="21" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_22"-->
+        <!--android:maxLevel="22" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_23"-->
+        <!--android:maxLevel="23" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_24"-->
+        <!--android:maxLevel="24" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_25"-->
+        <!--android:maxLevel="25" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_26"-->
+        <!--android:maxLevel="26" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_27"-->
+        <!--android:maxLevel="27" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_28"-->
+        <!--android:maxLevel="28" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_29"-->
+        <!--android:maxLevel="29" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_30"-->
+        <!--android:maxLevel="30" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_31"-->
+        <!--android:maxLevel="31" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_32"-->
+        <!--android:maxLevel="32" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_33"-->
+        <!--android:maxLevel="33" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_34"-->
+        <!--android:maxLevel="34" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_35"-->
+        <!--android:maxLevel="35" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_36"-->
+        <!--android:maxLevel="36" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_37"-->
+        <!--android:maxLevel="37" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_38"-->
+        <!--android:maxLevel="38" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_39"-->
+        <!--android:maxLevel="39" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_40"-->
+        <!--android:maxLevel="40" />-->
+    <!--<item-->
+        <!--android:drawable="@mipmap/rotten_egg_41"-->
+        <!--android:maxLevel="41" />-->
+</level-list>
