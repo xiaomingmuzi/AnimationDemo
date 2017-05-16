@@ -21,7 +21,8 @@
         <activity android:name=".activity.BezierActivity" />
         <activity android:name=".activity.MyHeartViewActivity" />
         <activity android:name=".activity.CircleProgressBarActivity" />
-        <activity android:name=".activity.ObjectAnimationFrameActivity"></activity>
+        <activity android:name=".activity.ObjectAnimationFrameActivity" />
+        <activity android:name=".activity.FlashActivity"></activity>
     </application>
 
 </manifest>
