@@ -42,15 +42,13 @@ public class FlashActivity extends AppCompatActivity {
 //                    }
                     if (num % 2 == 0) {
                         mFlashView.reload("cnfol", "testflash");
-                        mFlashView.play("rottenEgg", FlashDataParser.FlashLoopTimeOnce);//这里的animationName就是flash中anims文件夹内的动画名称
-//                    }
-// else
-//                        if (num % 3 == 0) {
-//                        mFlashView.reload("laba", "flashAnims");
-//                        mFlashView.play("laba", FlashDataParser.FlashLoopTimeForever);
+                        mFlashView.play("rottenEgg", FlashDataParser.FlashLoopTimeForever);//这里的animationName就是flash中anims文件夹内的动画名称
+                    } else if (num % 3 == 0) {
+                        mFlashView.reload("brick", "testflash");
+                        mFlashView.play("goldBrick", FlashDataParser.FlashLoopTimeForever);
                     } else {
-                        mFlashView.reload("heiniao", "flashAnims");
-                        mFlashView.play("atk", FlashDataParser.FlashLoopTimeForever);
+                        mFlashView.reload("up", "testflash");
+                        mFlashView.play("stockUp", FlashDataParser.FlashLoopTimeForever);
                     }
                     num++;
                 }
