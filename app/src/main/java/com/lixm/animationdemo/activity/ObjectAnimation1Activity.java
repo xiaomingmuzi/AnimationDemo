@@ -5,25 +5,31 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lixm.animationdemo.R;
 
+import static android.R.attr.maxLevel;
+
 public class ObjectAnimation1Activity extends AppCompatActivity {
 
+    private Context mContext;
     private TextView textView;
-    private Button alphaBtn, rotationBtn, translationXBtn, scaleXBtn, animationSetBtn,animationSetXmlBtn;
+    private Button alphaBtn, rotationBtn, translationXBtn, scaleXBtn, animationSetBtn, animationSetXmlBtn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object_animation1);
-
+        mContext = this;
         //        final ValueAnimator anim=ValueAnimator.ofInt(0,100);
 //        anim.setDuration(100);
 //        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -104,13 +110,37 @@ public class ObjectAnimation1Activity extends AppCompatActivity {
             }
         });
 
-        animationSetXmlBtn= (Button) findViewById(R.id.animation_set_xml_btn);
+        animationSetXmlBtn = (Button) findViewById(R.id.animation_set_xml_btn);
         animationSetXmlBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Animator animator= AnimatorInflater.loadAnimator(ObjectAnimation1Activity.this,R.animator.num_ani);
+                Animator animator = AnimatorInflater.loadAnimator(ObjectAnimation1Activity.this, R.animator.num_ani);
                 animator.setTarget(textView);
                 animator.start();
+            }
+        });
+
+        final ImageView imgGift = (ImageView) findViewById(R.id.imgGif);
+        imgGift.setImageDrawable(mContext.getResources().getDrawable(R.drawable.live_item_clapping));
+        Button clapping = (Button) findViewById(R.id.clapping);
+        clapping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator objectAnimator = ObjectAnimator.ofInt(imgGift, "imageLevel", 0, 6);
+                objectAnimator.setDuration(6 * 150);
+                objectAnimator.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        imgGift.setImageLevel(6);
+                        Log.e("TAG", "========onAnimationEnd============");
+                    }
+
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        Log.e("TAG", "========onAnimationStart============");
+                    }
+                });
+                objectAnimator.start();
             }
         });
 
