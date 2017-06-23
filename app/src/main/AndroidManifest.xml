@@ -22,7 +22,8 @@
         <activity android:name=".activity.MyHeartViewActivity" />
         <activity android:name=".activity.CircleProgressBarActivity" />
         <activity android:name=".activity.ObjectAnimationFrameActivity" />
-        <activity android:name=".activity.FlashActivity"></activity>
+        <activity android:name=".activity.FlashActivity" />
+        <activity android:name=".activity.PayPassportActivity"></activity>
     </application>
 
 </manifest>

@@ -1,19 +1,11 @@
 package com.lixm.animationdemo.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.lixm.animationdemo.R;
-import com.lixm.animationdemo.customview.MyHeartView;
 
 /**
  * http://blog.csdn.net/guolin_blog/article/details/43536355  上篇
@@ -71,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,FlashActivity.class));
+            }
+        });
+        findViewById(R.id.pay_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PayPassportActivity.class));
             }
         });
     }

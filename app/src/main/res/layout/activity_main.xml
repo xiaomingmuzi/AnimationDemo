@@ -57,5 +57,11 @@
         android:text="Flash动画"
         android:layout_below="@id/animation_frame_btn"
         />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pay_test"
+        android:text="支付密码框"
+        android:layout_below="@id/animation_flash_btn"
+        />
 </RelativeLayout>
