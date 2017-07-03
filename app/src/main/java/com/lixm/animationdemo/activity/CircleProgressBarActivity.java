@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.CircleProgressBar;
 
-public class CircleProgressBarActivity extends AppCompatActivity {
+public class CircleProgressBarActivity extends BaseActivity {
 
     private String TAG=getClass().getSimpleName();
     private CircleProgressBar circleProgressBar;

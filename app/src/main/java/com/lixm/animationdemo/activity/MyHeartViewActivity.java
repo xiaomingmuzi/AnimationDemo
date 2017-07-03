@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.MyHeartView;
 
-public class MyHeartViewActivity extends AppCompatActivity {
+public class MyHeartViewActivity extends BaseActivity {
 
 
     @Override

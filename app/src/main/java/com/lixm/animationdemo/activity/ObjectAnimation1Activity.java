@@ -18,7 +18,7 @@ import com.lixm.animationdemo.R;
 
 import static android.R.attr.maxLevel;
 
-public class ObjectAnimation1Activity extends AppCompatActivity {
+public class ObjectAnimation1Activity extends BaseActivity {
 
     private Context mContext;
     private TextView textView;

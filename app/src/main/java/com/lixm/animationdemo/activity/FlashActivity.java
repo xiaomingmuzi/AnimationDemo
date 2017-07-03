@@ -7,7 +7,7 @@ import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.FlashDataParser;
 import com.lixm.animationdemo.customview.FlashView;
 
-public class FlashActivity extends AppCompatActivity {
+public class FlashActivity extends BaseActivity {
 
     FlashView mFlashView;
 

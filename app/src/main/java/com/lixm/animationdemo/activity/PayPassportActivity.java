@@ -11,7 +11,7 @@ import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.CustomPayEditText;
 import com.lixm.animationdemo.dialog.PayDialog;
 
-public class PayPassportActivity extends AppCompatActivity {
+public class PayPassportActivity extends BaseActivity {
 
     private String TAG="PayPassportActivity";
     private CustomPayEditText mCustomPayEditText;

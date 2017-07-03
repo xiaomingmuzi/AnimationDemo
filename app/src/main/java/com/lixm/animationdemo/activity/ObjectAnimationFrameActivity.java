@@ -14,7 +14,7 @@ import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.LevelImageView;
 
 
-public class ObjectAnimationFrameActivity extends Activity implements View.OnClickListener {
+public class ObjectAnimationFrameActivity extends BaseActivity implements View.OnClickListener {
     private LevelImageView levelImageView;
     private ObjectAnimator levelAnimation;
     private Button eggBtn, goldBtn, upBtn;

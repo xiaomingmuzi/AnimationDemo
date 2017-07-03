@@ -8,7 +8,7 @@ import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.animator.PointEvaluator;
 import com.lixm.animationdemo.bean.Point;
 
-public class ObjectAnimation2Activity extends AppCompatActivity {
+public class ObjectAnimation2Activity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

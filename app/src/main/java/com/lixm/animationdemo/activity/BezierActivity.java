@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.lixm.animationdemo.R;
 
-public class BezierActivity extends AppCompatActivity {
+public class BezierActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
 
@@ -12,7 +13,7 @@ import com.lixm.animationdemo.R;
  * http://blog.csdn.net/guolin_blog/article/details/43816093  中篇
  * http://blog.csdn.net/guolin_blog/article/details/44171115  下篇
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private String TAG = "MainActivity";
 
     @Override
@@ -71,5 +72,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, PayPassportActivity.class));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        exit();
+    }
+
+    private boolean isExit;
+    private void exit() {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(this,"",Toast.LENGTH_SHORT).show();
+        } else {
+            finish();
+            FinishActivityManager.getManager().finishAllActivity();
+        }
     }
 }
