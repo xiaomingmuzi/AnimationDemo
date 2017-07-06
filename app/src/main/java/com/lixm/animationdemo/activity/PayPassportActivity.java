@@ -1,10 +1,13 @@
 package com.lixm.animationdemo.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
@@ -13,11 +16,13 @@ import com.lixm.animationdemo.dialog.PayDialog;
 
 public class PayPassportActivity extends BaseActivity {
 
-    private String TAG="PayPassportActivity";
+    private String TAG = "PayPassportActivity";
     private CustomPayEditText mCustomPayEditText;
     private CustomPayEditText CustomPayEditText2;
-
+    private TextView ellipsizeTxt;
+    private EditText ellipsizeEt;
     private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,5 +56,23 @@ public class PayPassportActivity extends BaseActivity {
             }
         });
 
+        ellipsizeTxt = (TextView) findViewById(R.id.ellipsize_txt);
+        ellipsizeEt= (EditText) findViewById(R.id.ellipsize_et);
+        ellipsizeEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ellipsizeTxt.setText(s.toString());
+            }
+        });
     }
 }
