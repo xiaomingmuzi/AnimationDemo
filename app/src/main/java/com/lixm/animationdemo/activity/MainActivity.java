@@ -72,6 +72,12 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, PayPassportActivity.class));
             }
         });
+        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,GreenDaoActivity.class));
+            }
+        });
     }
 
     @Override

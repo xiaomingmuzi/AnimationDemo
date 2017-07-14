@@ -3,6 +3,7 @@
     package="com.lixm.animationdemo">
 
     <application
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,7 +24,8 @@
         <activity android:name=".activity.CircleProgressBarActivity" />
         <activity android:name=".activity.ObjectAnimationFrameActivity" />
         <activity android:name=".activity.FlashActivity" />
-        <activity android:name=".activity.PayPassportActivity"></activity>
+        <activity android:name=".activity.PayPassportActivity" />
+        <activity android:name=".activity.GreenDaoActivity"></activity>
     </application>
 
 </manifest>
