@@ -8,4 +8,5 @@
     <color name="color_dialog_bg">#20000000</color>
     <color name="live_red_hint_txt">#FCFBC5</color>
     <color name="careless_live_square">#888888</color>
+    <color name="live_top_record">#ffb79b</color>
 </resources>

@@ -90,8 +90,8 @@ public class LiveRedRecordVpItem extends LinearLayout {
                 url = "http://financial.test.cnfol.com/index.php?r=RedPacket/GetMyReceiveRedPacketList";
             }
             RequestBody formBody = new FormBody.Builder()
-                    .add("userId", "348392")
-                    .add("CheckCode", "355848063470929")
+                    .add("userId", "347092")
+                    .add("CheckCode", "865968037557875")
                     .add("page", "1")
                     .add("type", type + "")
                     .add("pageSize", "20")

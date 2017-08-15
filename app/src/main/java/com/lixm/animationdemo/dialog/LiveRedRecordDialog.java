@@ -1,17 +1,21 @@
 package com.lixm.animationdemo.dialog;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -46,16 +50,21 @@ public class LiveRedRecordDialog extends Dialog implements View.OnClickListener,
     private ArrayList<DialogFragment> fragments;
     private MyFragmentAdapter fragmentAdapter;
 
-    public LiveRedRecordDialog(@NonNull Context context) {
-        super(context);
+
+    public LiveRedRecordDialog(Context context) {
+        this(context, R.style.host_info_dlg);
+    }
+
+    private LiveRedRecordDialog(Context context, int themeResId) {
+        super(context, themeResId);
+        setCanceledOnTouchOutside(true);
         mContext = context;
-        setContentView(R.layout.red_record_layout);
         init();
     }
 
     private void init() {
 
-
+        setContentView(R.layout.red_record_layout);
         mDetailClose = (LinearLayout) findViewById(R.id.red_record_close);
         mDetailClose.setOnClickListener(this);
         mRg = (RadioGroup) findViewById(R.id.red_record_rg);
@@ -66,15 +75,15 @@ public class LiveRedRecordDialog extends Dialog implements View.OnClickListener,
 
         setVpAdapter();
 
-//        WindowManager windowManager = ((Activity) mContext).getWindowManager();
-//        Display display = windowManager.getDefaultDisplay();
-//        Window dlgwin = this.getWindow();
-//        WindowManager.LayoutParams lp = dlgwin.getAttributes();
-//        dlgwin.setGravity(Gravity.CENTER);
-//        lp.width = (int) (display.getWidth()); //设置宽度
-//        lp.height = (int) (display.getHeight()); //设置高度
-//
-//        this.getWindow().setAttributes(lp);
+        WindowManager windowManager = ((Activity) mContext).getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        Window dlgwin = this.getWindow();
+        WindowManager.LayoutParams lp = dlgwin.getAttributes();
+        dlgwin.setGravity(Gravity.CENTER);
+        lp.width = (int) (display.getWidth()); //设置宽度
+        lp.height = (int) (display.getHeight()); //设置高度
+
+        this.getWindow().setAttributes(lp);
     }
 
 

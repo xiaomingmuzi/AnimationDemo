@@ -31,7 +31,7 @@
                     android:id="@+id/red_record_txt_close"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                   android:text="关闭" />
+                    android:background="@drawable/live_red_close" />
 
                 <View
                     android:layout_width="0.5dp"
@@ -54,30 +54,34 @@
                 android:background="@mipmap/red_detail_top" />
 
 
-                <RadioGroup
-                    android:id="@+id/red_record_rg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+            <RadioGroup
+                android:id="@+id/red_record_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/send_red"
-                        style="@style/RedRecord"
-                        android:checked="true"
-                        android:text="我发出的" />
+                <RadioButton
+                    android:id="@+id/send_red"
+                    style="@style/RedRecord"
+                    android:checked="true"
+                    android:text="我发出的" />
 
-                    <RadioButton
-                        android:id="@+id/receive_red"
-                        style="@style/RedRecord"
-                        android:text="我收到的" />
-                </RadioGroup>
+                <RadioButton
+                    android:id="@+id/receive_red"
+                    style="@style/RedRecord"
+                    android:text="我收到的" />
+            </RadioGroup>
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/red_record_viewpager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/red_record_viewpager"
+                android:layout_width="match_parent"
+                android:paddingBottom="8dp"
+                android:layout_below="@id/detail_top"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:layout_height="match_parent" />
 
         </RelativeLayout>
     </LinearLayout>
