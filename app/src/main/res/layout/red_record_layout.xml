@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="55dp"
+    android:paddingRight="55dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="90dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:id="@+id/red_record_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/red_record_txt_close"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                   android:text="关闭" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@id/red_record_txt_close"
+                    android:background="@mipmap/live_line_red" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:background="@mipmap/red_detail_bg">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/detail_top"
+                android:background="@mipmap/red_detail_top" />
+
+
+                <RadioGroup
+                    android:id="@+id/red_record_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/send_red"
+                        style="@style/RedRecord"
+                        android:checked="true"
+                        android:text="我发出的" />
+
+                    <RadioButton
+                        android:id="@+id/receive_red"
+                        style="@style/RedRecord"
+                        android:text="我收到的" />
+                </RadioGroup>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/red_record_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

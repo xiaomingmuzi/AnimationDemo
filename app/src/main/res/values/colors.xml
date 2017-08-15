@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="aaaaa">#88000000</color>
     <color name="color_333">#333333</color>
+    <color name="color_dialog_bg">#20000000</color>
+    <color name="live_red_hint_txt">#FCFBC5</color>
+    <color name="careless_live_square">#888888</color>
 </resources>

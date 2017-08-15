@@ -1,7 +1,6 @@
 package com.lixm.animationdemo.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -76,6 +75,12 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,GreenDaoActivity.class));
+            }
+        });
+        findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,DialogActivity.class));
             }
         });
     }

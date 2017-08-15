@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.lixm.animationdemo.R;
-import com.lixm.animationdemo.UIUtils;
+import com.lixm.animationdemo.utils.UIUtils;
 import com.lixm.animationdemo.animator.BezierTypeEvaluator;
 
 import java.util.Random;

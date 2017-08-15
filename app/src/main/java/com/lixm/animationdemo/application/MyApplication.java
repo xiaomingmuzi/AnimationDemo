@@ -1,6 +1,7 @@
 package com.lixm.animationdemo.application;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.lixm.animationdemo.db.DaoMaster;
@@ -13,6 +14,7 @@ import com.lixm.animationdemo.db.DaoSession;
  */
 
 public class MyApplication extends Application {
+    private static MyApplication mContext = null;
     private DaoMaster.DevOpenHelper mHelper;
     private SQLiteDatabase db;
     private DaoMaster mDaoMaster;
@@ -22,12 +24,18 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext=this;
         instances=this;
         setDatabase();
     }
 
     public static MyApplication getInstances(){
         return instances;
+    }
+
+    // 对外暴露上下文
+    public static MyApplication getApplication() {
+        return mContext;
     }
 
     private void setDatabase(){

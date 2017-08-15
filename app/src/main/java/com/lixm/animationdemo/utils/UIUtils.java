@@ -1,7 +1,12 @@
-package com.lixm.animationdemo;
+package com.lixm.animationdemo.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.DisplayMetrics;
+
+import com.lixm.animationdemo.application.MyApplication;
+
+import static java.security.AccessController.getContext;
 
 /**
  * @author Lixm
@@ -10,6 +15,23 @@ import android.util.DisplayMetrics;
  */
 
 public class UIUtils {
+    public static int slide_status = -1;
+    /**
+     * 获取上下文Context
+     *
+     * @return
+     */
+    public static Context getContext() {
+        return MyApplication.getApplication();
+    }
+    /**
+     * dip转换px
+     */
+    public static int dip2px(int dip) {
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        return (int) (dip * scale + 0.5f);
+    }
+
     public static int getScreenWidth(Activity activity) {
         DisplayMetrics metrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
