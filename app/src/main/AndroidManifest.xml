@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lixm.animationdemo">
+
     <!-- 允许应用程序联网，以便向我们的服务器端发送数据 N -->
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -27,8 +29,9 @@
         <activity android:name=".activity.FlashActivity" />
         <activity android:name=".activity.PayPassportActivity" />
         <activity android:name=".activity.GreenDaoActivity" />
-        <activity android:name=".activity.DialogActivity"></activity>
-        <!--<activity android:name="com.lixm.animationdemo.dialog.LiveRedRecordDialog"></activity>-->
+        <activity android:name=".activity.DialogActivity" />
+        <!-- <activity android:name="com.lixm.animationdemo.dialog.LiveRedRecordDialog"></activity> -->
+        <activity android:name=".activity.CollegeActivity" />
     </application>
 
 </manifest>

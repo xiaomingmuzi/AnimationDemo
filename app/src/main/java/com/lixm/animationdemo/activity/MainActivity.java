@@ -83,6 +83,12 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this,DialogActivity.class));
             }
         });
+        findViewById(R.id.button8).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,CollegeActivity.class));
+            }
+        });
     }
 
     @Override
