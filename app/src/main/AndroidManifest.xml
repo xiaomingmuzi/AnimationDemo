@@ -32,7 +32,8 @@
         <activity android:name=".activity.DialogActivity" />
         <!-- <activity android:name="com.lixm.animationdemo.dialog.LiveRedRecordDialog"></activity> -->
         <activity android:name=".activity.CollegeActivity" />
-        <activity android:name=".activity.JsonBeanActivity"></activity>
+        <activity android:name=".activity.JsonBeanActivity" />
+        <activity android:name=".activity.JsonXmlActivity"></activity>
     </application>
 
 </manifest>

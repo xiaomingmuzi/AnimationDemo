@@ -89,6 +89,18 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this,CollegeActivity.class));
             }
         });
+        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,JsonXmlActivity.class));
+            }
+        });
+        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,JsonBeanActivity.class));
+            }
+        });
     }
 
     @Override
