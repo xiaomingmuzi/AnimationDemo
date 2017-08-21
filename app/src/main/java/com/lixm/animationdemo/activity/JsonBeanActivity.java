@@ -56,7 +56,7 @@ public class JsonBeanActivity extends AppCompatActivity {
         String format = Utils.iJsonFormat(jsonContent, false);
         Log.w(Tag, format);
         txt = (TextView) findViewById(R.id.txt);
-        txt.setText(format+"\n\n\n\n\n\n  ");
+        txt.setText(format+"\n\n  ");
         toJson();
     }
 
@@ -67,7 +67,9 @@ public class JsonBeanActivity extends AppCompatActivity {
         Prof prof=new Prof(1,"log-file-path");
         JsonContentBean jsonContentBean=new JsonContentBean(appKey,SecretKey,"path-of-provision-profile",cloud,vad,prof);
         String jsonContent = new Gson().toJson(jsonContentBean);
-        Log.e(Tag,jsonContentBean.toString());
+        Log.e(Tag,jsonContent);
         txt.setText(txt.getText().toString()+"\n\n"+Utils.iJsonFormat(jsonContent,false));
     }
+
+
 }
