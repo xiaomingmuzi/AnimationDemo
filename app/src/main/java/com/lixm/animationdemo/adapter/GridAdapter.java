@@ -32,6 +32,10 @@ public class GridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             mOnItemClickListener.onItemClick(view);
     }
 
+    public void bindData(List<MeiZi> datas){
+        this.datas=datas;
+    }
+
     @Override
     public boolean onLongClick(View view) {
         if (mOnItemClickListener != null)

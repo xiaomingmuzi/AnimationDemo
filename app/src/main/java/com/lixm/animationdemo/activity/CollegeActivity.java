@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.adapter.GridAdapter;
 import com.lixm.animationdemo.bean.MeiZi;
+import com.lixm.animationdemo.customview.SpaceItemDecoration;
 import com.lixm.animationdemo.utils.SnackbarUtil;
 
 import org.json.JSONObject;
@@ -40,6 +41,7 @@ public class CollegeActivity extends BaseActivity {
     private int page = 1;
     private ArrayList<MeiZi> meiZis;
     private GridAdapter mAdapter;
+    private int COLUMN = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +61,9 @@ public class CollegeActivity extends BaseActivity {
     private void initView() {
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.grid_coordinatorLayout);
         recyclerView = (RecyclerView) findViewById(R.id.grid_recycler);
-        mLayoutManager = new GridLayoutManager(mContext, 3, GridLayoutManager.VERTICAL, false);
+        mLayoutManager = new GridLayoutManager(mContext, COLUMN, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.addItemDecoration(new SpaceItemDecoration(COLUMN, getResources().getDimensionPixelOffset(R.dimen.activity_horizontal_margin), true));
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.grid_swipe_refresh);
         //调整SwipeRefreshLayout的位置
@@ -85,6 +88,21 @@ public class CollegeActivity extends BaseActivity {
                 lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
             }
         });
+        meiZis = new ArrayList<>();
+        mAdapter = new GridAdapter(this, meiZis);
+        recyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new GridAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view) {
+                int position = recyclerView.getChildAdapterPosition(view);
+                SnackbarUtil.ShortSnackbar(coordinatorLayout, "点击了第" + (position + 1) + "个", SnackbarUtil.Info).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view) {
+
+            }
+        });
         getData();
     }
 
@@ -100,7 +118,7 @@ public class CollegeActivity extends BaseActivity {
     }
 
     private void getData() {
-        String url = "http://gank.io/api/data/福利/10/"+page;
+        String url = "http://gank.io/api/data/福利/10/" + page;
         OkHttpClient okHttpClient = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
         Call call = okHttpClient.newCall(request);
@@ -141,6 +159,7 @@ public class CollegeActivity extends BaseActivity {
             switch (msg.what) {
                 case 0:
                     dealMessage((String) msg.obj);
+                    swipeRefreshLayout.setRefreshing(false);
                     break;
             }
         }
@@ -148,7 +167,8 @@ public class CollegeActivity extends BaseActivity {
 
     private void dealMessage(String jsonData) {
         Gson gson = new Gson();
-        if (meiZis == null || meiZis.size() == 0) {
+        if (page == 1) {
+            meiZis.clear();
             meiZis = gson.fromJson(jsonData, new TypeToken<ArrayList<MeiZi>>() {
             }.getType());
             MeiZi pages = new MeiZi();
@@ -162,24 +182,8 @@ public class CollegeActivity extends BaseActivity {
             pages.setPage(page);
             meiZis.add(pages);////在数据链表中加入一个用于显示页数的item
         }
-
-        if (mAdapter == null) {
-            recyclerView.setAdapter(mAdapter = new GridAdapter(mContext, meiZis));
-            mAdapter.setOnItemClickListener(new GridAdapter.OnRecyclerViewItemClickListener() {
-                @Override
-                public void onItemClick(View view) {
-                    int position = recyclerView.getChildAdapterPosition(view);
-                    SnackbarUtil.ShortSnackbar(coordinatorLayout, "点击了第" + (position +1)+ "个", SnackbarUtil.Info).show();
-                }
-
-                @Override
-                public void onItemLongClick(View view) {
-
-                }
-            });
-        } else {
-            //让适配器刷新数据
-            mAdapter.notifyDataSetChanged();
-        }
+        mAdapter.bindData(meiZis);
+        //让适配器刷新数据
+        mAdapter.notifyDataSetChanged();
     }
 }
