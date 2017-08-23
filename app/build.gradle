@@ -36,13 +36,13 @@ dependencies {
     // add library
     // This is only needed if you want to use encrypted databases
     //加密库依赖（可选项）
-    compile files('libs/commons-beanutils-1.7.0.jar')
-    compile files('libs/commons-collections-3.1.jar')
-    compile files('libs/commons-lang-2.5.jar')
-    compile files('libs/commons-logging.jar')
-    compile files('libs/ezmorph-1.0.3.jar')
-    compile files('libs/jdom.jar')
-    compile files('libs/json-lib-2.4-jdk15.jar')
+//    compile files('libs/commons-beanutils-1.7.0.jar')
+//    compile files('libs/commons-collections-3.1.jar')
+//    compile files('libs/commons-lang-2.5.jar')
+//    compile files('libs/commons-logging.jar')
+//    compile files('libs/ezmorph-1.0.3.jar')
+//    compile files('libs/jdom.jar')
+//    compile files('libs/json-lib-2.4-jdk15.jar')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
@@ -52,5 +52,5 @@ dependencies {
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile files('libs/chivox_android_sdk.jar')
+//    compile files('libs/chivox_android_sdk.jar')
 }
