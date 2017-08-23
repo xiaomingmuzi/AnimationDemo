@@ -1,11 +1,20 @@
 package com.lixm.animationdemo.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.View;
+import android.support.annotation.IdRes;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
+import com.lixm.animationdemo.customview.FlowLayout;
+
+import java.util.ArrayList;
 
 /**
  * http://blog.csdn.net/guolin_blog/article/details/43536355  上篇
@@ -14,94 +23,198 @@ import com.lixm.animationdemo.R;
  */
 public class MainActivity extends BaseActivity {
     private String TAG = "MainActivity";
+    private FlowLayout mFlowLayout;
+    private ArrayList<String> mlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.simple_animation_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ObjectAnimation1Activity.class));
-            }
-        });
+//        initBtn();
 
-        findViewById(R.id.point_animation_btn).setOnClickListener(new View.OnClickListener() {
+        mFlowLayout = (FlowLayout) findViewById(R.id.flowLayout);
+        mFlowLayout.setPadding(12, 12, 12, 12);
+        mlist = new ArrayList<>();
+        mlist.add("简单的animation实现");
+        mlist.add("PointAnimation实现");
+        mlist.add("bezier");
+        mlist.add("myheart");
+        mlist.add("圆形进度条");
+        mlist.add("属性动画代替帧动画");
+        mlist.add("Flash动画");
+        mlist.add("支付密码框");
+        mlist.add("GreenDao数据库测试");
+        mlist.add("Dialog展示");
+        mlist.add("recyclerView测试");
+        mlist.add("json2xml测试");
+        mlist.add("json测试");
+        mlist.add("音频录音");
+        addData();
+        mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ObjectAnimation2Activity.class));
-            }
-        });
-
-        findViewById(R.id.bezier_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,BezierActivity.class));
-            }
-        });
-        findViewById(R.id.my_heart_view).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MyHeartViewActivity.class));
-            }
-        });
-
-        findViewById(R.id.circle_progress_bar_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,CircleProgressBarActivity.class));
-            }
-        });
-        findViewById(R.id.animation_frame_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ObjectAnimationFrameActivity.class));
-            }
-        });
-        findViewById(R.id.animation_flash_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,FlashActivity.class));
-            }
-        });
-        findViewById(R.id.pay_test).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, PayPassportActivity.class));
-            }
-        });
-        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,GreenDaoActivity.class));
-            }
-        });
-        findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,DialogActivity.class));
-            }
-        });
-        findViewById(R.id.button8).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,CollegeActivity.class));
-            }
-        });
-        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,JsonXmlActivity.class));
-            }
-        });
-        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,JsonBeanActivity.class));
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+//                FinancialToast.show(mContext, mDatas.get(checkedId).getName());
+//                chooseBankBean = mDatas.get(checkedId);
+                switch (checkedId) {
+                    case 0:
+                        startActivity(new Intent(MainActivity.this, ObjectAnimation1Activity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(MainActivity.this, ObjectAnimation2Activity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this, BezierActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(MainActivity.this, MyHeartViewActivity.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(MainActivity.this, CircleProgressBarActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, ObjectAnimationFrameActivity.class));
+                        break;
+                    case 6:
+                        startActivity(new Intent(MainActivity.this, FlashActivity.class));
+                        break;
+                    case 7:
+                        startActivity(new Intent(MainActivity.this, PayPassportActivity.class));
+                        break;
+                    case 8:
+                        startActivity(new Intent(MainActivity.this, GreenDaoActivity.class));
+                        break;
+                    case 9:
+                        startActivity(new Intent(MainActivity.this, DialogActivity.class));
+                        break;
+                    case 10:
+                        startActivity(new Intent(MainActivity.this, CollegeActivity.class));
+                        break;
+                    case 11:
+                        startActivity(new Intent(MainActivity.this, JsonXmlActivity.class));
+                        break;
+                    case 12:
+                        startActivity(new Intent(MainActivity.this, JsonBeanActivity.class));
+                        break;
+                    case 13:
+                        startActivity(new Intent(MainActivity.this, RecordSoundActivity.class));
+                        break;
+                }
             }
         });
     }
+
+    private void addData() {
+        /**
+         * 放数据
+         */
+        if (mlist.size() > 0) {
+            for (int i = 0; i < mlist.size(); i++) {
+                //创建textView，并设置属性
+                final RadioButton textView = new RadioButton(this);
+                textView.setPadding(10, 5, 10, 5);
+                textView.setId(i);
+                Bitmap a = null;
+                textView.setButtonDrawable(new BitmapDrawable(a));
+//                textView.setTextSize(UIUtils.dp2Px(14));
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+                textView.setGravity(Gravity.CENTER);
+                textView.setTextColor(getResources().getColor(R.color.choose_bank_txt));
+                textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bank_item_choose));
+                //给textView设置内容
+                textView.setText(mlist.get(i));
+                if (i == 0) {
+                    textView.setChecked(true);
+                }
+                //把textView放到flowLayout中
+                mFlowLayout.addView(textView);
+            }
+        }
+    }
+
+//    private void initBtn() {
+//        findViewById(R.id.simple_animation_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,ObjectAnimation1Activity.class));//0
+//            }
+//        });
+//
+//        findViewById(R.id.point_animation_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,ObjectAnimation2Activity.class));//1
+//            }
+//        });
+//
+//        findViewById(R.id.bezier_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,BezierActivity.class));//2
+//            }
+//        });
+//        findViewById(R.id.my_heart_view).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, MyHeartViewActivity.class));//3
+//            }
+//        });
+//
+//        findViewById(R.id.circle_progress_bar_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,CircleProgressBarActivity.class));//4
+//            }
+//        });
+//        findViewById(R.id.animation_frame_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,ObjectAnimationFrameActivity.class));//5
+//            }
+//        });
+//        findViewById(R.id.animation_flash_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,FlashActivity.class));//6
+//            }
+//        });
+//        findViewById(R.id.pay_test).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, PayPassportActivity.class));//7
+//            }
+//        });
+//        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,GreenDaoActivity.class));//8
+//            }
+//        });
+//        findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,DialogActivity.class));//9
+//            }
+//        });
+//        findViewById(R.id.button8).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this,CollegeActivity.class));//10
+//            }
+//        });
+//        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this,JsonXmlActivity.class));
+//            }
+//        });
+//        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this,JsonBeanActivity.class));
+//            }
+//        });
+//    }
 
     @Override
     public void onBackPressed() {
@@ -109,10 +222,11 @@ public class MainActivity extends BaseActivity {
     }
 
     private boolean isExit;
+
     private void exit() {
         if (!isExit) {
             isExit = true;
-            Toast.makeText(this,"",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         } else {
             finish();
             FinishActivityManager.getManager().finishAllActivity();

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ >
+
+
+    <EditText
+        android:id="@+id/wordedt"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:inputType="text"
+        />
+
+    <Button
+        android:id="@+id/submitbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below ="@+id/wordedt"
+        android:text="确定"
+        />
+
+    <Button
+        android:id="@+id/stopbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wordedt"
+        android:layout_toRightOf="@+id/submitbtn"
+        android:text="停止"
+        />
+
+    <Button
+        android:id="@+id/replaybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wordedt"
+        android:layout_toRightOf="@+id/stopbtn"
+        android:text="回放"
+        />
+
+    <TextView
+        android:id="@+id/resulttv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+    <Button
+        android:id="@+id/exitbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="退出评测"
+        />
+
+</RelativeLayout>
+

@@ -1,77 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="25dp"
-        />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/imgGif"
+        android:layout_marginTop="25dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/imgGif" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgGif"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="25dp"
-        />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/text"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text" />
+
     <Button
         android:id="@+id/alpha_btn"
-        android:layout_below="@id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="alpha"
-        />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="66dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/rotation_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/alpha_btn"
         android:text="rotation"
-        />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@+id/alpha_btn"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/alpha_btn" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/translationX_btn"
         android:text="translationX"
-        android:layout_below="@id/rotation_btn"
-        />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@+id/rotation_btn"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/rotation_btn" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scaleX_btn"
         android:text="scaleX"
-        android:layout_below="@id/translationX_btn"
-        />
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/clapping"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintLeft_toLeftOf="@+id/translationX_btn" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/animation_set_btn"
         android:text="animation_set"
-        android:layout_below="@id/scaleX_btn"
-        />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/translationX_btn"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/scaleX_btn" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/animation_set_xml_btn"
         android:text="animation_set_xml"
-        android:layout_below="@id/animation_set_btn"
-        />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@+id/animation_set_btn"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/animation_set_btn" />
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/clapping"
-    android:layout_below="@id/animation_set_xml_btn"
-    android:text="鼓掌动画"
-    />
-</RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clapping"
+        android:text="鼓掌动画"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/scaleX_btn"
+        app:layout_constraintTop_toBottomOf="@+id/animation_set_xml_btn"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/scaleX_btn" />
+</android.support.constraint.ConstraintLayout>

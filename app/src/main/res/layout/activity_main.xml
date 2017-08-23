@@ -5,86 +5,91 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/simple_animation_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="简单的animation实现" />
+        <!--<Button-->
+        <!--android:id="@+id/simple_animation_btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="简单的animation实现" />-->
 
-        <Button
-            android:id="@+id/point_animation_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PointAnimation实现" />
+        <!--<Button-->
+        <!--android:id="@+id/point_animation_btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="PointAnimation实现" />-->
 
-        <Button
-            android:id="@+id/bezier_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="bezier" />
+        <!--<Button-->
+        <!--android:id="@+id/bezier_btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="bezier" />-->
 
-        <Button
-            android:id="@+id/my_heart_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="myheart" />
+        <!--<Button-->
+        <!--android:id="@+id/my_heart_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="myheart" />-->
 
-        <Button
-            android:id="@+id/circle_progress_bar_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="圆形进度条" />
+        <!--<Button-->
+        <!--android:id="@+id/circle_progress_bar_btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="圆形进度条" />-->
 
-        <Button
-            android:id="@+id/animation_frame_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="属性动画代替帧动画" />
+        <!--<Button-->
+        <!--android:id="@+id/animation_frame_btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="属性动画代替帧动画" />-->
 
-        <Button
-            android:id="@+id/animation_flash_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Flash动画" />
+        <!--<Button-->
+        <!--android:id="@+id/animation_flash_btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Flash动画" />-->
 
-        <Button
-            android:id="@+id/pay_test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="支付密码框" />
+        <!--<Button-->
+        <!--android:id="@+id/pay_test"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="支付密码框" />-->
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GreenDao数据库测试" />
+        <!--<Button-->
+        <!--android:id="@+id/button5"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="GreenDao数据库测试" />-->
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dialog展示" />
+        <!--<Button-->
+        <!--android:id="@+id/button7"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Dialog展示" />-->
 
-        <Button
-            android:layout_width="wrap_content"
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/button8"-->
+        <!--android:text="recyclerView测试"-->
+        <!--/>-->
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/button9"-->
+        <!--android:text="json2xml测试"-->
+        <!--/>-->
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/button10"-->
+        <!--android:text="json测试"-->
+        <!--/>-->
+        <com.lixm.animationdemo.customview.FlowLayout
+            android:id="@+id/flowLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button8"
-            android:text="recyclerView测试"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button9"
-            android:text="json2xml测试"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button10"
-            android:text="json测试"
-            />
+            android:layout_margin="10dp" />
     </LinearLayout>
 </ScrollView>
