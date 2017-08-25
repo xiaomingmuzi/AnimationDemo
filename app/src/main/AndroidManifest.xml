@@ -40,7 +40,8 @@
         <activity android:name=".activity.CollegeActivity" />
         <activity android:name=".activity.JsonBeanActivity" />
         <activity android:name=".activity.JsonXmlActivity" />
-        <activity android:name=".activity.RecordSoundActivity"/>
+        <activity android:name=".activity.RecordSoundActivity" />
+        <activity android:name=".activity.LivePlayerActivity"></activity>
     </application>
 
 </manifest>
