@@ -34,6 +34,7 @@ public class AdjustPanel extends LinearLayout {
         mProgressImg = findViewById(R.id.progress_img);
         mProgressTxtLayout = findViewById(R.id.progress_txt_layout);
         mProgressTxtLayout.setVisibility(GONE);
+
     }
 
     public void hidePanel() {
