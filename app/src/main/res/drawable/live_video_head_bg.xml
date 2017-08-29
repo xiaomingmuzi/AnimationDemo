@@ -10,7 +10,7 @@
         />
     <!--背景-->
     <solid
-        android:color="#55000000"
+        android:color="#55ffffff"
         />
     <size android:height="38dp"
         />

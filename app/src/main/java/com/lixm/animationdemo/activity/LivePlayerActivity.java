@@ -1,5 +1,6 @@
 package com.lixm.animationdemo.activity;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -14,21 +15,24 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
-import com.lixm.animationdemo.customview.CircleTransform;
+import com.lixm.animationdemo.utils.MediaPlayerGestureController;
 import com.lixm.animationdemo.utils.TimeUtil;
-import com.squareup.picasso.Picasso;
 import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXLivePlayConfig;
@@ -36,6 +40,7 @@ import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 import org.xutils.common.util.LogUtil;
+import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -49,7 +54,7 @@ import java.io.UnsupportedEncodingException;
  * @detail 视频回放界面
  */
 @ContentView(R.layout.activity_live_player)
-public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListener, View.OnClickListener {
+public class LivePlayerActivity extends Activity implements ITXLivePlayListener, View.OnClickListener {
 
     private Context mContext;
     @ViewInject(R.id.live_player_portrait)
@@ -74,6 +79,14 @@ public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListe
     private TextView mMaxTxt;
     @ViewInject(R.id.loadingImageView)
     private ImageView mLoadingView;
+    @ViewInject(R.id.head_layout)
+    private LinearLayout mHeadRootLayout;
+    @ViewInject(R.id.bottom_layout)
+    private RelativeLayout mPlayerBottom;
+    @ViewInject(R.id.pro)
+    private FrameLayout mPro;
+    @ViewInject(R.id.vol)
+    private FrameLayout mVol;
     private RelativeLayout.LayoutParams params;
     private RotateAnimation mLeftRotation;
     private RotateAnimation mRightRotation;
@@ -101,9 +114,14 @@ public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListe
     private Animation mBottomDownAni;//向下画出
     private Animation mBottomUpAni;//底部布局向上滑入
 
+    private MediaPlayerGestureController controller;
+    private MediaPlayerGestureController.GestureOperationHelper helper;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);//继承自AppCompatActivity的话，会失效
         x.view().inject(this);
         mContext = this;
         params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -119,7 +137,7 @@ public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListe
         mLivePlayer.setPlayerView(txvvPlayerView);
         mLivePlayer.setConfig(mPlayConfig);
 
-        mName.setText("王大拿");
+        mName.setText("杨豆腐");
 
         mHandler = new UIHandler(this);
         mPlayerPortraitLayout.setKeepScreenOn(true);
@@ -142,9 +160,26 @@ public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListe
         mlivePause.setOnClickListener(this);
         mBackeBtn.setOnClickListener(this);
         mVoiceBtn.setOnClickListener(this);
-        mHead.setOnClickListener(this);
         mMaxTxt.setOnClickListener(this);
-        mPlayerPortraitLayout.setOnClickListener(this);
+        showHeadIcon();
+
+        helper=new MediaPlayerGestureController.GestureOperationHelper() {
+            @Override
+            public void onSingleTap() {
+LogUtil.w("=====onSingleTap=====");
+            }
+        };
+        controller=new MediaPlayerGestureController(this,mPlayerPortraitLayout,helper);
+        controller.setMediaPlayer(mLivePlayer,mSeekBar);
+        controller.setAdjustPanelContainer(mVol);
+        controller.setProgressAdjustPanelContainer(mPro);
+
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        controller.handleTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 
     private void setBoolean(boolean enabled) {
@@ -156,20 +191,20 @@ public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListe
         switch (v.getId()) {
             case R.id.live_player_portrait:
                 if (!isClean) {
-//                    mHeadRootLayout.clearAnimation();//向上隐藏
-//                    mHeadRootLayout.setAnimation(mTopUpAni);
-//                    mHeadRootLayout.startAnimation(mTopUpAni);
-//                    mPlayerBottom.clearAnimation();//向下隐藏
-//                    mPlayerBottom.setAnimation(mBottomDownAni);
-//                    mPlayerBottom.startAnimation(mBottomDownAni);
+                    mHeadRootLayout.clearAnimation();//向上隐藏
+                    mHeadRootLayout.setAnimation(mTopUpAni);
+                    mHeadRootLayout.startAnimation(mTopUpAni);
+                    mPlayerBottom.clearAnimation();//向下隐藏
+                    mPlayerBottom.setAnimation(mBottomDownAni);
+                    mPlayerBottom.startAnimation(mBottomDownAni);
                     isClean = true;
                 } else {
-//                    mHeadRootLayout.clearAnimation();//向上隐藏
-//                    mHeadRootLayout.setAnimation(mTopDownAni);
-//                    mHeadRootLayout.startAnimation(mTopDownAni);
-//                    mPlayerBottom.clearAnimation();//向下隐藏
-//                    mPlayerBottom.setAnimation(mBottomUpAni);
-//                    mPlayerBottom.startAnimation(mBottomUpAni);
+                    mHeadRootLayout.clearAnimation();//向上隐藏
+                    mHeadRootLayout.setAnimation(mTopDownAni);
+                    mHeadRootLayout.startAnimation(mTopDownAni);
+                    mPlayerBottom.clearAnimation();//向下隐藏
+                    mPlayerBottom.setAnimation(mBottomUpAni);
+                    mPlayerBottom.startAnimation(mBottomUpAni);
                     isClean = false;
                 }
                 break;
@@ -223,14 +258,24 @@ public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListe
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-//        Url= UnicodeUtils.reconvert(videoUrl);
         targetUrl = targetUrl + "&fid=" + Url;
     }
 
-    private void showHeadIcon(final ImageView view, String avatar) {
+    private void showHeadIcon() {
 //        Picasso.with(mContext).load(avatar).into(view);
 //        Picasso.with(this).load(avatar).transform(new RoundedTransformation()).into(view);
-        Picasso.with(this).load(avatar).transform(new CircleTransform()).into(view);
+//        Picasso.with(this).load(new File(avatar)).transform(new CircleTransform()).into(view);
+        ImageOptions imageOptions = new ImageOptions.Builder()
+                .setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+                .setCircular(true)
+                .setIgnoreGif(true)
+                .setCrop(true)
+                .setLoadingDrawableId(R.mipmap.head)
+                .setFailureDrawableId(R.mipmap.head)
+                .build();
+        String url = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2147301245,30438330&fm=117&gp=0.jpg";
+//        String url="http://head.cnfolimg.com/ab/8f/1521655/head.1521655.48";
+        x.image().bind(mHead, url, imageOptions);
     }
 
     /**
@@ -313,7 +358,7 @@ public class LivePlayerActivity extends BaseActivity implements ITXLivePlayListe
             Toast.makeText(this, param.getString(TXLiveConstants.EVT_DESCRIPTION), Toast.LENGTH_SHORT).show();
         }
         if (event == TXLiveConstants.PLAY_ERR_NET_DISCONNECT) {//-2301
-            Toast.makeText(mContext,"视频回放未生成",Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "视频回放未生成", Toast.LENGTH_SHORT).show();
         } else if (TXLiveConstants.PLAY_EVT_PLAY_BEGIN == event) {//2004 开始播放
             txvvPlayerView.setBackgroundColor(getResources().getColor(R.color.black));
             stopLoadingAnimation();

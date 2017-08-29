@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:fitsSystemWindows="true">
 
     <com.tencent.rtmp.ui.TXCloudVideoView
@@ -13,6 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -21,9 +22,11 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/head_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="38dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/live_video_head_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -35,7 +38,7 @@
                     android:layout_width="34dp"
                     android:layout_height="34dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@mipmap/heart4" />
+                    android:src="@mipmap/head" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -58,11 +61,13 @@
                 </LinearLayout>
             </LinearLayout>
 
+
             <RelativeLayout
+                android:id="@+id/bottom_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_alignParentBottom="true"
+                android:orientation="vertical"
                 android:paddingBottom="10dp">
 
                 <LinearLayout
@@ -174,6 +179,18 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <FrameLayout
+                android:id="@+id/pro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"/>
+
+            <FrameLayout
+                android:id="@+id/vol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"/>
+
             <ImageView
                 android:id="@+id/loadingImageView"
                 android:layout_width="34dp"
@@ -182,6 +199,8 @@
                 android:layout_gravity="center"
                 android:src="@drawable/loading_animation"
                 android:visibility="gone" />
+
+
         </RelativeLayout>
     </LinearLayout>
 

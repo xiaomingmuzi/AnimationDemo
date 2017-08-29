@@ -1,11 +1,13 @@
 package com.lixm.animationdemo.application;
 
 import android.app.Application;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.lixm.animationdemo.db.DaoMaster;
 import com.lixm.animationdemo.db.DaoSession;
+
+import org.xutils.BuildConfig;
+import org.xutils.x;
 
 /**
  * @author Lixm
@@ -27,6 +29,10 @@ public class MyApplication extends Application {
         mContext=this;
         instances=this;
         setDatabase();
+        //对xUtils进行初始化
+        x.Ext.init(this);
+        //是否是开发、调试模式
+        x.Ext.setDebug(BuildConfig.DEBUG);//是否输出debug日志，开启debug会影响性能
     }
 
     public static MyApplication getInstances(){

@@ -2,7 +2,6 @@ package com.lixm.animationdemo.activity;
 
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -44,7 +43,7 @@ import static com.lixm.animationdemo.utils.Contants.connectTimeout;
 import static com.lixm.animationdemo.utils.Contants.serverTimeout;
 
 
-public class RecordSoundActivity extends Activity {
+public class RecordSoundActivity extends BaseActivity {
     private Context context;
     String TAG = "yyd";
     String filePath;

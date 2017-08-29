@@ -10,7 +10,9 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
     }
     buildTypes {
         release {
@@ -35,18 +37,26 @@ repositories {
     flatDir
             { dirs 'libs' }
 }
+allprojects {
+    repositories {
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile(name: 'LiteAVSDK_Professional', ext: 'aar')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile(name: 'LiteAVSDK_Professional', ext: 'aar')
     compile 'org.xutils:xutils:3.5.0'
 }

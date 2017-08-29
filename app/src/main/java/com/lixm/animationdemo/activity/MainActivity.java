@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity {
         mlist.add("json测试");
         mlist.add("音频录音");
         mlist.add("短视频播放");
+        mlist.add("手势Demo");
         addData();
         mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -102,6 +103,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 14:
                         startActivity(new Intent(MainActivity.this, LivePlayerActivity.class));
+                        break;
+                    case 15:
+                        startActivity(new Intent(MainActivity.this, GestureDemoActivity.class));
                         break;
                 }
             }
