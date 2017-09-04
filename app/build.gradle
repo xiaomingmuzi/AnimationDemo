@@ -4,9 +4,10 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.lixm.animationdemo"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -25,6 +26,28 @@ android {
             jniLibs.srcDirs = ['src/main/jniLibs']
         }
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INFTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INFTICE.txt'
+    }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "6g"
+    }
+    productFlavors {
+    }
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 greendao {
@@ -33,23 +56,14 @@ greendao {
     targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
 }
 
-repositories {
-    flatDir
-            { dirs 'libs' }
-}
-allprojects {
-    repositories {
-        jcenter()
-        flatDir {
-            dirs 'libs'
-        }
-    }
-}
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     //    compile 'com.squareup.okhttp3:okhttp:3.8.1'
-    compile(name: 'LiteAVSDK_Professional', ext: 'aar')
+    compile project(':XUtilsLibrary')
+    compile project(':LivePlayerLibrary')
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
@@ -58,5 +72,6 @@ dependencies {
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'org.xutils:xutils:3.5.0'
+    compile(name: 'LiteAVSDK_Professional', ext: 'aar')
+//    compile 'org.xutils:xutils:3.5.0'
 }

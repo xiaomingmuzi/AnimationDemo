@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.FlowLayout;
+import com.lixm.liveplayerlibrary.LivePlayerActivity;
 
 import java.util.ArrayList;
 
