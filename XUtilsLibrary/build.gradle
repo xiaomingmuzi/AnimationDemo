@@ -37,7 +37,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
     }
+    lintOptions {
+        abortOnError false
+    }
+
 }
+
+
 
 install {
     repositories.mavenInstaller {

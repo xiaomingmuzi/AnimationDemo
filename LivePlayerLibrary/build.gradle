@@ -43,15 +43,26 @@ android {
             }
         }
     }
+//    lintOptions {
+//        abortOnError false
+//        checkReleaseBuilds false
+//        // 防止在发布的时候出现因MissingTranslation导致Build Failed!
+//        disable 'ResourceType'
+//    }
     lintOptions {
         abortOnError false
-        checkReleaseBuilds false
-        // 防止在发布的时候出现因MissingTranslation导致Build Failed!
-        disable 'ResourceType'
     }
+
 }
+tasks.withType(Javadoc) {
+    options{
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        links "http://docs.oracle.com/javase/7/docs/api"
+    }
+    options.addStringOption('Xdoclint:none', '-quiet')
 
-
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
