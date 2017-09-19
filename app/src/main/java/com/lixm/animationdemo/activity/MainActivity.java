@@ -53,6 +53,7 @@ public class MainActivity extends BaseActivity {
         mlist.add("音频录音");
         mlist.add("短视频播放");
         mlist.add("手势Demo");
+        mlist.add("PlayerView测试");
         addData();
         mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -107,6 +108,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 15:
                         startActivity(new Intent(MainActivity.this, GestureDemoActivity.class));
+                        break;
+                    case 16:
+                        startActivity(new Intent(MainActivity.this, CollegePlayerActivity.class));
                         break;
                 }
             }

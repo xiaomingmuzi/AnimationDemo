@@ -56,4 +56,12 @@
         <item name="progress_reached_bar_height">3dp</item>
         <item name="progress_unreached_bar_height">3dp</item>
     </style>
+    <style name="video_progressbar_style">
+        <item name="android:maxWidth">43.0dip</item>
+        <item name="android:maxHeight">43.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/biz_video_progressbar
+        </item>
+        <item name="android:minWidth">43.0dip</item>
+        <item name="android:minHeight">43.0dip</item>
+    </style>
 </resources>

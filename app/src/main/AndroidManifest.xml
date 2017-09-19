@@ -41,8 +41,8 @@
         <activity android:name=".activity.JsonBeanActivity" />
         <activity android:name=".activity.JsonXmlActivity" />
         <activity android:name=".activity.RecordSoundActivity" />
-
-        <activity android:name=".activity.GestureDemoActivity"></activity>
+        <activity android:name=".activity.GestureDemoActivity" />
+        <activity android:name=".activity.CollegePlayerActivity"></activity>
     </application>
 
 </manifest>
