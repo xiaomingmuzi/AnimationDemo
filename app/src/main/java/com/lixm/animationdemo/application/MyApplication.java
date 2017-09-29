@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.lixm.animationdemo.db.DaoMaster;
 import com.lixm.animationdemo.db.DaoSession;
 
+import org.xutils.x;
+
 /**
  * @author Lixm
  * @date 2017/7/6
@@ -27,9 +29,9 @@ public class MyApplication extends Application {
         instances=this;
         setDatabase();
         //对xUtils进行初始化
-//        x.Ext.init(this);
+        x.Ext.init(this);
         //是否是开发、调试模式
-//        x.Ext.setDebug(BuildConfig.DEBUG);//是否输出debug日志，开启debug会影响性能
+        x.Ext.setDebug(true,true);//是否输出debug日志，开启debug会影响性能
     }
 
     public static MyApplication getInstances(){

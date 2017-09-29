@@ -43,7 +43,9 @@
         <activity android:name=".activity.RecordSoundActivity" />
         <activity android:name=".activity.GestureDemoActivity" />
         <activity android:name=".activity.CollegePlayerActivity" />
-        <activity android:name=".activity.RandomActivity"></activity>
+        <activity android:name=".activity.RandomActivity" />
+        <activity android:name=".activity.FixurePositionProgressBarActivity" />
+        <activity android:name=".activity.WebViewActivity"></activity>
     </application>
 
 </manifest>
