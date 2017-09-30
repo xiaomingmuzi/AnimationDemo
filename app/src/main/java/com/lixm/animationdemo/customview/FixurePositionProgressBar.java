@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -228,6 +230,11 @@ public class FixurePositionProgressBar extends View {
         }
     }
 
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Bundle bundle=new Bundle();
+        return bundle;
+    }
 
     public float dp2px(float dp) {
         final float scale = getResources().getDisplayMetrics().density;

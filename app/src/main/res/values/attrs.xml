@@ -20,8 +20,8 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="test">
-        <attr name="text" format="string"/>
-        <attr name="textname" format="string"/>
+    <declare-styleable name="FixureProgressBar">
+        <attr name="progress_fixure_pb" format="integer"/>
+        <attr name="progress_fixure_color_pb" format="color"/>
     </declare-styleable>
 </resources>

@@ -14,15 +14,15 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:background="@color/live_red_hint_txt"
         android:layout_marginTop="40dp"
+        android:background="@color/live_red_hint_txt"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         lixm:progress_current="40"
-        lixm:progress_max="100"
-        lixm:progress_fixure_position="30"
         lixm:progress_fixure_color="#00ffff"
+        lixm:progress_fixure_position="30"
+        lixm:progress_max="100"
         lixm:progress_reached_color="@color/bank_choose"
         lixm:progress_unreached_color="#ffff00" />
 
@@ -43,4 +43,24 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fixure_pb" />
+
+    <com.lixm.animationdemo.customview.FixureProgressBar xmlns:lixm="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fixure_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="41dp"
+        android:max="100"
+        android:padding="6dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        lixm:progress_fixure_pb="40"
+        lixm:progress_fixure_color_pb="#fd8957" />
+
 </android.support.constraint.ConstraintLayout>

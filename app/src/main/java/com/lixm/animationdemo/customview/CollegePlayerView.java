@@ -85,25 +85,25 @@ public class CollegePlayerView extends LinearLayout implements ITXLivePlayListen
 
     private void initView() {
         LayoutInflater.from(mContext).inflate(R.layout.college_player, this);
-        mTxPlayerView = findViewById(R.id.txcvv_player);
+        mTxPlayerView = (TXCloudVideoView) findViewById(R.id.txcvv_player);
         mTxPlayerView.setOnTouchListener(this);
-        mBottomControl = findViewById(R.id.ll_bottom_control);
-        mPlayerPause = findViewById(R.id.pause);
+        mBottomControl = (LinearLayout) findViewById(R.id.ll_bottom_control);
+        mPlayerPause = (ImageView) findViewById(R.id.pause);
         mPlayerPause.setOnClickListener(this);
-        mSeekBar = findViewById(R.id.media_controller_progress);
+        mSeekBar = (SeekBar) findViewById(R.id.media_controller_progress);
         mSeekBar.setOnSeekBarChangeListener(mSeekBarListener);
-        mPlayerTime = findViewById(R.id.time);
-        mMixScreen = findViewById(R.id.rl_expand_shrink);
+        mPlayerTime = (TextView) findViewById(R.id.time);
+        mMixScreen = (RelativeLayout) findViewById(R.id.rl_expand_shrink);
         mMixScreen.setOnClickListener(this);
-        mMixImg = findViewById(R.id.shrink);
+        mMixImg = (ImageView) findViewById(R.id.shrink);
 //        mReturnController = findViewById(R.id.return_share_controller);
 //        mTryWatchController = findViewById(R.id.TryWatchController);
-        mProgressLayout = findViewById(R.id.progressbar);
-        mTryFinishLayout = findViewById(R.id.ll_try_watch_finish);
-        mTryBuyBtn = findViewById(R.id.btn_finish_buy);
+        mProgressLayout = (FrameLayout) findViewById(R.id.progressbar);
+        mTryFinishLayout = (LinearLayout) findViewById(R.id.ll_try_watch_finish);
+        mTryBuyBtn = (Button) findViewById(R.id.btn_finish_buy);
         mTryBuyBtn.setOnClickListener(this);
-        mTryBuyTitle = findViewById(R.id.tv_video_title);
-        mClose = findViewById(R.id.video_close_view);
+        mTryBuyTitle = (TextView) findViewById(R.id.tv_video_title);
+        mClose = (FrameLayout) findViewById(R.id.video_close_view);
         mClose.setOnClickListener(this);
 
         mLivePlayer = new TXLivePlayer(mContext);

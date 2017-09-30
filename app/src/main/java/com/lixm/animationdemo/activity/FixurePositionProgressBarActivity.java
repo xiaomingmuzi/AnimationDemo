@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.FixurePositionProgressBar;
+import com.lixm.animationdemo.customview.FixureProgressBar;
 
 import org.xutils.common.util.LogUtil;
 
@@ -19,6 +20,7 @@ import static com.lixm.animationdemo.R.id.editText;
 
 public class FixurePositionProgressBarActivity extends AppCompatActivity {
     private FixurePositionProgressBar fixurePositionProgressBar;
+    private FixureProgressBar fixureProgressBar;
     private EditText mEt;
 
     @Override
@@ -28,6 +30,9 @@ public class FixurePositionProgressBarActivity extends AppCompatActivity {
         fixurePositionProgressBar = (FixurePositionProgressBar) findViewById(R.id.fixure_pb);
         fixurePositionProgressBar.setMax(100);
 
+        fixureProgressBar = (FixureProgressBar) findViewById(R.id.fixure_progress_bar);
+        fixureProgressBar.setMax(100);
+
         mEt = (EditText) findViewById(editText);
         mEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -36,11 +41,13 @@ public class FixurePositionProgressBarActivity extends AppCompatActivity {
                     //TODO回车键按下时要执行的操作
                     LogUtil.e("==onEditorAction==IME_ACTION_GO=");
                     String content = mEt.getText().toString().trim();
-                    if (TextUtils.isEmpty(content))
+                    if (TextUtils.isEmpty(content)) {
                         fixurePositionProgressBar.setFixurePosition(100);
-                    else {
+                        fixureProgressBar.setFixurePoi(100);
+                    } else {
                         int poi = Integer.parseInt(content);
                         fixurePositionProgressBar.setFixurePosition(poi);
+                        fixureProgressBar.setFixurePoi(poi);
                     }
                     new Thread() {
                         @Override
@@ -64,6 +71,8 @@ public class FixurePositionProgressBarActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 
     private Handler handler = new Handler() {
@@ -72,6 +81,7 @@ public class FixurePositionProgressBarActivity extends AppCompatActivity {
             switch (msg.what) {
                 case 0:
                     fixurePositionProgressBar.setProgress(msg.arg1);
+                    fixureProgressBar.setProgress(msg.arg1);
                     break;
             }
         }

@@ -106,7 +106,7 @@ public class GridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            iv = itemView.findViewById(R.id.imageButton);
+            iv = (ImageView) itemView.findViewById(R.id.imageButton);
         }
     }
 
@@ -116,7 +116,7 @@ public class GridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
         public MyViewHolder2(View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.textView2);
+            tv = (TextView) itemView.findViewById(R.id.textView2);
         }
     }
 }
