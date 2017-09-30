@@ -233,7 +233,8 @@ public class FixurePositionProgressBar extends View {
     @Override
     protected Parcelable onSaveInstanceState() {
         final Bundle bundle=new Bundle();
-        return bundle;
+
+        return super.onSaveInstanceState();
     }
 
     public float dp2px(float dp) {
