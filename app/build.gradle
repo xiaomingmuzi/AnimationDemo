@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'lixm'
+            keyPassword 'cnfollxm'
+            storeFile file('D:/demokey/animationdemo.jks')
+            storePassword 'cnfollxm'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     useLibrary 'org.apache.http.legacy'
@@ -14,11 +22,15 @@ android {
         ndk {
             abiFilters "armeabi", "armeabi-v7a"
         }
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
     sourceSets {
@@ -33,18 +45,25 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INFTICE.txt'
     }
-
     dexOptions {
         incremental true
         javaMaxHeapSize "6g"
     }
-    productFlavors {
-    }
+//    productFlavors {
+//        xiaomi {}
+//        qihu360 {}
+//        wandoujia {}
+//        baidu {}
+//        yingyongbao {}
+//    }
+//    productFlavors.all {
+//        favor -> favor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//    }
+
 
     lintOptions {
         abortOnError false
     }
-
 }
 
 allprojects {
@@ -67,15 +86,15 @@ dependencies {
     //    compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile project(':XUtilsLibrary')
     compile project(':LivePlayerLibrary')
-
     compile(name: 'LiteAVSDK_Professional', ext: 'aar')
-//    compile 'org.xutils:xutils:3.5.0'
+    //    compile 'org.xutils:xutils:3.5.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support:design:26.0.0-alpha1'
-    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.jakewharton:butterknife:7.0.1'
 }

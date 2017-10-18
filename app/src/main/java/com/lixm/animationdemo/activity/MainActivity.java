@@ -1,6 +1,8 @@
 package com.lixm.animationdemo.activity;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
@@ -16,6 +19,7 @@ import com.lixm.animationdemo.customview.FlowLayout;
 import com.lixm.liveplayerlibrary.LivePlayerActivity;
 
 import java.util.ArrayList;
+
 
 /**
  * http://blog.csdn.net/guolin_blog/article/details/43536355  上篇
@@ -32,7 +36,15 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        initBtn();
+        TextView textView = (TextView) findViewById(R.id.channel);
+        ApplicationInfo appInfo=null;
+        try{
+            appInfo=getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            String channel=appInfo.metaData.getString("UMENG_CHANNEL");
+            textView.setText(channel);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         mFlowLayout = (FlowLayout) findViewById(R.id.flowLayout);
         mFlowLayout.setPadding(12, 12, 12, 12);
@@ -57,6 +69,7 @@ public class MainActivity extends BaseActivity {
         mlist.add("Random测试");
         mlist.add("FixureProgressBar");
         mlist.add("浏览器接口测试");
+        mlist.add("Butterknife插件测试");
         addData();
         mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -123,6 +136,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 19:
                         startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+                        break;
+                    case 20:
+                        startActivity(new Intent(MainActivity.this, ButterknifeActivity.class));
                         break;
                 }
             }

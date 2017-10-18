@@ -59,7 +59,8 @@ public final class ColumnConverterFactory {
                     columnType_columnConverter_map.put(columnType.getName(), columnConverter);
                 }
                 return columnConverter == null;
-            } catch (Throwable e) {
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         return false;

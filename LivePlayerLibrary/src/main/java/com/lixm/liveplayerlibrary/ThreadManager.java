@@ -20,7 +20,7 @@ public class ThreadManager {
     private ThreadManager() {
     }
 
-    public static final ThreadManager getInstance(){
+    public static  ThreadManager getInstance(){
         return ThreadManagerHolder.INSTANCE;
     }
 

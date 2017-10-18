@@ -123,11 +123,12 @@ public class LivePlayerActivity extends Activity implements ITXLivePlayListener,
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(mBroadcastReceiver, intentFilter);
 
-        videoUrl = "http://1252336041.vod2.myqcloud.com/dea5e0favodgzp1252336041/75cf1a8c9031868222953439193/playlist.f3.m3u8";
+//        videoUrl = "http://1252336041.vod2.myqcloud.com/dea5e0favodgzp1252336041/75cf1a8c9031868222953439193/playlist.f3.m3u8";
 //        videoUrl = "http://1252336041.vod2.myqcloud.com/dea5e0favodgzp1252336041/b33fc8799031868222957863768/playlist.m3u8";
 //        videoUrl = "http://1252336041.vod2.myqcloud.com/dea5e0favodgzp1252336041/6ca2a7e39031868222892770040/playlist.m3u8";
 //        videoUrl = "http://1252336041.vod2.myqcloud.com/dea5e0favodgzp1252336041/8745cd9c9031868222943341042/playlist.m3u8";
 //        videoUrl = "http://1252336041.vod2.myqcloud.com/dea5e0favodgzp1252336041/d99b3b8a9031868222968031980/playlist.m3u8";
+        videoUrl = "https://cv2.jikexueyuan.com/android/course_custom_view/01/video/c63a_02_h264_sd_960_540.mp4?e=1507602899&amp;token=kvniiGWb17-XSxTMHiIVkclXvpopl7nuzl4ANRHA:d72e8D0kdgg-fEmLSZF4-VH5z_U=";
         playVideo(videoUrl);
 
 

@@ -54,6 +54,7 @@ public class CircleProgressBar extends View {
      */
     private boolean canDisplayDot;
 
+
     public CircleProgressBar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;

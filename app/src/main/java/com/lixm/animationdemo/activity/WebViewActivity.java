@@ -45,7 +45,8 @@ public class WebViewActivity extends AppCompatActivity {
         webView.setWebViewClient(new MyWebViewClient());
         webView.setWebChromeClient(new MyChromeClient());
 
-        webView.loadUrl("http://m.3g.cnfol.com/video/frontpage/");
+//        webView.loadUrl("http://m.3g.cnfol.com/video/frontpage/");
+        webView.loadUrl("http://m.3g.cnfol.com/video/frontpage/index.php?a=1");
 
     }
 
