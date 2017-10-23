@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.FlowLayout;
+import com.lixm.animationdemo.utils.MD5;
 import com.lixm.liveplayerlibrary.LivePlayerActivity;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity {
             appInfo=getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
             String channel=appInfo.metaData.getString("UMENG_CHANNEL");
             textView.setText(channel);
+            textView.setText(MD5.getMD5LowerCase(MD5.getMD5String("Hello")));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -70,6 +72,7 @@ public class MainActivity extends BaseActivity {
         mlist.add("FixureProgressBar");
         mlist.add("浏览器接口测试");
         mlist.add("Butterknife插件测试");
+        mlist.add("获取证书信息");
         addData();
         mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -139,6 +142,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 20:
                         startActivity(new Intent(MainActivity.this, ButterknifeActivity.class));
+                        break;
+                    case 21:
+                        startActivity(new Intent(MainActivity.this, CertificateFactoryActivity.class));
                         break;
                 }
             }

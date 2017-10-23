@@ -51,7 +51,8 @@
         <activity android:name=".activity.RandomActivity" />
         <activity android:name=".activity.FixurePositionProgressBarActivity" />
         <activity android:name=".activity.WebViewActivity" />
-        <activity android:name=".activity.ButterknifeActivity"></activity>
+        <activity android:name=".activity.ButterknifeActivity" />
+        <activity android:name=".activity.CertificateFactoryActivity"></activity>
     </application>
 
 </manifest>
