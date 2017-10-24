@@ -73,6 +73,7 @@ public class MainActivity extends BaseActivity {
         mlist.add("浏览器接口测试");
         mlist.add("Butterknife插件测试");
         mlist.add("获取证书信息");
+        mlist.add("音频录音动画");
         addData();
         mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -145,6 +146,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 21:
                         startActivity(new Intent(MainActivity.this, CertificateFactoryActivity.class));
+                        break;
+                    case 22://录音动画
+                        startActivity(new Intent(MainActivity.this, AudioRecoderActivity.class));
                         break;
                 }
             }

@@ -52,7 +52,8 @@
         <activity android:name=".activity.FixurePositionProgressBarActivity" />
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.ButterknifeActivity" />
-        <activity android:name=".activity.CertificateFactoryActivity"></activity>
+        <activity android:name=".activity.CertificateFactoryActivity" />
+        <activity android:name=".activity.AudioRecoderActivity"></activity>
     </application>
 
 </manifest>
