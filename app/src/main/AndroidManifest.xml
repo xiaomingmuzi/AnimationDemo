@@ -54,6 +54,11 @@
         <activity android:name=".activity.ButterknifeActivity" />
         <activity android:name=".activity.CertificateFactoryActivity" />
         <activity android:name=".activity.AudioRecoderActivity"></activity>
-    </application>
+        <service android:name=".service.MyVpnService"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter >
+                <action android:name="android.net.VpnService"/>
+            </intent-filter>
+        </service></application>
 
 </manifest>

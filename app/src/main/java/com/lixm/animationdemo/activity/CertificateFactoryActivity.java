@@ -14,6 +14,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 public class CertificateFactoryActivity extends AppCompatActivity {
 
@@ -57,5 +60,17 @@ public class CertificateFactoryActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
+
+    }
+
+    private void openConnection(){
+        OkHttpClient okHttpClient=new OkHttpClient.Builder()
+                .readTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(120,TimeUnit.SECONDS)
+                .connectTimeout(120,TimeUnit.SECONDS)
+                .build();
     }
 }

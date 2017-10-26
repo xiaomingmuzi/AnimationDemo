@@ -2,7 +2,6 @@ package com.lixm.animationdemo.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,7 +18,7 @@ import com.lixm.animationdemo.utils.TimeUtil;
 
 import org.xutils.common.util.LogUtil;
 
-public class AudioRecoderActivity extends AppCompatActivity {
+public class AudioRecoderActivity extends BaseActivity {
     private Button mButton;
     private ImageView mImageView;
     private TextView mTextView;
