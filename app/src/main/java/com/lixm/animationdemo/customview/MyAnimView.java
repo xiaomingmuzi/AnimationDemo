@@ -7,11 +7,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.BounceInterpolator;
 
 import com.lixm.animationdemo.animator.ColorEvaluator;
 import com.lixm.animationdemo.animator.DeToAcInterpolator;
@@ -58,8 +57,8 @@ public class MyAnimView extends View {
     private void startAnimation(){
 //        Point startPoint=new Point(RADIUS,RADIUS);
 //        Point endPoint=new Point(getWidth()-RADIUS,getHeight()-RADIUS);
-        Point startPoint=new Point(getWidth()/2,RADIUS);
-        Point endPoint=new Point(getWidth()/2,getHeight()-RADIUS);
+        PointF startPoint=new PointF(getWidth()/2,RADIUS);
+        PointF endPoint=new PointF(getWidth()/2,getHeight()-RADIUS);
         ValueAnimator animator=ValueAnimator.ofObject(new PointEvaluator(),startPoint,endPoint);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override

@@ -21,7 +21,7 @@ public class PointEvaluator implements TypeEvaluator {
         PointF endPoint= (PointF) endValue;
         float x=startPoint.x+fraction*(endPoint.x-startPoint.x) ;
         float y=startPoint.y+fraction*(endPoint.y-startPoint.y);
-        PointF point=new PointF(x,y);
+        Point point=new Point(x,y);
         Log.e(TAG,"=================PointEvaluator==========");
 
 

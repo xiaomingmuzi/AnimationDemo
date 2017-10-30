@@ -19,8 +19,6 @@ import com.lixm.animationdemo.customview.FlowLayout;
 import com.lixm.animationdemo.utils.MD5;
 import com.lixm.liveplayerlibrary.LivePlayerActivity;
 
-import java.util.ArrayList;
-
 
 /**
  * http://blog.csdn.net/guolin_blog/article/details/43536355  上篇
@@ -30,7 +28,18 @@ import java.util.ArrayList;
 public class MainActivity extends BaseActivity {
     private String TAG = "MainActivity";
     private FlowLayout mFlowLayout;
-    private ArrayList<String> mlist;
+    private String[] names = new String[]{"简单的animation实现", "PointAnimation实现", "bezier", "myheart",
+            "圆形进度条", "属性动画代替帧动画", "Flash动画", "支付密码框", "GreenDao数据库测试",
+            "Dialog展示", "recyclerView测试", "json2xml测试", "json测试", "音频录音", "短视频播放",
+            "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
+            "Butterknife插件测试", "获取证书信息", "音频录音动画","JNIDemo"
+    };
+    private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
+            CircleProgressBarActivity.class, ObjectAnimationFrameActivity.class, FlashActivity.class, PayPassportActivity.class, GreenDaoActivity.class,
+            DialogActivity.class, CollegeActivity.class, JsonXmlActivity.class, JsonBeanActivity.class, RecordSoundActivity.class, LivePlayerActivity.class,
+            GestureDemoActivity.class, CollegePlayerActivity.class, RandomActivity.class, FixurePositionProgressBarActivity.class, WebViewActivity.class,
+            ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class,JNIDemoActivity.class
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,129 +47,38 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         TextView textView = (TextView) findViewById(R.id.channel);
-        ApplicationInfo appInfo=null;
-        try{
-            appInfo=getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            String channel=appInfo.metaData.getString("UMENG_CHANNEL");
+        ApplicationInfo appInfo = null;
+        try {
+            appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            String channel = appInfo.metaData.getString("UMENG_CHANNEL");
             textView.setText(channel);
             textView.setText(MD5.getMD5LowerCase(MD5.getMD5String("Hello")));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         mFlowLayout = (FlowLayout) findViewById(R.id.flowLayout);
         mFlowLayout.setPadding(12, 12, 12, 12);
-        mlist = new ArrayList<>();
-        mlist.add("简单的animation实现");
-        mlist.add("PointAnimation实现");
-        mlist.add("bezier");
-        mlist.add("myheart");
-        mlist.add("圆形进度条");
-        mlist.add("属性动画代替帧动画");
-        mlist.add("Flash动画");
-        mlist.add("支付密码框");
-        mlist.add("GreenDao数据库测试");
-        mlist.add("Dialog展示");
-        mlist.add("recyclerView测试");
-        mlist.add("json2xml测试");
-        mlist.add("json测试");
-        mlist.add("音频录音");
-        mlist.add("短视频播放");
-        mlist.add("手势Demo");
-        mlist.add("PlayerView测试");
-        mlist.add("Random测试");
-        mlist.add("FixureProgressBar");
-        mlist.add("浏览器接口测试");
-        mlist.add("Butterknife插件测试");
-        mlist.add("获取证书信息");
-        mlist.add("音频录音动画");
         addData();
         mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-//                FinancialToast.show(mContext, mDatas.get(checkedId).getName());
-//                chooseBankBean = mDatas.get(checkedId);
-                switch (checkedId) {
-                    case 0:
-                        startActivity(new Intent(MainActivity.this, ObjectAnimation1Activity.class));
-                        break;
-                    case 1:
-                        startActivity(new Intent(MainActivity.this, ObjectAnimation2Activity.class));
-                        break;
-                    case 2:
-                        startActivity(new Intent(MainActivity.this, BezierActivity.class));
-                        break;
-                    case 3:
-                        startActivity(new Intent(MainActivity.this, MyHeartViewActivity.class));
-                        break;
-                    case 4:
-                        startActivity(new Intent(MainActivity.this, CircleProgressBarActivity.class));
-                        break;
-                    case 5:
-                        startActivity(new Intent(MainActivity.this, ObjectAnimationFrameActivity.class));
-                        break;
-                    case 6:
-                        startActivity(new Intent(MainActivity.this, FlashActivity.class));
-                        break;
-                    case 7:
-                        startActivity(new Intent(MainActivity.this, PayPassportActivity.class));
-                        break;
-                    case 8:
-                        startActivity(new Intent(MainActivity.this, GreenDaoActivity.class));
-                        break;
-                    case 9:
-                        startActivity(new Intent(MainActivity.this, DialogActivity.class));
-                        break;
-                    case 10:
-                        startActivity(new Intent(MainActivity.this, CollegeActivity.class));
-                        break;
-                    case 11:
-                        startActivity(new Intent(MainActivity.this, JsonXmlActivity.class));
-                        break;
-                    case 12:
-                        startActivity(new Intent(MainActivity.this, JsonBeanActivity.class));
-                        break;
-                    case 13:
-                        startActivity(new Intent(MainActivity.this, RecordSoundActivity.class));
-                        break;
-                    case 14:
-                        startActivity(new Intent(MainActivity.this, LivePlayerActivity.class));
-                        break;
-                    case 15:
-                        startActivity(new Intent(MainActivity.this, GestureDemoActivity.class));
-                        break;
-                    case 16:
-                        startActivity(new Intent(MainActivity.this, CollegePlayerActivity.class));
-                        break;
-                    case 17:
-                        startActivity(new Intent(MainActivity.this, RandomActivity.class));
-                        break;
-                    case 18:
-                        startActivity(new Intent(MainActivity.this, FixurePositionProgressBarActivity.class));
-                        break;
-                    case 19:
-                        startActivity(new Intent(MainActivity.this, WebViewActivity.class));
-                        break;
-                    case 20:
-                        startActivity(new Intent(MainActivity.this, ButterknifeActivity.class));
-                        break;
-                    case 21:
-                        startActivity(new Intent(MainActivity.this, CertificateFactoryActivity.class));
-                        break;
-                    case 22://录音动画
-                        startActivity(new Intent(MainActivity.this, AudioRecoderActivity.class));
-                        break;
-                }
+                startActivity(checkedId);
             }
         });
+    }
+
+    private void startActivity(int poi) {
+        Intent intent = new Intent(this, classes[poi]);
+        startActivity(intent);
     }
 
     private void addData() {
         /**
          * 放数据
          */
-        if (mlist.size() > 0) {
-            for (int i = 0; i < mlist.size(); i++) {
+        if (names.length > 0) {
+            for (int i = 0; i <names.length; i++) {
                 //创建textView，并设置属性
                 final RadioButton textView = new RadioButton(this);
                 textView.setPadding(10, 5, 10, 5);
@@ -173,7 +91,7 @@ public class MainActivity extends BaseActivity {
                 textView.setTextColor(getResources().getColor(R.color.choose_bank_txt));
                 textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bank_item_choose));
                 //给textView设置内容
-                textView.setText(mlist.get(i));
+                textView.setText(names[i]);
                 if (i == 0) {
                     textView.setChecked(true);
                 }
@@ -183,89 +101,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-//    private void initBtn() {
-//        findViewById(R.id.simple_animation_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,ObjectAnimation1Activity.class));//0
-//            }
-//        });
-//
-//        findViewById(R.id.point_animation_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,ObjectAnimation2Activity.class));//1
-//            }
-//        });
-//
-//        findViewById(R.id.bezier_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,BezierActivity.class));//2
-//            }
-//        });
-//        findViewById(R.id.my_heart_view).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, MyHeartViewActivity.class));//3
-//            }
-//        });
-//
-//        findViewById(R.id.circle_progress_bar_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,CircleProgressBarActivity.class));//4
-//            }
-//        });
-//        findViewById(R.id.animation_frame_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,ObjectAnimationFrameActivity.class));//5
-//            }
-//        });
-//        findViewById(R.id.animation_flash_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,FlashActivity.class));//6
-//            }
-//        });
-//        findViewById(R.id.pay_test).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, PayPassportActivity.class));//7
-//            }
-//        });
-//        findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,GreenDaoActivity.class));//8
-//            }
-//        });
-//        findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,DialogActivity.class));//9
-//            }
-//        });
-//        findViewById(R.id.button8).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this,CollegeActivity.class));//10
-//            }
-//        });
-//        findViewById(R.id.button9).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this,JsonXmlActivity.class));
-//            }
-//        });
-//        findViewById(R.id.button10).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this,JsonBeanActivity.class));
-//            }
-//        });
-//    }
 
     @Override
     public void onBackPressed() {
