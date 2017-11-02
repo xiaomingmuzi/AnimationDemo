@@ -17,6 +17,8 @@ import java.util.Enumeration;
 
 public class CertificateFactoryActivity extends AppCompatActivity {
 
+    private String  a=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,7 @@ public class CertificateFactoryActivity extends AppCompatActivity {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-
+        LogUtil.w("a：" + a.length());
 
         try {
             KeyStore ks = KeyStore.getInstance("AndroidCAStore");

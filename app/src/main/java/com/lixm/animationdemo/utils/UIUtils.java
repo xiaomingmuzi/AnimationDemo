@@ -4,9 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
-import com.lixm.animationdemo.application.MyApplication;
+import com.lixm.animationdemo.application.MyApplication1;
 
-import static java.security.AccessController.getContext;
 
 /**
  * @author Lixm
@@ -22,7 +21,7 @@ public class UIUtils {
      * @return
      */
     public static Context getContext() {
-        return MyApplication.getApplication();
+        return MyApplication1.getInstances();
     }
     /**
      * dip转换px

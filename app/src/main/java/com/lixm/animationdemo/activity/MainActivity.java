@@ -107,12 +107,12 @@ public class MainActivity extends BaseActivity {
         exit();
     }
 
-    private boolean isExit;
+    private boolean isExit=false;
 
     private void exit() {
         if (!isExit) {
             isExit = true;
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "再点一次退出APP", Toast.LENGTH_SHORT).show();
         } else {
             finish();
             FinishActivityManager.getManager().finishAllActivity();

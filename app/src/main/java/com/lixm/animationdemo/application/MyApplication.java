@@ -1,65 +1,34 @@
 package com.lixm.animationdemo.application;
 
-import android.app.Application;
-import android.database.sqlite.SQLiteDatabase;
-
-import com.lixm.animationdemo.db.DaoMaster;
-import com.lixm.animationdemo.db.DaoSession;
-
-import org.xutils.x;
+import com.tencent.tinker.loader.app.TinkerApplication;
+import com.tencent.tinker.loader.shareutil.ShareConstants;
 
 /**
  * @author Lixm
  * @date 2017/7/6
  * @detail
+ *   自定义Application.
+ *
+ * 注意：这个类集成TinkerApplication类，这里面不做任何操作，所有Application的代码都会放到ApplicationLike继承类当中<br/>
+ * <pre>
+ * 参数解析：
+ * 参数1：int tinkerFlags 表示Tinker支持的类型 dex only、library only or all suuport，default: TINKER_ENABLE_ALL
+ * 参数2：String delegateClassName Application代理类 这里填写你自定义的ApplicationLike
+ * 参数3：String loaderClassName  Tinker的加载器，使用默认即可
+ * 参数4：boolean tinkerLoadVerifyFlag  加载dex或者lib是否验证md5，默认为false
+ * </pre>
  */
 
-public class MyApplication extends Application {
-    private static MyApplication mContext = null;
-    private DaoMaster.DevOpenHelper mHelper;
-    private SQLiteDatabase db;
-    private DaoMaster mDaoMaster;
-    private DaoSession mDaoSession;
-    public static MyApplication instances;
+public class MyApplication extends TinkerApplication {
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        mContext=this;
-        instances=this;
-        setDatabase();
-        //对xUtils进行初始化
-        x.Ext.init(this);
-        //是否是开发、调试模式
-        x.Ext.setDebug(true,true);//是否输出debug日志，开启debug会影响性能
+    public MyApplication() {
+        super(ShareConstants.TINKER_ENABLE_ALL, "com.lixm.animationdemo.application.MyApplicationLike",
+                "com.tencent.tinker.loader.TinkerLoader", false);
     }
 
-    public static MyApplication getInstances(){
-        return instances;
-    }
-
-    // 对外暴露上下文
-    public static MyApplication getApplication() {
-        return mContext;
-    }
-
-    private void setDatabase(){
-        // 通过 DaoMaster 的内部类 DevOpenHelper，你可以得到一个便利的 SQLiteOpenHelper 对象。
-        // 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为 greenDAO 已经帮你做了。
-        // 注意：默认的 DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
-        // 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
-        mHelper=new DaoMaster.DevOpenHelper(this,"l_db",null);
-        db=mHelper.getWritableDatabase();
-        // 注意：该数据库连接属于 DaoMaster，所以多个 Session 指的是相同的数据库连接。
-        mDaoMaster=new DaoMaster(db);
-        mDaoSession=mDaoMaster.newSession();
-    }
-
-    public DaoSession getDaoSession(){
-        return mDaoSession;
-    }
-
-    public SQLiteDatabase getDb(){
-        return db;
-    }
 }
+
+
+
+
+

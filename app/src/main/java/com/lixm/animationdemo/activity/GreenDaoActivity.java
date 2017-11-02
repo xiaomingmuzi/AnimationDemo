@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
-import com.lixm.animationdemo.application.MyApplication;
+import com.lixm.animationdemo.application.MyApplication1;
 import com.lixm.animationdemo.bean.User;
 import com.lixm.animationdemo.db.MigrationHelper;
 import com.lixm.animationdemo.db.UserDao;
@@ -31,7 +31,7 @@ public class GreenDaoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_green_dao);
-        userDao = MyApplication.getInstances().getDaoSession().getUserDao();
+        userDao = MyApplication1.getInstances().getDaoSession().getUserDao();
         idEt = (EditText) findViewById(R.id.user_id);
         nameEt = (EditText) findViewById(R.id.name);
         sexEt = (EditText) findViewById(R.id.sex);
@@ -104,7 +104,7 @@ public class GreenDaoActivity extends BaseActivity {
         mUpdateDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MigrationHelper.migrate(MyApplication.getInstances().getDb());
+                MigrationHelper.migrate(MyApplication1.getInstances().getDb());
             }
         });
 
