@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_margin="@dimen/layout_margin"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin"
+        android:layout_marginTop="@dimen/layout_margin"
+        android:textSize="@dimen/sub_text"
+        android:textColor="@color/white"
+        android:text="建议"
+        />
+    <TextView
+        android:id="@+id/comfort_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/car_wash_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/sport_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:textColor="@color/white"
+        />
+
+</LinearLayout>
