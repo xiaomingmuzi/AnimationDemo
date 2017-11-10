@@ -1,27 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_margin="@dimen/layout_margin"
-    android:layout_height="match_parent">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/layout_margin"
-    android:layout_marginTop="@dimen/layout_margin"
-    android:textColor="#ffffff"
-    android:textSize="@dimen/sub_text"
-    android:text="天气"
-    />
+    android:background="@color/layout_back"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginTop="@dimen/layout_margin"
+        android:text="空气质量"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/sub_text" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin"
-        >
+        android:layout_margin="@dimen/layout_margin">
+
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/aqi_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="AQI指数"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -29,21 +59,22 @@
                 android:layout_centerInParent="true">
 
                 <TextView
+                    android:id="@+id/pm25_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/api_text"
                     android:layout_gravity="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/main_text"
-                    />
+                    android:textSize="@dimen/main_text"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="天气"
-                    android:textColor="@color/white"
-                    />
+                    android:text="PM2.5指数"
+                    android:textColor="@color/white"/>
+
             </LinearLayout>
+
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

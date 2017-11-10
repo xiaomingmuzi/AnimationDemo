@@ -1,8 +1,8 @@
 package com.lixm.animationdemo.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 
 /**
@@ -11,7 +11,7 @@ import android.view.Window;
  * @detail
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 
 
 

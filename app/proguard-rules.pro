@@ -78,3 +78,16 @@ public static java.lang.String TABLENAME;
 
 # 避免影响升级功能，需要keep住support包的类
 -keep class android.support.**{*;}
+
+#LitePal数据库代码混淆
+-dontwarn org.litepal.*
+-keep class org.litepal.* { *; }
+-keep enum org.litepal.**
+-keep interface org.litepal.* { *; }
+-keep public class * extends org.litepal.**
+-keepattributes *Annotation*
+-keepclassmembers enum * {
+public static **[] values();
+public static ** valueOf(java.lang.String);
+}
+-keepclassmembers class * extends org.litepal.crud.DataSupport{*;}

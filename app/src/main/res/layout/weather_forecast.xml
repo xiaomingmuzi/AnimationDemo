@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/layout_margin"
-    android:layout_marginTop="@dimen/layout_margin"
-    android:text="precast"
-    android:textColor="@color/white"
-    android:textSize="@dimen/sub_text"
-    />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginTop="@dimen/layout_margin"
+        android:text="precast"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sub_text" />
+
     <LinearLayout
+        android:id="@+id/forecast_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/forecast_layout"
-        ></LinearLayout>
+        android:orientation="vertical"></LinearLayout>
 </LinearLayout>

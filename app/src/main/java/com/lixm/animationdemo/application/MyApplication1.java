@@ -1,10 +1,8 @@
 package com.lixm.animationdemo.application;
 
-import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.multidex.MultiDex;
-import android.widget.Toast;
 
 import com.lixm.animationdemo.db.DaoMaster;
 import com.lixm.animationdemo.db.DaoSession;
@@ -12,10 +10,9 @@ import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 
+import org.litepal.LitePalApplication;
 import org.xutils.common.util.LogUtil;
 import org.xutils.x;
-
-import java.util.Locale;
 
 /**
  * @author Lixm
@@ -23,7 +20,7 @@ import java.util.Locale;
  * @detail
  */
 
-public class MyApplication1 extends Application {
+public class MyApplication1 extends LitePalApplication {
     private static MyApplication1 mContext = null;
     private DaoMaster.DevOpenHelper mHelper;
     private SQLiteDatabase db;
@@ -54,37 +51,37 @@ public class MyApplication1 extends Application {
             @Override
             public void onPatchReceived(String patchFile) {
                 LogUtil.w("补丁下载地址："+patchFile);
-                Toast.makeText(getApplication(), "补丁下载地址：" + patchFile, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), "补丁下载地址：" + patchFile, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDownloadReceived(long savedLength, long totalLength) {
-                Toast.makeText(getApplication(), String.format(Locale.getDefault(), "%s %d%%",
-                        Beta.strNotificationDownloading, (int) (totalLength == 0 ? 0 : savedLength * 100 / totalLength)),
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), String.format(Locale.getDefault(), "%s %d%%",
+//                        Beta.strNotificationDownloading, (int) (totalLength == 0 ? 0 : savedLength * 100 / totalLength)),
+//                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDownloadSuccess(String msg) {
-                Toast.makeText(getApplication(), "补丁下载成功："+msg, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), "补丁下载成功："+msg, Toast.LENGTH_SHORT).show();
                 LogUtil.w("补丁下载成功："+msg);
             }
 
             @Override
             public void onDownloadFailure(String msg) {
-                Toast.makeText(getApplication(), "补丁下载失败："+msg, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), "补丁下载失败："+msg, Toast.LENGTH_SHORT).show();
                 LogUtil.w("补丁下载失败："+msg);
             }
 
             @Override
             public void onApplySuccess(String msg) {
-                Toast.makeText(getApplication(), "补丁应用成功："+msg, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), "补丁应用成功："+msg, Toast.LENGTH_SHORT).show();
                 LogUtil.w("补丁应用成功："+msg);
             }
 
             @Override
             public void onApplyFailure(String msg) {
-                Toast.makeText(getApplication(), "补丁应用失败："+msg, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), "补丁应用失败："+msg, Toast.LENGTH_SHORT).show();
                 LogUtil.w("补丁应用失败："+msg);
             }
 

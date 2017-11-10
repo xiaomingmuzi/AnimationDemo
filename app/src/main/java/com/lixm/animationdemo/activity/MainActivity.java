@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity {
             "圆形进度条", "属性动画代替帧动画", "Flash动画", "支付密码框", "GreenDao数据库测试",
             "Dialog展示", "recyclerView测试", "json2xml测试", "json测试", "音频录音", "短视频播放",
             "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
-            "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo","Kotlin界面"
+            "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo","Kotlin天气预报界面"
     };
     private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
             CircleProgressBarActivity.class, ObjectAnimationFrameActivity.class, FlashActivity.class, PayPassportActivity.class, GreenDaoActivity.class,
