@@ -70,13 +70,13 @@ class WeatherActivity : BaseActivity() {
                 requestWeather(it)
             }
         }
-        nav_button.setOnClickListener{
+        nav_button.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
-        val bingPic=prefs.getString("bing_pic",null)
-        if (bingPic!=null){
+        val bingPic = prefs.getString("bing_pic", null)
+        if (bingPic != null) {
             Glide.with(this).load(bingPic).into(bing_pic_img)
-        }else{
+        } else {
             loadBingPic()
         }
     }
@@ -88,40 +88,40 @@ class WeatherActivity : BaseActivity() {
                 val responseText = response!!.body().string()
                 val weather = Utility.handleWeaherResponse(responseText)
                 runOnUiThread(Runnable {
-                    if (weather != null && "ok" == weather.status){
-                        val editor=PreferenceManager.getDefaultSharedPreferences(this@WeatherActivity).edit()
-                        editor.putString("weather",responseText)
+                    if (weather != null && "ok" == weather.status) {
+                        val editor = PreferenceManager.getDefaultSharedPreferences(this@WeatherActivity).edit()
+                        editor.putString("weather", responseText)
                         editor.apply()
-                        mWeatherId=weather.basic!!.weatherId
+                        mWeatherId = weather.basic!!.weatherId
                         showWeatherInfo(weather)
-                    }else{
-                        Toast.makeText(this@WeatherActivity,"request faild",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@WeatherActivity, "request faild", Toast.LENGTH_SHORT).show()
                     }
-                    swipeRefresh.isRefreshing=false
+                    swipeRefresh.isRefreshing = false
                 })
             }
 
             override fun onFailure(p0: Call?, p1: IOException?) {
                 p1!!.printStackTrace()
                 runOnUiThread(Runnable {
-                    Toast.makeText(this@WeatherActivity,"request faild",Toast.LENGTH_SHORT).show()
-                    swipeRefresh.isRefreshing=false
+                    Toast.makeText(this@WeatherActivity, "request faild", Toast.LENGTH_SHORT).show()
+                    swipeRefresh.isRefreshing = false
                 })
             }
         })
         loadBingPic()
     }
 
-    private fun loadBingPic(){
-        HttpUtil.sendOkHttpRequest(HttpUtil.Bing,object:Callback{
+    private fun loadBingPic() {
+        HttpUtil.sendOkHttpRequest(HttpUtil.Bing, object : Callback {
             override fun onFailure(p0: Call?, p1: IOException?) {
                 p1!!.printStackTrace()
             }
 
             override fun onResponse(p0: Call?, p1: Response?) {
-                val bingPic=p1!!.body().string()
-                val editor=PreferenceManager.getDefaultSharedPreferences(this@WeatherActivity).edit()
-                editor.putString("bing_pic",bingPic)
+                val bingPic = p1!!.body().string()
+                val editor = PreferenceManager.getDefaultSharedPreferences(this@WeatherActivity).edit()
+                editor.putString("bing_pic", bingPic)
                 editor.apply()
                 runOnUiThread(Runnable {
                     Glide.with(this@WeatherActivity).load(bingPic).into(bing_pic_img)

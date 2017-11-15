@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/layout_margin"
         android:layout_marginTop="@dimen/layout_margin"
-        android:text="precast"
+        android:text="预报"
         android:textColor="@color/white"
         android:textSize="@dimen/sub_text" />
 

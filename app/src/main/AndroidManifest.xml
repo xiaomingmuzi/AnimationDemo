@@ -84,7 +84,8 @@
 
         <activity android:name=".activity.JNIDemoActivity" />
         <activity android:name=".activity.WeatherMainActivity" />
-        <activity android:name=".activity.WeatherActivity"></activity>
+        <activity android:name=".activity.WeatherActivity" />
+        <activity android:name=".activity.SubwayActivity"></activity>
     </application>
 
 </manifest>
