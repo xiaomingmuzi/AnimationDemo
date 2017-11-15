@@ -54,6 +54,7 @@ class ChooseAreaFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         LogUtil.w(TAG, "onCreateView")
+        //断言一个表达式非空
         return inflater!!.inflate(R.layout.weather_choose_area, container, false)
     }
 
@@ -81,6 +82,7 @@ class ChooseAreaFragment : Fragment() {
                     weatherId?.let {
                         when (activity) {
                             is WeatherMainActivity -> {
+                                // :: 创建一个成员引用或者一个类引用
                                 val intent = Intent(activity, WeatherActivity::class.java)
                                 intent.putExtra("weather_id", weatherId)
                                 startActivity(intent)

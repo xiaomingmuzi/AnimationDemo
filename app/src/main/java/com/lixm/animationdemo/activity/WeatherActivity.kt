@@ -54,7 +54,7 @@ class WeatherActivity : BaseActivity() {
             //via cache
             val weather = Utility.handleWeaherResponse(weatherString)
             weather?.let {
-                mWeatherId = it.basic!!.weatherId
+                mWeatherId = it.basic!!.weatherId  //断言一个表达式非空
                 showWeatherInfo(it)
             }
         } else {
@@ -119,6 +119,7 @@ class WeatherActivity : BaseActivity() {
             }
 
             override fun onResponse(p0: Call?, p1: Response?) {
+                var bingPicq = p1!!.body().toString()
                 val bingPic = p1!!.body().string()
                 val editor = PreferenceManager.getDefaultSharedPreferences(this@WeatherActivity).edit()
                 editor.putString("bing_pic", bingPic)
@@ -160,7 +161,7 @@ class WeatherActivity : BaseActivity() {
         }
 
         weather.aqi?.let {
-            aqi_text.text = it.city!!.aqi
+            aqi_text.text = it.city!!.aqi   //!!断言一个表达式非空
             pm25_text.text = it.city!!.pm25
         }
 

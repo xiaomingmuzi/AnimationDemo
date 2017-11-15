@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/layout_back"
+    android:fitsSystemWindows="true"
     tools:context="com.lixm.animationdemo.activity.WeatherActivity">
 
     <ImageView
         android:id="@+id/bing_pic_img"
         android:layout_width="match_parent"
+        android:scaleType="centerCrop"
         android:layout_height="match_parent" />
 
     <android.support.v4.widget.DrawerLayout
