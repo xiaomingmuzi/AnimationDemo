@@ -6,7 +6,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lixm.animationdemo.R;
-
-import static android.R.attr.maxLevel;
 
 public class ObjectAnimation1Activity extends BaseActivity {
 
@@ -121,17 +118,17 @@ public class ObjectAnimation1Activity extends BaseActivity {
         });
 
         final ImageView imgGift = (ImageView) findViewById(R.id.imgGif);
-        imgGift.setImageDrawable(mContext.getResources().getDrawable(R.drawable.live_item_clapping));
+        imgGift.setImageDrawable(mContext.getResources().getDrawable(R.drawable.level_gold_img_res));
         Button clapping = (Button) findViewById(R.id.clapping);
         clapping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ObjectAnimator objectAnimator = ObjectAnimator.ofInt(imgGift, "imageLevel", 0, 6);
-                objectAnimator.setDuration(6 * 150);
+                ObjectAnimator objectAnimator = ObjectAnimator.ofInt(imgGift, "imageLevel", 1, 15);
+                objectAnimator.setDuration(15 * 200);
                 objectAnimator.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        imgGift.setImageLevel(6);
+                        imgGift.setImageLevel(15);
                         Log.e("TAG", "========onAnimationEnd============");
                     }
 

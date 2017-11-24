@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lixm.animationdemo.R;
+import com.lixm.animationdemo.bean.MeiZi;
+import com.lixm.animationdemo.bean.StudentBean;
 
 import org.xutils.common.util.LogUtil;
 
@@ -17,7 +19,7 @@ import java.util.Enumeration;
 
 public class CertificateFactoryActivity extends AppCompatActivity {
 
-    private String  a=null;
+    private String  a="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,10 @@ public class CertificateFactoryActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        MeiZi meiZi=new MeiZi("aaa",1);
+        StudentBean studentBean=new StudentBean(1,"Lixm",true);
+        studentBean.setMeiZi(meiZi);
+        LogUtil.w("StudentBean："+studentBean.toString());
     }
 
 
