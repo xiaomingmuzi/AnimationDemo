@@ -28,4 +28,7 @@ public class Contants {
 
     public static final int serverTimeout = 60;
 
+    public static final int MSG_FROM_CLIENT=0x01;
+    public static final int MSG_FROM_SERVICE=0x02;
+
 }

@@ -85,7 +85,25 @@
         <activity android:name=".activity.JNIDemoActivity" />
         <activity android:name=".activity.WeatherMainActivity" />
         <activity android:name=".activity.WeatherActivity" />
-        <activity android:name=".activity.SubwayActivity"></activity>
+        <activity android:name=".activity.SubwayActivity" />
+        <activity android:name=".activity.MessengerActivity" />
+
+        <service
+            android:name=".service.MessengerService"
+            android:process=":remote" />
+        <service
+            android:name=".service.BookManagerService"
+            android:process=":remote" />
+
+        <activity
+            android:name=".activity.BookManagerctivity"
+            android:label="@string/title_activity_book_managerctivity"></activity>
+        <activity
+            android:name=".activity.FullScreenDisplayStockInformationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
     </application>
 
 </manifest>

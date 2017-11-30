@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AnimationDemo</string>
+    <string name="title_activity_book_managerctivity">BookManagerctivity</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">学院</string>
+    <string name="title_notifications">我</string>
 </resources>
