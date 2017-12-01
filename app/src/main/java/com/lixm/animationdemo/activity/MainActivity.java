@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity {
             "Dialog展示", "recyclerView测试", "json2xml测试", "json测试", "音频录音", "短视频播放",
             "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
             "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo","Kotlin天气预报界面",
-            "MessengerDemo","IBookManager","全屏详情"
+            "MessengerDemo","IBookManager","全屏详情","全屏滑动"
 
     };
     private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, SubwayActivity.class,ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
             DialogActivity.class, CollegeActivity.class, JsonXmlActivity.class, JsonBeanActivity.class, RecordSoundActivity.class, LivePlayerActivity.class,
             GestureDemoActivity.class, CollegePlayerActivity.class, RandomActivity.class, FixurePositionProgressBarActivity.class, WebViewActivity.class,
             ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class, JNIDemoActivity.class, WeatherMainActivity.class,
-            MessengerActivity.class,BookManagerctivity.class,FullScreenDisplayStockInformationActivity.class
+            MessengerActivity.class,BookManagerctivity.class,FullScreenDisplayStockInformationActivity.class,FullScrollLayoutActivity.class
     };
 
     @Override

@@ -97,13 +97,15 @@
 
         <activity
             android:name=".activity.BookManagerctivity"
-            android:label="@string/title_activity_book_managerctivity"></activity>
+            android:label="@string/title_activity_book_managerctivity" />
         <activity
             android:name=".activity.FullScreenDisplayStockInformationActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity android:name=".activity.FullScrollActivity"></activity>
+        <activity android:name=".activity.FullScrollLayoutActivity"></activity>
     </application>
 
 </manifest>
