@@ -104,8 +104,9 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <activity android:name=".activity.FullScrollActivity"></activity>
-        <activity android:name=".activity.FullScrollLayoutActivity"></activity>
+        <activity android:name=".activity.FullScrollActivity" />
+        <activity android:name=".activity.FullScrollLayoutActivity" />
+        <activity android:name=".activity.AnkoActivity"></activity>
     </application>
 
 </manifest>

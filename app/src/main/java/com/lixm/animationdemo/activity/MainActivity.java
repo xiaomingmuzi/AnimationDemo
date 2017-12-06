@@ -28,7 +28,7 @@ import com.lixm.liveplayerlibrary.LivePlayerActivity;
 public class MainActivity extends BaseActivity {
     private String TAG = "MainActivity";
     private FlowLayout mFlowLayout;
-    private String[] names = new String[]{"简单的animation实现","地铁票计算", "PointAnimation实现", "bezier", "myheart",
+    private String[] names = new String[]{"简单的animation实现","anko测试","地铁票计算", "PointAnimation实现", "bezier", "myheart",
             "圆形进度条", "属性动画代替帧动画", "Flash动画", "支付密码框", "GreenDao数据库测试",
             "Dialog展示", "recyclerView测试", "json2xml测试", "json测试", "音频录音", "短视频播放",
             "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity {
             "MessengerDemo","IBookManager","全屏详情","全屏滑动"
 
     };
-    private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, SubwayActivity.class,ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
+    private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, AnkoActivity.class,SubwayActivity.class,ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
             CircleProgressBarActivity.class, ObjectAnimationFrameActivity.class, FlashActivity.class, PayPassportActivity.class, GreenDaoActivity.class,
             DialogActivity.class, CollegeActivity.class, JsonXmlActivity.class, JsonBeanActivity.class, RecordSoundActivity.class, LivePlayerActivity.class,
             GestureDemoActivity.class, CollegePlayerActivity.class, RandomActivity.class, FixurePositionProgressBarActivity.class, WebViewActivity.class,
