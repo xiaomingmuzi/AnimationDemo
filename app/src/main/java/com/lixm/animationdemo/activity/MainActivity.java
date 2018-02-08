@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.IdRes;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -18,6 +19,11 @@ import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.FlowLayout;
 import com.lixm.animationdemo.utils.MD5;
 import com.lixm.liveplayerlibrary.LivePlayerActivity;
+import com.lixm.liveplayerlibrary.LogUtil;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 
 /**
@@ -28,20 +34,20 @@ import com.lixm.liveplayerlibrary.LivePlayerActivity;
 public class MainActivity extends BaseActivity {
     private String TAG = "MainActivity";
     private FlowLayout mFlowLayout;
-    private String[] names = new String[]{"简单的animation实现","anko测试","地铁票计算", "PointAnimation实现", "bezier", "myheart",
+    private String[] names = new String[]{"简单的animation实现", "anko测试", "地铁票计算", "PointAnimation实现", "bezier", "myheart",
             "圆形进度条", "属性动画代替帧动画", "Flash动画", "支付密码框", "GreenDao数据库测试",
             "Dialog展示", "recyclerView测试", "json2xml测试", "json测试", "音频录音", "短视频播放",
             "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
-            "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo","Kotlin天气预报界面",
-            "MessengerDemo","IBookManager","全屏详情","全屏滑动"
+            "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo", "Kotlin天气预报界面",
+            "MessengerDemo", "IBookManager", "全屏详情", "全屏滑动", "发送消息", "音频播放"
 
     };
-    private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, AnkoActivity.class,SubwayActivity.class,ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
+    private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, AnkoActivity.class, SubwayActivity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
             CircleProgressBarActivity.class, ObjectAnimationFrameActivity.class, FlashActivity.class, PayPassportActivity.class, GreenDaoActivity.class,
             DialogActivity.class, CollegeActivity.class, JsonXmlActivity.class, JsonBeanActivity.class, RecordSoundActivity.class, LivePlayerActivity.class,
             GestureDemoActivity.class, CollegePlayerActivity.class, RandomActivity.class, FixurePositionProgressBarActivity.class, WebViewActivity.class,
             ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class, JNIDemoActivity.class, WeatherMainActivity.class,
-            MessengerActivity.class,BookManagerctivity.class,FullScreenDisplayStockInformationActivity.class,FullScrollLayoutActivity.class
+            MessengerActivity.class, BookManagerctivity.class, FullScreenDisplayStockInformationActivity.class, FullScrollLayoutActivity.class, MessageActivity.class, MediaPlayerActivity.class
     };
 
     @Override
@@ -69,15 +75,15 @@ public class MainActivity extends BaseActivity {
                 startActivity(checkedId);
             }
         });
-
+        saveInSdCard("vote_1517451025.amr");
     }
 
     private void startActivity(int poi) {
 //        if (poi == classes.length) {
 //
 //        } else {
-            Intent intent = new Intent(this, classes[poi]);
-            startActivity(intent);
+        Intent intent = new Intent(this, classes[poi]);
+        startActivity(intent);
 //        }
     }
 
@@ -124,6 +130,56 @@ public class MainActivity extends BaseActivity {
         } else {
             finish();
             FinishActivityManager.getManager().finishAllActivity();
+        }
+    }
+
+    /*
+     * 保存到sb卡内
+     * @param fileName 必须是完整文件名（文件名+格式）
+     * @param bitmap
+     */
+    private void saveInSdCard(String filename) {
+        InputStream fileStream = null;
+        try {
+            //获取指定Assets文件流
+            fileStream = getResources().getAssets().open(filename);
+
+            //检查是否存在sd卡
+            String status = Environment.getExternalStorageState();
+            if (!status.equals(Environment.MEDIA_MOUNTED)) {
+                LogUtil.e("=================检查是否存在sd卡=================");
+                Toast.makeText(this, "请插入sd卡", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+        /*
+         * 在Android中1.5、1.6的sdcard目录为/sdcard，而Android2.0以上都是/mnt/sdcard，因此如果我们在保存时直接写具体目录会不妥，因此我们可以使用:
+         * Environment.getExternalStorageDirectory();获取sdcard目录；
+         */
+            String directory = Environment.getExternalStorageDirectory().toString() + "/lindiSecret";
+            File rootFile = new File(directory);
+            //如不存在文件夹，则新建文件夹
+            if (!rootFile.exists())
+                rootFile.mkdirs();
+            //在文件夹下加入获取的文件
+            File file = new File(directory, filename);
+            if (!file.exists())
+                file.createNewFile();
+
+            //文件输出流
+            FileOutputStream out = new FileOutputStream(file);
+            //先定义一个字节缓冲区，减少I/O次数，提高读写效率
+            byte[] buffer = new byte[10240];
+            int size = 0;
+            while ((size = fileStream.read(buffer)) != -1) {
+                out.write(buffer, 0, size);
+            }
+            LogUtil.e("=================文件输出流=================");
+            out.flush();
+            out.close();
+            fileStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
