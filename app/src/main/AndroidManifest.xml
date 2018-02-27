@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lixm.animationdemo">
+    package="com.lixm.animationdemo"
+    android:sharedUserId="com.lixm.apkthemeplugin">
 
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -26,7 +27,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
 
         <!-- Bugly升级SDK配置开始 -->
         <activity
@@ -114,7 +114,9 @@
         <activity android:name=".activity.FullScrollLayoutActivity" />
         <activity android:name=".activity.AnkoActivity" />
         <activity android:name=".activity.MessageActivity" />
-        <activity android:name=".activity.MediaPlayerActivity"></activity>
+        <activity android:name=".activity.MediaPlayerActivity" />
+        <activity android:name=".activity.ApkThemeActivity" />
+        <activity android:name=".activity.ApkThemeJavaActivity"></activity>
     </application>
 
 </manifest>

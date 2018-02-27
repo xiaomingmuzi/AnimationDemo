@@ -1,5 +1,6 @@
 package com.lixm.animationdemo.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -24,6 +25,9 @@ import com.lixm.liveplayerlibrary.LogUtil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+
+import dalvik.system.PathClassLoader;
 
 
 /**
@@ -39,7 +43,8 @@ public class MainActivity extends BaseActivity {
             "Dialog展示", "recyclerView测试", "json2xml测试", "json测试", "音频录音", "短视频播放",
             "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
             "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo", "Kotlin天气预报界面",
-            "MessengerDemo", "IBookManager", "全屏详情", "全屏滑动", "发送消息", "音频播放"
+            "MessengerDemo", "IBookManager", "全屏详情", "全屏滑动", "发送消息", "音频播放",
+            "主题更换"
 
     };
     private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, AnkoActivity.class, SubwayActivity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
@@ -47,7 +52,8 @@ public class MainActivity extends BaseActivity {
             DialogActivity.class, CollegeActivity.class, JsonXmlActivity.class, JsonBeanActivity.class, RecordSoundActivity.class, LivePlayerActivity.class,
             GestureDemoActivity.class, CollegePlayerActivity.class, RandomActivity.class, FixurePositionProgressBarActivity.class, WebViewActivity.class,
             ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class, JNIDemoActivity.class, WeatherMainActivity.class,
-            MessengerActivity.class, BookManagerctivity.class, FullScreenDisplayStockInformationActivity.class, FullScrollLayoutActivity.class, MessageActivity.class, MediaPlayerActivity.class
+            MessengerActivity.class, BookManagerctivity.class, FullScreenDisplayStockInformationActivity.class, FullScrollLayoutActivity.class, MessageActivity.class, MediaPlayerActivity.class,
+            ApkThemeJavaActivity.class
     };
 
     @Override
@@ -76,6 +82,12 @@ public class MainActivity extends BaseActivity {
             }
         });
         saveInSdCard("vote_1517451025.amr");
+
+        try {
+            dynamicLoadApk("com.lixm.animationdemo",this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void startActivity(int poi) {
@@ -181,6 +193,25 @@ public class MainActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 加载已安装的apk
+     * @param packageName 应用的包名
+     * @param pluginContext 插件app的上下文
+     * @return 对应资源的id
+     */
+    private int dynamicLoadApk(String packageName, Context pluginContext) throws Exception {
+        //第一个参数为包含dex的apk或者jar的路径，第二个参数为父加载器
+        PathClassLoader pathClassLoader = new PathClassLoader(pluginContext.getPackageResourcePath(),ClassLoader.getSystemClassLoader());
+//        Class<?> clazz = pathClassLoader.loadClass(packageName + ".R$mipmap");//通过使用自身的加载器反射出mipmap类进而使用该类的功能
+        //参数：1、类的全名，2、是否初始化类，3、加载时使用的类加载器
+        Class<?> clazz = Class.forName(packageName + ".R$mipmap", true, pathClassLoader);
+        //使用上述两种方式都可以，这里我们得到R类中的内部类mipmap，通过它得到对应的图片id，进而给我们使用
+        Field field = clazz.getDeclaredField("ic_launcher");
+        int resourceId = field.getInt(R.mipmap.class);
+        LogUtil.i("resourceId："+resourceId);
+        return resourceId;
     }
 
 }
