@@ -92,9 +92,11 @@ public class ApkThemeJavaActivity extends BaseActivity {
         PathClassLoader pathClassLoader = new PathClassLoader(pluginContext.getPackageResourcePath(), ClassLoader.getSystemClassLoader());
 //        Class<?> clazz = pathClassLoader.loadClass(packageName + ".R$mipmap");//通过使用自身的加载器反射出mipmap类进而使用该类的功能
         //参数：1、类的全名，2、是否初始化类，3、加载时使用的类加载器
-        Class<?> clazz = Class.forName(packageName + ".R$mipmap", true, pathClassLoader);
+        String name=packageName + ".R$mipmap";
+        LogUtil.w("name："+name);
+        Class<?> clazz = Class.forName(name, true, pathClassLoader);
         //使用上述两种方式都可以，这里我们得到R类中的内部类mipmap，通过它得到对应的图片id，进而给我们使用
-        Field field = clazz.getDeclaredField("a");
+        Field field = clazz.getDeclaredField("add_stock_fund_default");
         int resourceId = field.getInt(R.mipmap.class);
         return resourceId;
     }

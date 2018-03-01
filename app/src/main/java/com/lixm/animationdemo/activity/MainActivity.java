@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity {
             "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
             "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo", "Kotlin天气预报界面",
             "MessengerDemo", "IBookManager", "全屏详情", "全屏滑动", "发送消息", "音频播放",
-            "主题更换"
+            "主题更换1","主题更换2"
 
     };
     private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, AnkoActivity.class, SubwayActivity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
             GestureDemoActivity.class, CollegePlayerActivity.class, RandomActivity.class, FixurePositionProgressBarActivity.class, WebViewActivity.class,
             ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class, JNIDemoActivity.class, WeatherMainActivity.class,
             MessengerActivity.class, BookManagerctivity.class, FullScreenDisplayStockInformationActivity.class, FullScrollLayoutActivity.class, MessageActivity.class, MediaPlayerActivity.class,
-            ApkThemeJavaActivity.class
+            ApkThemeActivity.class,ApkThemeJavaActivity.class
     };
 
     @Override
@@ -176,7 +176,7 @@ public class MainActivity extends BaseActivity {
             //在文件夹下加入获取的文件
             File file = new File(directory, filename);
             if (!file.exists())
-                file.createNewFile();
+                file.mkdirs();
 
             //文件输出流
             FileOutputStream out = new FileOutputStream(file);

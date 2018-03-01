@@ -28,7 +28,7 @@ class ApkThemeActivity : AppCompatActivity() {
                     datas.add(map)
                     LogUtil.i("label=>" + plugin.label)
                 }
-                val id = dynamicLoadApk("com.lixm.apkthemeplugin", this)
+                val id = dynamicLoadApk("com.lixm.animationdemo", this)
                 LogUtil.w("图片资源ID：" + id)
                 if (id != 0)
                     img.setBackgroundResource(id)
@@ -63,10 +63,11 @@ class ApkThemeActivity : AppCompatActivity() {
         //参数：1、类的全名，2、是否初始化类，3、加载时使用的类加载器
         try {
 //            val clazzs=pathClassLoader.loadClass("com.lixm.animationdemo" + ".R\$mipmap")
-            val name="com.lixm.animationdemo.R&mipmap"
+            val name=packageName+".R\$mipmap"
+            print("name ：$name ")
             val clazz = Class.forName(name, true, pathClassLoader)
             //使用上述两种方式都可以，这里我们得到R类中的内部类mipmap，通过它得到对应的图片id，进而给我们使用
-            val field: Field = clazz.getDeclaredField("a")
+            val field: Field = clazz.getDeclaredField("add_stock_fund_default")
             return field.getInt(R.mipmap::class.java)
         } catch (ex: Exception) {
             ex.printStackTrace()
