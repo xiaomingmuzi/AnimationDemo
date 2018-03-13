@@ -116,7 +116,8 @@
         <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.MediaPlayerActivity" />
         <activity android:name=".activity.ApkThemeActivity" />
-        <activity android:name=".activity.ApkThemeJavaActivity"></activity>
+        <activity android:name=".activity.ApkThemeJavaActivity" />
+        <activity android:name=".activity.DialogFragmentActivity"></activity>
     </application>
 
 </manifest>

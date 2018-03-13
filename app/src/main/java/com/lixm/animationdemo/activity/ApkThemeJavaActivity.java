@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +16,13 @@ import com.lixm.liveplayerlibrary.LogUtil;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import dalvik.system.PathClassLoader;
 
@@ -99,5 +107,44 @@ public class ApkThemeJavaActivity extends BaseActivity {
         Field field = clazz.getDeclaredField("add_stock_fund_default");
         int resourceId = field.getInt(R.mipmap.class);
         return resourceId;
+    }
+
+    private void threadPool(){
+        int NUMBER_OF_CORES=Runtime.getRuntime().availableProcessors();
+        int KEEP_ALIVE_TIME=1;
+        TimeUnit KEEP_ALIVE_TIME_UNIT= TimeUnit.SECONDS;
+        BlockingQueue<Runnable> taskQueue=new LinkedBlockingQueue<>();
+
+        ExecutorService executorService=new ThreadPoolExecutor(NUMBER_OF_CORES,NUMBER_OF_CORES*2,
+                KEEP_ALIVE_TIME,KEEP_ALIVE_TIME_UNIT,taskQueue,new BackgroundThreadFactory(),new DefaultRejectedExecutionHandler());
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                int i=0;
+                while(i<1000){
+                    i++;
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    class BackgroundThreadFactory implements ThreadFactory {
+
+        @Override
+        public Thread newThread(@NonNull Runnable r) {
+            return null;
+        }
+    }
+    class DefaultRejectedExecutionHandler implements RejectedExecutionHandler {
+
+        @Override
+        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+
+        }
     }
 }

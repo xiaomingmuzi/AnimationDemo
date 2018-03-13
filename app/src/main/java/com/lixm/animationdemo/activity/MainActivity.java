@@ -1,6 +1,5 @@
 package com.lixm.animationdemo.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -9,6 +8,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.RadioButton;
@@ -25,9 +26,6 @@ import com.lixm.liveplayerlibrary.LogUtil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.lang.reflect.Field;
-
-import dalvik.system.PathClassLoader;
 
 
 /**
@@ -44,7 +42,7 @@ public class MainActivity extends BaseActivity {
             "手势Demo", "PlayerView测试", "Random测试", "FixureProgressBar", "浏览器接口测试",
             "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo", "Kotlin天气预报界面",
             "MessengerDemo", "IBookManager", "全屏详情", "全屏滑动", "发送消息", "音频播放",
-            "主题更换1","主题更换2"
+            "主题更换1", "主题更换2","DialogFragment测试"
 
     };
     private Class<?>[] classes = new Class[]{ObjectAnimation1Activity.class, AnkoActivity.class, SubwayActivity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
@@ -53,7 +51,7 @@ public class MainActivity extends BaseActivity {
             GestureDemoActivity.class, CollegePlayerActivity.class, RandomActivity.class, FixurePositionProgressBarActivity.class, WebViewActivity.class,
             ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class, JNIDemoActivity.class, WeatherMainActivity.class,
             MessengerActivity.class, BookManagerctivity.class, FullScreenDisplayStockInformationActivity.class, FullScrollLayoutActivity.class, MessageActivity.class, MediaPlayerActivity.class,
-            ApkThemeActivity.class,ApkThemeJavaActivity.class
+            ApkThemeActivity.class, ApkThemeJavaActivity.class,DialogFragmentActivity.class
     };
 
     @Override
@@ -81,14 +79,33 @@ public class MainActivity extends BaseActivity {
                 startActivity(checkedId);
             }
         });
-        saveInSdCard("vote_1517451025.amr");
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{android
+                .Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
-        try {
-            dynamicLoadApk("com.lixm.animationdemo",this);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+//        try {
+//            dynamicLoadApk("com.lixm.animationdemo",this);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 1:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //创建文件夹
+                    if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                        saveInSdCard("vote_1517451025.amr");
+                    }
+                    break;
+                }
         }
     }
+
 
     private void startActivity(int poi) {
 //        if (poi == classes.length) {
@@ -168,50 +185,26 @@ public class MainActivity extends BaseActivity {
          * 在Android中1.5、1.6的sdcard目录为/sdcard，而Android2.0以上都是/mnt/sdcard，因此如果我们在保存时直接写具体目录会不妥，因此我们可以使用:
          * Environment.getExternalStorageDirectory();获取sdcard目录；
          */
-            String directory = Environment.getExternalStorageDirectory().toString() + "/lindiSecret";
+            String directory = Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.lixm.animationdemo/lindiSecret";
             File rootFile = new File(directory);
             //如不存在文件夹，则新建文件夹
             if (!rootFile.exists())
-                rootFile.mkdirs();
+                rootFile.mkdir();
             //在文件夹下加入获取的文件
             File file = new File(directory, filename);
-            if (!file.exists())
-                file.mkdirs();
-
             //文件输出流
             FileOutputStream out = new FileOutputStream(file);
-            //先定义一个字节缓冲区，减少I/O次数，提高读写效率
-            byte[] buffer = new byte[10240];
-            int size = 0;
-            while ((size = fileStream.read(buffer)) != -1) {
-                out.write(buffer, 0, size);
+            byte[] data=new byte[1024];
+            int length=fileStream.read(data);
+            while(length>0){
+                out.write(data,0,length);
+                length=fileStream.read(data);
             }
-            LogUtil.e("=================文件输出流=================");
             out.flush();
             out.close();
-            fileStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * 加载已安装的apk
-     * @param packageName 应用的包名
-     * @param pluginContext 插件app的上下文
-     * @return 对应资源的id
-     */
-    private int dynamicLoadApk(String packageName, Context pluginContext) throws Exception {
-        //第一个参数为包含dex的apk或者jar的路径，第二个参数为父加载器
-        PathClassLoader pathClassLoader = new PathClassLoader(pluginContext.getPackageResourcePath(),ClassLoader.getSystemClassLoader());
-//        Class<?> clazz = pathClassLoader.loadClass(packageName + ".R$mipmap");//通过使用自身的加载器反射出mipmap类进而使用该类的功能
-        //参数：1、类的全名，2、是否初始化类，3、加载时使用的类加载器
-        Class<?> clazz = Class.forName(packageName + ".R$mipmap", true, pathClassLoader);
-        //使用上述两种方式都可以，这里我们得到R类中的内部类mipmap，通过它得到对应的图片id，进而给我们使用
-        Field field = clazz.getDeclaredField("ic_launcher");
-        int resourceId = field.getInt(R.mipmap.class);
-        LogUtil.i("resourceId："+resourceId);
-        return resourceId;
     }
 
 }

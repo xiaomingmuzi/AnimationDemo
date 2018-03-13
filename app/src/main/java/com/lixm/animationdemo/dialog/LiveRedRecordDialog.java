@@ -4,12 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -22,7 +18,6 @@ import android.widget.RadioGroup;
 
 import com.lixm.animationdemo.R;
 import com.lixm.animationdemo.customview.LiveRedRecordVpItem;
-import com.lixm.animationdemo.fragment.DialogFragment;
 
 import java.util.ArrayList;
 
@@ -44,11 +39,6 @@ public class LiveRedRecordDialog extends Dialog implements View.OnClickListener,
     private LiveRedRecordVpItem vpSendItem;
     private LiveRedRecordVpItem vpReceiveItem;
     private ArrayList<LiveRedRecordVpItem> views;
-
-    private DialogFragment dialogFragment1;
-    private DialogFragment dialogFragment2;
-    private ArrayList<DialogFragment> fragments;
-    private MyFragmentAdapter fragmentAdapter;
 
 
     public LiveRedRecordDialog(Context context) {
@@ -100,19 +90,6 @@ public class LiveRedRecordDialog extends Dialog implements View.OnClickListener,
         myVpAdapter = new MyCouponVpAdapter();
         if (mRedVp != null)
             mRedVp.setAdapter(myVpAdapter);
-
-//        dialogFragment1=new DialogFragment();
-//        Bundle bundle=new Bundle();
-//        bundle.putInt("TYPE",0);
-//        dialogFragment1.setArguments(bundle);
-//        dialogFragment2=new DialogFragment();
-//        bundle.putInt("TYPE",1);
-//        dialogFragment2.setArguments(bundle);
-//        fragments=new ArrayList<>();
-//        fragments.add(0,dialogFragment1);
-//        fragments.add(1,dialogFragment2);
-//        fragmentAdapter=new MyFragmentAdapter(Contants.manager,fragments);
-//        mRedVp.setAdapter(fragmentAdapter);
     }
 
     @Override
@@ -175,26 +152,6 @@ public class LiveRedRecordDialog extends Dialog implements View.OnClickListener,
         public void destroyItem(ViewGroup container, int position, Object object) {
             // 删除
             container.removeView(views.get(position));
-        }
-    }
-
-    class MyFragmentAdapter extends FragmentStatePagerAdapter{
-       private ArrayList<DialogFragment> fragments;
-
-        public MyFragmentAdapter(FragmentManager fm,ArrayList<DialogFragment> fragments) {
-            super(fm);
-            this.fragments=fragments;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            Log.e("======","===getItem："+position);
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.size();
         }
     }
 }

@@ -12,6 +12,7 @@ import dalvik.system.PathClassLoader
 import kotlinx.android.synthetic.main.activity_apk_theme.*
 import org.xutils.common.util.LogUtil
 import java.lang.reflect.Field
+import java.util.concurrent.*
 
 class ApkThemeActivity : AppCompatActivity() {
 
@@ -37,6 +38,7 @@ class ApkThemeActivity : AppCompatActivity() {
                         "", Toast.LENGTH_SHORT).show()
             }
         }
+        threadPool()
     }
 
     private fun findAllPlugin(): List<PluginBean> {
@@ -72,6 +74,44 @@ class ApkThemeActivity : AppCompatActivity() {
         } catch (ex: Exception) {
             ex.printStackTrace()
             return 0
+        }
+    }
+
+    private fun threadPool() {
+        val NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors()
+        val KEEP_ALIVE_TIME = 1
+        val KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS
+        val taskQueue = LinkedBlockingQueue<Runnable>()
+
+        val executorService = ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES * 2,
+                KEEP_ALIVE_TIME.toLong(), KEEP_ALIVE_TIME_UNIT, taskQueue, BackgroundThreadFactory(), DefaultRejectedExecutionHandler())
+        executorService.execute {
+
+        }
+    }
+
+    internal inner class BackgroundThreadFactory : ThreadFactory {
+
+        override fun newThread(r: Runnable): Thread? {
+            var i = 0
+            while (i < 1000) {
+                i++
+                print("i=====$i")
+                try {
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+
+            }
+            return null
+        }
+    }
+
+    internal inner class DefaultRejectedExecutionHandler : RejectedExecutionHandler {
+
+        override fun rejectedExecution(r: Runnable, executor: ThreadPoolExecutor) {
+
         }
     }
 
