@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import org.xutils.common.util.LogUtil
 
 /**
  * @author Lixm
@@ -27,6 +28,7 @@ class MyLinearLayoutKT : LinearLayout {
      */
     fun setParentScrollview(parentScrollview: ScrollView) {
         parentScrollView = parentScrollview
+        LogUtil.w(TAG,"setParentScrollview")
     }
 
     /**
