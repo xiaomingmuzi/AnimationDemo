@@ -1,5 +1,6 @@
 package com.lixm.animationdemo.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class GreenDaoActivity extends BaseActivity {
 
+    private Context mContext;
     private EditText idEt, nameEt, sexEt;
     private Button mConfirm, mSearch, mDelete, mModify,mUpdateDB;
     private UserDao userDao;
@@ -31,6 +33,7 @@ public class GreenDaoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_green_dao);
+        mContext=this;
         userDao = MyApplication1.getInstances().getDaoSession().getUserDao();
         idEt = (EditText) findViewById(R.id.user_id);
         nameEt = (EditText) findViewById(R.id.name);
