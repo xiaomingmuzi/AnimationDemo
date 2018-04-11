@@ -121,7 +121,8 @@
         <activity android:name=".activity.EditTextActivity" />
         <activity android:name=".activity.event_bus.EventBus1Activity" />
         <activity android:name=".activity.event_bus.EventBus2Activity" />
-        <activity android:name=".activity.event_bus.EventBus3Activity"></activity>
+        <activity android:name=".activity.event_bus.EventBus3Activity" />
+        <activity android:name=".activity.GestureSecretActivity"></activity>
     </application>
 
 </manifest>

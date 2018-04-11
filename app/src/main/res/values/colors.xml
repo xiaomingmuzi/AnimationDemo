@@ -10,5 +10,6 @@
     <color name="live_red_hint_txt">#FCFBC5</color>
     <color name="careless_live_square">#888888</color>
     <color name="layout_back">#883F51B5</color>
+    <color name="trance">#00ffffff</color>
 
 </resources>
