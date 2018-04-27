@@ -122,7 +122,8 @@
         <activity android:name=".activity.event_bus.EventBus1Activity" />
         <activity android:name=".activity.event_bus.EventBus2Activity" />
         <activity android:name=".activity.event_bus.EventBus3Activity" />
-        <activity android:name=".activity.GestureSecretActivity"></activity>
+        <activity android:name=".activity.GestureSecretActivity" />
+        <activity android:name=".activity.UserImageActivity"></activity>
     </application>
 
 </manifest>
