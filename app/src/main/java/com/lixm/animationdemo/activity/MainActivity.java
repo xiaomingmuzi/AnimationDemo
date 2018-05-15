@@ -7,13 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,21 +75,14 @@ public class MainActivity extends BaseActivity {
         mFlowLayout = (FlowLayout) findViewById(R.id.flowLayout);
         mFlowLayout.setPadding(12, 12, 12, 12);
         addData();
-        mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                startActivity(checkedId);
-            }
-        });
+//        mFlowLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+//                startActivity(checkedId);
+//            }
+//        });
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{android
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-
-
-//        try {
-//            dynamicLoadApk("com.lixm.animationdemo",this);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 
     @Override
@@ -111,12 +103,8 @@ public class MainActivity extends BaseActivity {
 
 
     private void startActivity(int poi) {
-//        if (poi == classes.length) {
-//
-//        } else {
         Intent intent = new Intent(this, classes[poi]);
         startActivity(intent);
-//        }
     }
 
     private void addData() {
@@ -126,23 +114,32 @@ public class MainActivity extends BaseActivity {
         if (names.length > 0) {
             for (int i = 0; i < names.length; i++) {
                 //创建textView，并设置属性
-                final RadioButton textView = new RadioButton(this);
-                textView.setPadding(10, 5, 10, 5);
-                textView.setId(i);
+                final RadioButton radioButton = new RadioButton(this);
+                radioButton.setPadding(10, 5, 10, 5);
+                radioButton.setId(i);
                 Bitmap a = null;
-                textView.setButtonDrawable(new BitmapDrawable(a));
+                radioButton.setButtonDrawable(new BitmapDrawable(a));
 //                textView.setTextSize(UIUtils.dp2Px(14));
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-                textView.setGravity(Gravity.CENTER);
-                textView.setTextColor(getResources().getColor(R.color.choose_bank_txt));
-                textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bank_item_choose));
+                radioButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+                radioButton.setGravity(Gravity.CENTER);
+                radioButton.setTextColor(getResources().getColor(R.color.choose_bank_txt));
+                radioButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.bank_item_choose));
                 //给textView设置内容
-                textView.setText(names[i]);
+                radioButton.setText(names[i]);
                 if (i == 0) {
-                    textView.setChecked(true);
+                    radioButton.setChecked(true);
                 }
                 //把textView放到flowLayout中
-                mFlowLayout.addView(textView);
+                mFlowLayout.addView(radioButton);
+                final int finalI = i;
+                radioButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (radioButton.isChecked()){
+                            startActivity(finalI);
+                        }
+                    }
+                });
             }
         }
     }
