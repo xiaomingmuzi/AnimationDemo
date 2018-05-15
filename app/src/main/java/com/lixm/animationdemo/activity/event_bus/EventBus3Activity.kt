@@ -6,11 +6,12 @@ import android.widget.Button
 import com.lixm.animationdemo.R
 import com.lixm.animationdemo.bean.MessageEvent
 import org.greenrobot.eventbus.EventBus
-import org.jetbrains.anko.contentView
 
 class EventBus3Activity : AppCompatActivity() {
 
-    val btn3 = contentView?.findViewById<Button>(R.id.go_to_1)
+    val btn3 by lazy {
+        findViewById<Button>(R.id.go_to_1)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

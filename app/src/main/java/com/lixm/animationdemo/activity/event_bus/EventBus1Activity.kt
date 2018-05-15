@@ -17,14 +17,15 @@ import org.xutils.common.util.LogUtil
 class EventBus1Activity : AppCompatActivity() {
 
     private val mContext: Context? = this
-    val btn1 = contentView?.findViewById<Button>(R.id.go_to_2)
-    val tv1 = contentView?.findViewById<TextView>(R.id.text_1)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_bus1)
 
         EventBus.getDefault().register(this)
+
+        val btn1 = contentView?.findViewById<Button>(R.id.go_to_2)
 
         btn1?.setOnClickListener {
             val intent = Intent(this, EventBus2Activity::class.java)
@@ -41,6 +42,7 @@ class EventBus1Activity : AppCompatActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun Event(messageEvent: MessageEvent) {
         LogUtil.i("===接收到消息===")
+        val tv1 = contentView?.findViewById<TextView>(R.id.text_1)
         tv1!!.setText(messageEvent.message.getString("name"))
     }
 }

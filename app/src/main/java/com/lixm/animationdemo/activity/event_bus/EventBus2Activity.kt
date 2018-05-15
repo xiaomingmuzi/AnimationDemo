@@ -12,12 +12,11 @@ class EventBus2Activity : AppCompatActivity() {
 
     private val mContext: Context? = this
 
-
-    val btn2 = contentView?.findViewById<Button>(R.id.go_to_3)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_bus2)
+
+        val btn2 = contentView?.findViewById<Button>(R.id.go_to_3)
         btn2!!.setOnClickListener {
             val intent = Intent(this, EventBus3Activity::class.java)
             mContext?.startActivity(intent)
