@@ -2,10 +2,13 @@ package com.lixm.animationdemo.activity
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearSnapHelper
 import android.support.v7.widget.RecyclerView
 import com.lixm.animationdemo.R
 import com.lixm.animationdemo.adapter.GlideRecycleViewAdapter
 import com.lixm.animationdemo.bean.GlideBean
+
+
 
 class GlideTestActivity : BaseActivity() {
 
@@ -20,6 +23,8 @@ class GlideTestActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_glide_test)
         val manager = GridLayoutManager(context, 2)
+        val snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(rv_1)//这里放置的是的recycleview
         rv_1.layoutManager = manager
         for (x in 0..10) {
             println(x)
