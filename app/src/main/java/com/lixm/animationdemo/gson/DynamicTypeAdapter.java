@@ -5,12 +5,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.lixm.animationdemo.bean.CircleCommentBean;
 import com.lixm.animationdemo.bean.DynamicBean;
+import com.lixm.animationdemo.bean.DynamicPicBean;
 import com.lixm.animationdemo.bean.ForwardDynamicBean;
 import com.lixm.animationdemo.bean.LinkBaseBean;
 import com.lixm.animationdemo.bean.LinkListBean;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -153,7 +151,7 @@ public class DynamicTypeAdapter extends TypeAdapter<DynamicNewBean> {
                     dynamicBean.setBlogUrl(in.nextString());
                     break;
                 case "DynamicPic":
-                    dynamicBean.setDynamicPic(readPic(in));
+                    dynamicBean.setDynamicPicBeanList(readPic(in));
                     break;
 //                case "Iszhib":
 //                    dynamicBean.z(in.nextString());
@@ -193,7 +191,7 @@ public class DynamicTypeAdapter extends TypeAdapter<DynamicNewBean> {
                     in.endObject();
                     break;
                 case "data":
-                    dynamicBean.setLinkListBean(readLinkBean(in));
+                    dynamicBean.setLinkListBean(readLinkBean(in,sourceType == 4 ? 3 : 0));
                     break;
                 case "BrowseNum":
                     dynamicBean.setBrowseNum(in.nextString());
@@ -211,188 +209,60 @@ public class DynamicTypeAdapter extends TypeAdapter<DynamicNewBean> {
         ArrayList<CircleCommentBean> commentBeans = new ArrayList<>();
         in.beginArray();
 
-//        CircleCommentBean commentBean = new CircleCommentBean();
-//        commentBean.setContent(jo_comment.optString("Content"));
-//        commentBean.setReviewerA(jo_comment.optString("NickName"));
-//        commentBean.setReviewerTO(jo_comment.optString("ToName"));
-//        commentBean.setReviewerAID(jo_comment.optString("NickNameId"));
-//        commentBean.setReviewerBID(jo_comment.optString("ToNameId"));
-//
-//        commentBean.setCommentID(jo_comment.optString("CommentID"));
-//
-//        JSONArray ja_linkList = jo_comment.optJSONArray("data");
-//        if (ja_linkList != null && ja_linkList.length() > 0) {
-//            LinkListBean dynamic_comment_linkListBean = new LinkListBean(4);
-//            ArrayList<LinkBaseBean> linkBeans = new ArrayList<>();
-//
-//            for (int j = 0; j < ja_linkList.length(); j++) {
-//                JSONObject jo_linkData = ja_linkList.optJSONObject(j);
-//                linkBeans.add(new LinkBaseBean(jo_linkData.optString("content"), jo_linkData.optString("url")));
-//            }
-//            dynamic_comment_linkListBean.setLinkBaseBeans(linkBeans);
-//            commentBean.setLinkListBean(dynamic_comment_linkListBean);
-//        }
-//
+        CircleCommentBean commentBean = new CircleCommentBean();
 
-//        while (in.hasNext()) {
-//            switch ()
-//        }
+        while (in.hasNext()) {
+            switch (in.nextName()) {
+                case "Content":
+                    commentBean.setContent(in.nextString());
+                    break;
+                case "NickName":
+                    commentBean.setReviewerA(in.nextString());
+                    break;
+                case "ToName":
+                    commentBean.setReviewerTO(in.nextString());
+                    break;
+                case "NickNameId":
+                    commentBean.setReviewerAID(in.nextString());
+                    break;
+                case "ToNameId":
+                    commentBean.setReviewerBID(in.nextString());
+                    break;
+                case "CommentID":
+                    commentBean.setCommentID(in.nextString());
+                    break;
+                case "data":
+                    commentBean.setLinkListBean(readLinkBean(in,4));
+                    break;
+            }
+        }
         in.endArray();
         return commentBeans;
     }
 
-    private ArrayList<String> readPic(JsonReader in) {
-        ArrayList<String> pics = new ArrayList<>();
+    private ArrayList<DynamicPicBean> readPic(JsonReader in) throws IOException {
+        ArrayList<DynamicPicBean> pics = new ArrayList<>();
+        DynamicPicBean dynamicPicBean = new DynamicPicBean();
+        in.beginArray();
+        while (in.hasNext()) {
+            switch (in.nextName()) {
+                case "Img":
+                    dynamicPicBean.setImgUrl(in.nextString());
+                    break;
+                case "width":
+                    dynamicPicBean.setImg_width(in.nextString());
+                    break;
+                case "height":
+                    dynamicPicBean.setImg_height(in.nextString());
+                    break;
+            }
+            pics.add(dynamicPicBean);
+        }
+        in.endArray();
         return pics;
     }
 
     private ForwardDynamicBean readForward(JsonReader in) throws IOException {
-
-
-//        ForwardDynamicBean forwardDyna = new ForwardDynamicBean();
-//        if (jo_forward != null && jo_forward.length() != 0) {
-//
-//            String isFlag = jo_forward.optString("IsFlag");
-//            forwardDyna.setF_IsFlag(isFlag);
-//
-//            forwardDyna.setF_NickName(jo_forward.optString("NickName"));
-//
-//            forwardDyna.setF_GambitID(jo_forward.optString("GambitID"));
-//            forwardDyna.setF_Content(jo_forward.optString("Content"));
-//            forwardDyna.setF_blogUrl(jo_forward.optString("BlogUrl"));
-//
-//            //1.4.0新加字段
-//            forwardDyna.setF_IsView(jo_forward.optString("IsView"));
-//            forwardDyna.setF_LiveMsgID(jo_forward.optString("LiveMsgID"));
-//            forwardDyna.setF_LiveProductID(jo_forward.optString("LiveProductID"));
-//            forwardDyna.setF_Iszhib(jo_forward.optString("Iszhib"));
-//            forwardDyna.setF_UserID(jo_forward.optString("UserID"));
-//
-//            //1.5.0新加。注：如果是音频文件，ArticleID值代表音频时间长度
-//            forwardDyna.setF_isType(jo_forward.optString("isType"));
-//            forwardDyna.setF_voice_time_length(jo_forward.optString("ArticleID"));
-//
-//            //1.6.2新加投资锦囊（新方案）
-//            JSONObject new_plan_obj = jo_forward.optJSONObject("Plan");
-//            if (new_plan_obj != null && !PARAM.checkStringIsEmpty(new_plan_obj.toString())) {
-//                forwardDyna.setNew_plan_id(new_plan_obj.optString("PlanID"));
-//                forwardDyna.setNew_plan_name(new_plan_obj.optString("PlanName"));
-//                forwardDyna.setNew_plan_start_time(new_plan_obj.optString("PlanStartTime"));
-//                forwardDyna.setNew_plan_expected_revenue(new_plan_obj.optString("PlanExpectedRevenue"));
-//                forwardDyna.setNew_plan_price(new_plan_obj.optString("PlanPrice"));
-//                forwardDyna.setNew_plan_risk_revenue(new_plan_obj.optString("PlanRiskRevenue"));
-//                forwardDyna.setNew_plan_status(new_plan_obj.optString("PlanStatus"));
-//                forwardDyna.setNew_plan_time_limit(new_plan_obj.optString("PlanTimeLimit"));
-//                forwardDyna.setPlanNickName(new_plan_obj.optString("PlanNickName"));
-//
-//                //总收益
-//                forwardDyna.setPlanTotalRevenue(new_plan_obj.optString("PlanTotalRevenue"));
-//                //发布投资锦囊的专家的头像
-//                forwardDyna.setPlan_avatar(new_plan_obj.optString("PlanIconUrl"));
-//
-//                DynamicPlanBean dynamicPlanBean = JsonParserPlanUtil.jsonParserPlan(new_plan_obj.toString());
-//
-//                if (dynamicPlanBean != null) {
-//                    forwardDyna.setDynamicPlanBean(dynamicPlanBean);
-//                }
-//
-//            }
-//
-//            //1.6.4，解析名片对象
-//            JSONObject nameCard_obj = jo_forward.optJSONObject("NameCard");
-//            if (nameCard_obj != null && !PARAM.checkStringIsEmpty(nameCard_obj.toString())) {
-//                forwardDyna.setUserCard_UserID(nameCard_obj.optString("UserID"));
-//                forwardDyna.setUserCard_IconUrl(nameCard_obj.optString("IconUrl"));
-//                forwardDyna.setUserCard_NickName(nameCard_obj.optString("NickName"));
-//                forwardDyna.setUserCard_Profile(nameCard_obj.optString("Profile"));
-//            }
-//
-//            //1.6.4封装，语音对象
-//            JSONObject f_Voice_obj = jo_forward.optJSONObject("Voice");
-//            if (f_Voice_obj != null && !PARAM.checkStringIsEmpty(f_Voice_obj.toString())) {
-//                forwardDyna.setF_VoiceUrl(f_Voice_obj.optString("VoiceUrl"));
-//                forwardDyna.setF_VoiceLength(f_Voice_obj.optString("VoiceLength"));
-//            }
-//
-//            //1.6.4封装，短视频对象
-//            JSONObject f_Video_obj = jo_forward.optJSONObject("Video");
-//            if (f_Video_obj != null && !PARAM.checkStringIsEmpty(f_Video_obj.toString())) {
-//                forwardDyna.setF_VideoImgUrl(f_Video_obj.optString("VideoImgUrl"));
-//                forwardDyna.setF_VideoUrl(f_Video_obj.optString("VideoUrl"));
-//                forwardDyna.setF_VideoLength(f_Video_obj.optString("VideoLength"));
-//            }
-//
-//            //1.7.5 发现页轮播图点击进入的网页分享到动态后的对象
-//            JSONObject findShare = jo_forward.optJSONObject("FindShare");
-//            if (findShare != null && !PARAM.checkStringIsEmpty(findShare.toString())) {
-//                forwardDyna.setFindShareImgUrl(findShare.optString("ImgUrl"));
-//                forwardDyna.setFindShareUrl(findShare.optString("Url"));
-//                forwardDyna.setFindShareTitle(findShare.optString("Title"));
-//            }
-//
-//            //2.0.4添加。收费动态对象
-//            JSONObject f_PriceDynam_obj = jo_forward.optJSONObject("PriceDynam");
-//            if (f_PriceDynam_obj != null && !PARAM.checkStringIsEmpty(f_PriceDynam_obj.toString())) {
-//                forwardDyna.setF_PriceDynamicProductID(f_PriceDynam_obj.optString("ProductID"));
-//                forwardDyna.setF_DynamicPrice(f_PriceDynam_obj.optString("Price"));
-//                forwardDyna.setF_PriceDynamicContent(f_PriceDynam_obj.optString("Content"));
-//                forwardDyna.setF_PriceDynamicIsBuy(f_PriceDynam_obj.optString("IsBuy"));
-//                forwardDyna.setF_PriceDynamicID(f_PriceDynam_obj.optString("DynamicID"));
-//            }
-//
-//            JSONArray jaFor_dynamicPic = jo_forward.optJSONArray("DynamicPic");
-//            ArrayList<DynamicPicBean> f_picBeanList = new ArrayList<DynamicPicBean>();
-//
-//            if (jaFor_dynamicPic != null && jaFor_dynamicPic.length() != 0) {
-//                for (int i = 0; i < jaFor_dynamicPic.length(); i++) {
-//                    JSONObject joo_for_dynamicPic = jaFor_dynamicPic.optJSONObject(i);
-//
-//                    DynamicPicBean dynamicPicBean = new DynamicPicBean();
-//                    dynamicPicBean.setImgUrl(joo_for_dynamicPic.optString("Img"));
-//                    dynamicPicBean.setImg_width(joo_for_dynamicPic.optString("width"));
-//                    dynamicPicBean.setImg_height(joo_for_dynamicPic.optString("height"));
-//                    f_picBeanList.add(dynamicPicBean);
-//                }
-//            }
-//            forwardDyna.setF_dynamicPicBeanList(f_picBeanList);
-//
-//            LinkListBean f_linkListBean = new LinkListBean(sourceType == 4 ? 3 : 0);
-//            ArrayList<LinkBaseBean> linkBeans = new ArrayList<LinkBaseBean>();
-//            JSONArray jaLinkList = jo_forward.optJSONArray("data");
-//            if (jaLinkList != null && jaLinkList.length() != 0) {
-//                for (int i = 0; i < jaLinkList.length(); i++) {
-//                    JSONObject jo_linkData = jaLinkList.optJSONObject(i);
-//                    linkBeans.add(new LinkBaseBean(jo_linkData.optString("content"), jo_linkData.optString("url")));
-//                }
-//            }
-//
-//            ArrayList<LinkBaseBean> f_linkBeans_person = new ArrayList<>();
-//            JSONArray f_ja_userdata = jo_forward.optJSONArray("userdata");
-//            if (null != f_ja_userdata && f_ja_userdata.length() != 0) {
-//                for (int i = 0; i < f_ja_userdata.length(); i++) {
-//                    JSONObject f_jo_uData = f_ja_userdata.optJSONObject(i);
-//                    f_linkBeans_person.add(new LinkBaseBean("@" + f_jo_uData.optString("NickName"), ""));
-//                }
-//            }
-//            linkBeans.addAll(0, f_linkBeans_person);
-//            f_linkListBean.setLinkBaseBeans(linkBeans);
-//            forwardDyna.setF_LinkBean(f_linkListBean);
-//            forwardDyna.setF_IsDelete(jo_forward.optString("IsDelete"));
-//            forwardDyna.setF_IsShield(jo_forward.optString("IsShield"));
-//
-//            //2.4.9新加。转发情况下，专栏的url
-//            JSONObject f_Knowledge_obj = jo_forward.optJSONObject("Knowledge");
-//            if (f_Knowledge_obj != null && !PARAM.checkStringIsEmpty(f_Knowledge_obj.toString())) {
-//                forwardDyna.setF_KnowledgeTitle(f_Knowledge_obj.optString("Title"));
-//                forwardDyna.setF_KnowledgeUrl(f_Knowledge_obj.optString("KnowledgeUrl"));
-//                forwardDyna.setF_KSBuyStatus(f_Knowledge_obj.optString("Status"));
-//            }
-//
-//            //最后一步。把转发布局中的数据放在整体数据中
-//            dynamicBean.setForwardDynamic(forwardDyna);
-//
-//        }
-
 
         ForwardDynamicBean forwardDynamicBean = new ForwardDynamicBean();
         in.beginObject();
@@ -400,6 +270,128 @@ public class DynamicTypeAdapter extends TypeAdapter<DynamicNewBean> {
             switch (in.nextName()) {
                 case "NickName":
                     forwardDynamicBean.setF_NickName(in.nextString());
+                    break;
+                case "GambitID":
+                    forwardDynamicBean.setF_GambitID(in.nextString());
+                    break;
+                case "Content":
+                    forwardDynamicBean.setF_Content(in.nextString());
+                    break;
+                case "BlogUrl":
+                    forwardDynamicBean.setF_blogUrl(in.nextString());
+                    break;
+
+                case "IsView":
+                    forwardDynamicBean.setF_IsView(in.nextString());
+                    break;
+
+                case "LiveMsgID":
+                    forwardDynamicBean.setF_LiveMsgID(in.nextString());
+                    break;
+                case "LiveProductID":
+                    forwardDynamicBean.setF_LiveProductID(in.nextString());
+                    break;
+                case "Iszhib":
+                    forwardDynamicBean.setF_Iszhib(in.nextString());
+                    break;
+                case "UserID":
+                    forwardDynamicBean.setF_UserID(in.nextString());
+                    break;
+                case "isType":
+                    forwardDynamicBean.setF_isType(in.nextString());
+                    break;
+                case "ArticleID":
+                    forwardDynamicBean.setF_voice_time_length(in.nextString());
+                    break;
+//                case "Plan":  操盘计划相关未注解
+//                    forwardDynamicBean.set(in.nextString());
+//                    break;
+                case "NameCard":
+                    in.beginObject();
+                    if (in.hasNext()) {
+                        switch (in.nextName()) {
+                            case "UserID":
+                                forwardDynamicBean.setUserCard_UserID(in.nextString());
+                                break;
+                            case "IconUrl":
+                                forwardDynamicBean.setUserCard_IconUrl(in.nextString());
+                                break;
+                            case "NickName":
+                                forwardDynamicBean.setUserCard_NickName(in.nextString());
+                                break;
+                            case "Profile":
+                                forwardDynamicBean.setUserCard_Profile(in.nextString());
+                                break;
+                        }
+                    }
+                    in.endObject();
+                    break;
+                case "Voice":
+                    in.beginObject();
+                    switch (in.nextName()) {
+                        case "VoiceUrl":
+                            forwardDynamicBean.setF_VoiceUrl(in.nextString());
+                            break;
+                        case "VoiceLength":
+                            forwardDynamicBean.setF_VoiceLength(in.nextString());
+                            break;
+                    }
+                    in.endObject();
+                    break;
+                case "Video":
+                    in.beginObject();
+                    switch (in.nextName()) {
+                        case "VideoImgUrl":
+                            forwardDynamicBean.setF_VideoImgUrl(in.nextString());
+                            break;
+                        case "VideoLength":
+                            forwardDynamicBean.setF_VoiceLength(in.nextString());
+                            break;
+                    }
+                    in.endObject();
+                    break;
+                case "FindShare":
+                    in.beginObject();
+                    switch (in.nextName()) {
+                        case "ImgUrl":
+                            forwardDynamicBean.setFindShareImgUrl(in.nextString());
+                            break;
+                        case "Url":
+                            forwardDynamicBean.setFindShareUrl(in.nextString());
+                            break;
+                        case "Title":
+                            forwardDynamicBean.setFindShareTitle(in.nextString());
+                            break;
+                    }
+                    in.endObject();
+                    break;
+                case "PriceDynam"://PriceDynam收费动态省略
+                    break;
+                case "DynamicPic":
+                    in.beginArray();
+                    ArrayList<DynamicPicBean> f_picBeanList = new ArrayList<DynamicPicBean>();
+                    DynamicPicBean dynamicPicBean = new DynamicPicBean();
+
+                    while (in.hasNext()) {
+                        switch (in.nextName()) {
+                            case "Img":
+                                dynamicPicBean.setImgUrl(in.nextString());
+                                break;
+                            case "width":
+                                dynamicPicBean.setImg_width(in.nextString());
+                                break;
+                            case "height":
+                                dynamicPicBean.setImg_height(in.nextString());
+                                break;
+                        }
+                        f_picBeanList.add(dynamicPicBean);
+                    }
+                    forwardDynamicBean.setF_dynamicPicBeanList(f_picBeanList);
+
+                    in.endArray();
+                    break;
+                case "data":
+                    forwardDynamicBean.setF_LinkBean(readLinkBean(in,sourceType == 4 ? 3 : 0));
                     break;
 
 
@@ -409,9 +401,24 @@ public class DynamicTypeAdapter extends TypeAdapter<DynamicNewBean> {
         return forwardDynamicBean;
     }
 
-    private LinkListBean readLinkBean(JsonReader in) {
-        LinkListBean linkListBean = new LinkListBean(sourceType == 4 ? 3 : 0);
-
+    private LinkListBean readLinkBean(JsonReader in,int type) throws IOException {
+        LinkListBean linkListBean = new LinkListBean(type);
+        ArrayList<LinkBaseBean> linkBeans = new ArrayList<>();
+        LinkBaseBean linkBaseBean = new LinkBaseBean();
+        in.beginArray();
+        while (in.hasNext()) {
+            switch (in.nextName()) {
+                case "content":
+                    linkBaseBean.setContent(in.nextString());
+                    break;
+                case "url":
+                    linkBaseBean.setUrl(in.nextString());
+                    break;
+            }
+            linkBeans.add(linkBaseBean);
+        }
+        linkListBean.setLinkBaseBeans(linkBeans);
+        in.endArray();
         return linkListBean;
     }
 }

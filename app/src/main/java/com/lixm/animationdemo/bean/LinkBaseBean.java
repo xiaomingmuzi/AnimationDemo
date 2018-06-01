@@ -19,6 +19,9 @@ public class LinkBaseBean implements Serializable {
      */
     private String url;
 
+    public LinkBaseBean() {
+    }
+
     public LinkBaseBean(String content, String url) {
         this.content = content;
         this.url = url;
