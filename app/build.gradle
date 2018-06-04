@@ -31,7 +31,7 @@ android {
             moduleName "hellondk"//设置so库文件名称
         }
         // 开启multidex
-//        multiDexEnabled true
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -133,7 +133,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:7.0.1'
 
-    compile "com.android.support:multidex:1.0.2" // 多dex配置
+    compile "com.android.support:multidex:1.0.1" // 多dex配置
     //注释掉原有bugly的仓库
     //compile 'com.tencent.bugly:crashreport:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.3.2
 //    compile 'com.tencent.bugly:nativecrashreport:3.3.0' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0

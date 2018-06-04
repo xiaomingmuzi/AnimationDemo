@@ -20,16 +20,18 @@ class GsonDemoActivity : BaseActivity() {
         val gsonBuilder: GsonBuilder = GsonBuilder()
         gsonBuilder.registerTypeAdapter(DynamicNewBean::class.java, DynamicTypeAdapter(4))
         gsonBuilder.setPrettyPrinting()
+        val gson: Gson = gsonBuilder.create()
 
-        val gson: Gson = Gson()
-        val dynamicNewBean = DynamicNewBean()
         HttpUtil.sendOkHttpRequest(HttpUtil.Dynamic,object :Callback{
             override fun onFailure(p0: Call?, p1: IOException?) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
-            override fun onResponse(p0: Call?, p1: Response?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            override fun onResponse(call: Call?, response: Response?) {
+                val responseText = response!!.body().string()
+                println(responseText)
+                val dynamicNewBean:DynamicNewBean = gson.fromJson(responseText,DynamicNewBean::class.java)
+                println(dynamicNewBean)
             }
 
         })
