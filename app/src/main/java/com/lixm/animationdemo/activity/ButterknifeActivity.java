@@ -10,17 +10,18 @@ import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
 
-import butterknife.Bind;
+import butterknife.BindInt;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ButterknifeActivity extends AppCompatActivity {
 
-    @Bind(R.id.textView3)
+   @BindView(R.id.textView3)
     TextView textView3;
-    @Bind(R.id.button5)
+    @BindView(R.id.button5)
     Button button5;
-    @Bind(R.id.imageView)
+    @BindView(R.id.imageView)
     ImageView imageView;
 
     @Override

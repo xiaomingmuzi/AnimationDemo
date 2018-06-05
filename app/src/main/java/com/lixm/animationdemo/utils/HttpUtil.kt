@@ -14,7 +14,7 @@ object HttpUtil {
     val Key = "key=bc0418b57b2d4918819d3974ac1285d9"
     val Bing = "http://guolin.tech/api/bing_pic"
     val China = "http://guolin.tech/api/china"
-    val Dynamic="http://financial.test.cnfol.com/index.php?r=dynam/getdynamlist&LoginUserID=346625&Type=1&PageSize=10&PageNum=1&Version=250&VisitType=1&Version=250"
+    val Dynamic="http://financial.test.cnfol.com/index.php?r=dynam/getdynamlist&LoginUserID=348392&Type=0&PageSize=10&PageNum=1&Version=250&VisitType=1&Version=250"
 
     fun sendOkHttpRequest(address: String, callback: Callback) {
         val client = OkHttpClient()
