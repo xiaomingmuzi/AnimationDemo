@@ -10,6 +10,8 @@ import com.lixm.animationdemo.bean.ForwardDynamicBean;
 import com.lixm.animationdemo.bean.LinkBaseBean;
 import com.lixm.animationdemo.bean.LinkListBean;
 
+import org.xutils.common.util.LogUtil;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,11 +69,12 @@ public class DynamicTypeAdapter extends TypeAdapter<DynamicNewBean> {
     public List<DynamicBean> readDynamicBeans(JsonReader in) throws IOException {
         List<DynamicBean> dynamicBeans = new ArrayList<>();
         in.beginObject();
-        in.beginArray();
         while (in.hasNext()) {
             switch (in.nextName()) {
-//                case "Gabmit":
-//                    break;
+                case "Gabmit":
+                    in.beginArray();
+                    in.endArray();
+                    break;
                 case "Dynamic":
                     in.beginArray();
                     dynamicBeans.add(readDynamicBean(in));
@@ -79,144 +82,142 @@ public class DynamicTypeAdapter extends TypeAdapter<DynamicNewBean> {
                     break;
             }
         }
-        in.endArray();
         in.endObject();
         return dynamicBeans;
     }
 
     public DynamicBean readDynamicBean(JsonReader in) throws IOException {
         DynamicBean dynamicBean = new DynamicBean();
-        in.beginArray();
+        in.beginObject();
         while (in.hasNext()) {
-            in.beginObject();
-            while (in.hasNext()) {
-                switch (in.nextName()) {
-                    case "SourceType":
-                        dynamicBean.setSourceType(in.nextString());
-                        break;
-                    case "UserID":
-                        dynamicBean.setUserID(in.nextString());
-                        break;
-                    case "UserIconUrl":
-                        dynamicBean.setUserIconUrl(in.nextString());
-                        break;
-                    case "NickName":
-                        dynamicBean.setNickName(in.nextString());
-                        break;
-                    case "UserName":
-                        dynamicBean.setUserName(in.nextString());
-                        break;
-                    case "Status":
-                        dynamicBean.setStatus(in.nextString());
-                        break;
-                    case "VipPic":
-                        dynamicBean.setVipPic(in.nextString());
-                        break;
-                    case "Target":
-                        dynamicBean.setTarget(in.nextString());
-                        break;
-                    case "isType":
-                        dynamicBean.setIsType(in.nextString());
-                        break;
-                    case "IsFlag":
-                        dynamicBean.setIsFlag(in.nextString());
-                        break;
-                    case "DynamicID":
-                        dynamicBean.setDynamicID(in.nextString());
-                        break;
-                    case "AddTime":
-                        dynamicBean.setAddTime(in.nextString());
-                        break;
-                    case "LivingProductID":
-                        dynamicBean.setLivingProductID(in.nextString());
-                        break;
-                    case "IsTop":
-                        dynamicBean.setIsTop(in.nextString());
-                        break;
-                    case "IsOpening":
-                        dynamicBean.setIsOpening(in.nextString());
-                        break;
-                    case "CommentCount":
-                        dynamicBean.setCommentCount(in.nextString());
-                        break;
-                    case "PraiseCount":
-                        dynamicBean.setPraiseCount(in.nextString());
-                        break;
-                    case "ForwardCount":
-                        dynamicBean.setForwardCount(in.nextString());
-                        break;
-                    case "Commentlist":
-                        dynamicBean.setCommentlist(readCommentBean(in));
-                        break;
-//                case "TopicID":
-//                    dynamicBean.setto(in.nextString());
+            String name = in.nextName();
+            LogUtil.w("in.nextName()====" + name);
+            if (name.equals("LivingProductID"))
+                continue;
+            switch (name) {
+                case "SourceType":
+                    dynamicBean.setSourceType(in.nextString());
+                    break;
+                case "UserID":
+                    dynamicBean.setUserID(in.nextString());
+                    break;
+                case "UserIconUrl":
+                    dynamicBean.setUserIconUrl(in.nextString());
+                    break;
+                case "NickName":
+                    dynamicBean.setNickName(in.nextString());
+                    break;
+                case "UserName":
+                    dynamicBean.setUserName(in.nextString());
+                    break;
+                case "Status":
+                    dynamicBean.setStatus(in.nextString());
+                    break;
+                case "VipPic":
+                    dynamicBean.setVipPic(in.nextString());
+                    break;
+                case "Target":
+                    dynamicBean.setTarget(in.nextString());
+                    break;
+                case "isType":
+                    dynamicBean.setIsType(in.nextString());
+                    break;
+                case "IsFlag":
+                    dynamicBean.setIsFlag(in.nextString());
+                    break;
+                case "DynamicID":
+                    dynamicBean.setDynamicID(in.nextString());
+                    break;
+                case "AddTime":
+                    dynamicBean.setAddTime(in.nextString());
+                    break;
+//                case "LivingProductID":
+//                    dynamicBean.setLivingProductID(in.nextString());
 //                    break;
-                    case "Isprise":
-                        dynamicBean.setIsprise(in.nextString());
-                        break;
-                    case "Content":
-                        dynamicBean.setContent(in.nextString());
-                        break;
+                case "IsTop":
+                    dynamicBean.setIsTop(in.nextString());
+                    break;
+                case "IsOpening":
+                    dynamicBean.setIsOpening(in.nextString());
+                    break;
+                case "CommentCount":
+                    dynamicBean.setCommentCount(in.nextString());
+                    break;
+                case "PraiseCount":
+                    dynamicBean.setPraiseCount(in.nextString());
+                    break;
+                case "ForwardCount":
+                    dynamicBean.setForwardCount(in.nextString());
+                    break;
+                case "Commentlist":
+                    dynamicBean.setCommentlist(readCommentBean(in));
+                    break;
+                case "TopicID":
+                    break;
+                case "Isprise":
+                    dynamicBean.setIsprise(in.nextString());
+                    break;
+                case "Content":
+                    dynamicBean.setContent(in.nextString());
+                    break;
 //                case "Title":
 //                    dynamicBean.sett(in.nextString());
 //                    break;
-                    case "BlogUrl":
-                        dynamicBean.setBlogUrl(in.nextString());
-                        break;
-                    case "DynamicPic":
-                        dynamicBean.setDynamicPicBeanList(readPic(in));
-                        break;
+                case "BlogUrl":
+                    dynamicBean.setBlogUrl(in.nextString());
+                    break;
+                case "DynamicPic":
+                    dynamicBean.setDynamicPicBeanList(readPic(in));
+                    break;
 //                case "Iszhib":
 //                    dynamicBean.z(in.nextString());
 //                    break;
-                    case "Forward"://空时为数组
-                        dynamicBean.setForwardDynamic(readForward(in));
-                        break;
-                    case "IsView":
-                        dynamicBean.setIsView(in.nextString());
-                        break;
-                    case "LiveProductID":
-                        dynamicBean.setLivingProductID(in.nextString());
-                        break;
-                    case "IsShield":
-                        dynamicBean.setIsShield(in.nextString());
-                        break;
-                    case "Media"://空时为数组
-                        dynamicBean.setMediaPic(in.nextString());
-                        break;
-                    case "Voice":
-                        in.beginObject();
-                        dynamicBean.setVoiceUrl(in.nextString());
-                        dynamicBean.setVoiceLength(in.nextString());
-                        in.endObject();
-                        break;
-                    case "Video":
-                        in.beginObject();
-                        dynamicBean.setVideoImgUrl(in.nextString());
-                        dynamicBean.setVideoUrl(in.nextString());
-                        dynamicBean.setVideoLength(in.nextString());
-                        in.endObject();
-                        break;
-                    case "Knowledge":
-                        in.beginObject();
-                        dynamicBean.setKnowledgeUrl(in.nextString());
-                        dynamicBean.setKSBuyStatus(in.nextString());
-                        in.endObject();
-                        break;
-                    case "data":
-                        dynamicBean.setLinkListBean(readLinkBean(in, sourceType == 4 ? 3 : 0));
-                        break;
-                    case "BrowseNum":
-                        dynamicBean.setBrowseNum(in.nextString());
-                        break;
-                    case "WatchCount":
-                        dynamicBean.setWatchCount(in.nextString());
-                        break;
-                }
+                case "Forward"://空时为数组
+                    dynamicBean.setForwardDynamic(readForward(in));
+                    break;
+                case "IsView":
+                    dynamicBean.setIsView(in.nextString());
+                    break;
+//                case "LiveProductID":
+//                    dynamicBean.setLivingProductID(in.nextString());
+//                    break;
+                case "IsShield":
+                    dynamicBean.setIsShield(in.nextString());
+                    break;
+                case "Media"://空时为数组
+                    dynamicBean.setMediaPic(in.nextString());
+                    break;
+                case "Voice":
+                    in.beginObject();
+                    dynamicBean.setVoiceUrl(in.nextString());
+                    dynamicBean.setVoiceLength(in.nextString());
+                    in.endObject();
+                    break;
+                case "Video":
+                    in.beginObject();
+                    dynamicBean.setVideoImgUrl(in.nextString());
+                    dynamicBean.setVideoUrl(in.nextString());
+                    dynamicBean.setVideoLength(in.nextString());
+                    in.endObject();
+                    break;
+                case "Knowledge":
+                    in.beginObject();
+                    dynamicBean.setKnowledgeUrl(in.nextString());
+                    dynamicBean.setKSBuyStatus(in.nextString());
+                    in.endObject();
+                    break;
+                case "data":
+                    dynamicBean.setLinkListBean(readLinkBean(in, sourceType == 4 ? 3 : 0));
+                    break;
+                case "BrowseNum":
+                    dynamicBean.setBrowseNum(in.nextString());
+                    break;
+                case "WatchCount":
+                    dynamicBean.setWatchCount(in.nextString());
+                    break;
             }
-            in.endObject();
         }
-        in.endArray();
+        in.endObject();
         return dynamicBean;
     }
 
