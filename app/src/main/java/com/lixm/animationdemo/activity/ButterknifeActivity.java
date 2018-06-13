@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.lixm.animationdemo.R;
 
-import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

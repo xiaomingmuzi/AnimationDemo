@@ -124,7 +124,8 @@
         <activity android:name=".activity.GestureSecretActivity" />
         <activity android:name=".activity.UserImageActivity" />
         <activity android:name=".activity.GlideTestActivity" />
-        <activity android:name=".activity.GsonDemoActivity"></activity>
+        <activity android:name=".activity.GsonDemoActivity" />
+        <activity android:name=".activity.RxJavaActivity"></activity>
     </application>
 
 </manifest>
