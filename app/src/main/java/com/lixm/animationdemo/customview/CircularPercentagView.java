@@ -142,7 +142,7 @@ public class CircularPercentagView extends View {
         double d = Math.abs(sweepAngle) * 100 / 360;
         mTxtPaint.setColor(Color.parseColor(sweepColor));
         canvas.drawText((d + "%"), (width - 10) / 2, (height - 10) / 2 - textOffset, mTxtPaint);
-
+//s
     }
 
 
