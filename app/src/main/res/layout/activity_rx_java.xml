@@ -10,6 +10,10 @@
     <com.lixm.animationdemo.customview.CircularPercentagView
         android:layout_width="50dp"
         android:layout_height="50dp"
+        app:stroke_width="8"
+        app:start_color="#f53f3b"
+        app:end_color="#ff8200"
+        app:text_size="14"
         android:layout_marginStart="164dp"
         android:layout_marginTop="228dp"
         app:layout_constraintStart_toStartOf="parent"

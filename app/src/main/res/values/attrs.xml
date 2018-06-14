@@ -24,4 +24,11 @@
         <attr name="progress_fixure_pb" format="integer"/>
         <attr name="progress_fixure_color_pb" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="CircularPercentagView">
+        <attr name="stroke_width" format="integer"/>
+        <attr name="start_color" format="string"/>
+        <attr name="end_color" format="string"/>
+        <attr name="text_size" format="integer"/>
+    </declare-styleable>
 </resources>
