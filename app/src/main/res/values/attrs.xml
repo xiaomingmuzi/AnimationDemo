@@ -31,4 +31,22 @@
         <attr name="end_color" format="string"/>
         <attr name="text_size" format="integer"/>
     </declare-styleable>
+
+    <!--wavesWidth：一个水波纹的宽度-->
+    <!--wavesCount：有几个水波纹-->
+    <!--wavesColor：水波纹的颜色（最深的那个颜色）-->
+    <!--centerDiameter：中心图片的直径。中心图片一定是一个原型图片-->
+    <!--wavesAutoRunning：水波纹是否自动做动画-->
+    <!--runningTime：做动画的间隔时间，单位是毫秒-->
+    <!--runningStep：水波纹每次变化的增加的幅度。值越大，动画越快-->
+
+    <declare-styleable name="WaterRippleView">
+        <attr name="wavesWidth" format="dimension|reference"/>
+        <attr name="wavesCount" format="integer|reference"/>
+        <attr name="wavesColor" format="color|reference"/>
+        <attr name="centerDiameter" format="integer"/>
+        <attr name="wavesAutoRunning" format="boolean"/>
+        <attr name="runningTime" format="integer"/>
+        <attr name="runningStep" format="integer"/>
+    </declare-styleable>
 </resources>

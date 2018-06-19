@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +8,10 @@
     tools:context="com.lixm.animationdemo.activity.CircleProgressBarActivity">
 
     <RelativeLayout
+        android:id="@+id/cpb_layout"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-android:id="@+id/cpb_layout"
-        >
+        android:layout_centerHorizontal="true">
 
         <com.lixm.animationdemo.customview.CircleProgressBar
             android:id="@+id/cpb"
@@ -19,33 +19,54 @@ android:id="@+id/cpb_layout"
             android:layout_height="match_parent" />
 
         <TextView
+            android:id="@+id/text_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="86"
-            android:id="@+id/text_progress"
             android:textColor="#999999"
             android:textSize="24sp" />
 
     </RelativeLayout>
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sb_first"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/cpb_layout"
-        />
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="30dp"
-        android:layout_below="@id/sb_first"
-        android:id="@+id/sb_second"
-        android:layout_marginTop="20dp"
-        />
 
+    <SeekBar
+        android:id="@+id/sb_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cpb_layout"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp" />
+
+    <SeekBar
+        android:id="@+id/sb_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sb_first"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp" />
+
+    <com.lixm.animationdemo.customview.CircularPercentagView
+        android:id="@+id/cp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/sb_second"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        app:end_color="#ff8200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:start_color="#f53f3b"
+        app:stroke_width="8"
+        app:text_size="14" />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="重置" />
 </RelativeLayout>

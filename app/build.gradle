@@ -25,7 +25,7 @@ android {
 
     defaultConfig {
         applicationId "com.lixm.animationdemo"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 6
         versionName "2.3.0"

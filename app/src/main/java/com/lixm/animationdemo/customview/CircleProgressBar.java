@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.SweepGradient;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -88,6 +89,8 @@ public class CircleProgressBar extends View {
         secondProgressPaint.setStyle(Paint.Style.STROKE);
         secondProgressPaint.setStrokeWidth(secondProgressWidth);
         secondProgressPaint.setColor(secondProgressColor);
+        SweepGradient sweepGradient = new SweepGradient(width / 2, height / 2, Color.parseColor("#ff0000"), Color.parseColor("#002299"));
+        secondProgressPaint.setShader(sweepGradient);
 
         dotColor = Color.parseColor("#ff5722");
         dotDiameter = dp2Px(20);
