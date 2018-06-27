@@ -26,6 +26,9 @@ import com.lixm.liveplayerlibrary.LogUtil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.lang.ref.Reference;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 
 /**
@@ -83,6 +86,21 @@ public class MainActivity extends BaseActivity {
 //        });
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{android
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+
+        //创建一个强引用
+        String str=new String("hello");//1
+        //创建引用队列；表明队列中存放String对象的引用ReferenceQueue;
+        ReferenceQueue rq=new ReferenceQueue();//2
+        //创建一个弱引用，它引用"hello"对象，并且与rq引用队列关联 表明WeakReference会弱引用String对象
+        WeakReference wf=new WeakReference(str,rq);//3
+        str=null;//4 取消"hello" 对象的强引用
+        //两次催促垃圾回收器工作，提高“hello”对象被回收的可能
+        System.gc();//5
+        System.gc();//6
+        String str1= (String) wf.get();//7 假如“hello”对象没有被回收，str1引用“hello”对象；
+        // 假如“hello”对象没有被回收，rq.poll()返回null
+        Reference ref=rq.poll();//8
+
     }
 
     @Override
