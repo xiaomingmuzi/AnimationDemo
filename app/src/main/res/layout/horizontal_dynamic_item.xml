@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/horizontal_dynamic_item_tv"
+    android:maxLines="1"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/live_beauty_seekbar_bg"
+    android:gravity="center_vertical"
+    android:textColor="@color/color_333"
+    android:padding="4dp"
+    android:textSize="14dp"
+    >
+
+</TextView>

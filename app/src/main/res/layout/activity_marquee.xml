@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lixm.animationdemo.activity.MarqueeActivity">
+
+    <TextView
+        android:id="@+id/myTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="76dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="hello world my dear friend this is a long long string~~~~hello world my dear friend this is a long long string"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.lixm.animationdemo.customview.MarqueeView
+        android:id="@+id/marquee_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_margin="10"
+        app:scroll_direction="2"
+        app:scroll_speed="10" />
+
+</android.support.constraint.ConstraintLayout>

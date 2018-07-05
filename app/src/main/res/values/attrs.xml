@@ -49,4 +49,10 @@
         <attr name="runningTime" format="integer"/>
         <attr name="runningStep" format="integer"/>
     </declare-styleable>
+    
+    <declare-styleable name="MarqueeView">
+        <attr name="scroll_speed" format="integer"/>
+        <attr name="scroll_direction" format="integer"/>
+        <attr name="layout_margin" format="integer"/>
+    </declare-styleable>
 </resources>

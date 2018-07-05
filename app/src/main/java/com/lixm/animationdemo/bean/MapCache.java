@@ -41,8 +41,8 @@ public class MapCache {
         grocery=null;
         Grocery anotherRef=(Grocery) aSoft.get();
         SoftReference ref=null;
-        while((ref =  (SoftReference) rq.poll()) != null) {
+//        while((ref =  (SoftReference) rq.poll()) != null) {
             //清除ref
         }
-    }
+//    }
 }

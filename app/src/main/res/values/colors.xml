@@ -12,5 +12,6 @@
     <color name="layout_back">#883F51B5</color>
     <color name="trance">#00ffffff</color>
     <color name="water_ripple_color">#b24231</color>
+    <color name="live_beauty_progress">#ffd650</color>
 
 </resources>

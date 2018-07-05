@@ -24,6 +24,7 @@ public class JNIDemoActivity extends BaseActivity {
                 Toast.makeText(JNIDemoActivity.this,result,Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     static {
