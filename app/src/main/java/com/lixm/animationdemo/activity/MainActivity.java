@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity {
             "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo", "Kotlin天气预报界面",
             "MessengerDemo", "IBookManager", "全屏详情", "全屏滑动", "发送消息", "音频播放",
             "主题更换1", "主题更换2", "DialogFragment测试", "输入框滑动冲突", "EventBus测试", "手势解锁View",
-            "压缩图片", "Glide学习", "Gson解析","跑马灯"
+            "压缩图片", "Glide学习", "Gson解析","跑马灯","礼物"
 
     };
     private Class<?>[] classes = new Class[]{CircularPercentagActivity.class, ObjectAnimation1Activity.class, AnkoActivity.class, SubwayActivity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity {
             ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class, JNIDemoActivity.class, WeatherMainActivity.class,
             MessengerActivity.class, BookManagerctivity.class, FullScreenDisplayStockInformationActivity.class, FullScrollLayoutActivity.class, MessageActivity.class, MediaPlayerActivity.class,
             ApkThemeActivity.class, ApkThemeJavaActivity.class, DialogFragmentActivity.class, EditTextActivity.class, EventBus1Activity.class, GestureSecretActivity.class,
-            UserImageActivity.class, GlideTestActivity.class, GsonDemoActivity.class,MarqueeActivity.class
+            UserImageActivity.class, GlideTestActivity.class, GsonDemoActivity.class,MarqueeActivity.class,GiftAnimationActivity.class
     };
 
     @Override

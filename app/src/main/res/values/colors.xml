@@ -13,5 +13,6 @@
     <color name="trance">#00ffffff</color>
     <color name="water_ripple_color">#b24231</color>
     <color name="live_beauty_progress">#ffd650</color>
-
+    <color name="live_gift_txt_check">#fecd78</color>
+    <color name="live_gift_txt_normal">#d5d5d5</color>
 </resources>
