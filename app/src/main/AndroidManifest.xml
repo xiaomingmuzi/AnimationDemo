@@ -127,7 +127,8 @@
         <activity android:name=".activity.GsonDemoActivity" />
         <activity android:name=".activity.CircularPercentagActivity" />
         <activity android:name=".activity.MarqueeActivity" />
-        <activity android:name=".activity.GiftAnimationActivity"></activity>
+        <activity android:name=".activity.GiftAnimationActivity" />
+        <activity android:name=".activity.ViewPageActivity"></activity>
     </application>
 
 </manifest>
