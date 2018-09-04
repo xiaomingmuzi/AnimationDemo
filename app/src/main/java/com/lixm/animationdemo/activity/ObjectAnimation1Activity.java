@@ -15,11 +15,23 @@ import android.widget.TextView;
 
 import com.lixm.animationdemo.R;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
 public class ObjectAnimation1Activity extends BaseActivity {
 
     private Context mContext;
     private TextView textView;
-    private Button alphaBtn, rotationBtn, translationXBtn, scaleXBtn, animationSetBtn, animationSetXmlBtn;
+    private Button alphaBtn, rotationBtn, translationXBtn, scaleXBtn, animationSetBtn, animationSetXmlBtn, button_send;
 
 
     @Override
@@ -139,6 +151,43 @@ public class ObjectAnimation1Activity extends BaseActivity {
                 });
                 objectAnimator.start();
             }
+        });
+
+        button_send = findViewById(R.id.button_send);
+        button_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread() {
+                    @Override
+                    public void run() {
+
+                        String WEBHOOK_TOKEN = "https://oapi.dingtalk.com/robot/send?access_token=b7ff98db082fd3530ae91bc1b0e79d20ec7af0e4f4760e1ff879daa3bf7f20bf";
+                        HttpClient httpclient = new DefaultHttpClient();
+                        HttpPost httppost = new HttpPost(WEBHOOK_TOKEN);
+                        httppost.addHeader("Content-Type", "application/json; charset=utf-8");
+
+                        String textMsg = "{ \"msgtype\": \"text\", \"text\": {\"content\": \"我就是我, 是不一样的烟火\"}}";
+                        StringEntity se = null;
+                        try {
+                            se = new StringEntity(textMsg, "utf-8");
+                            httppost.setEntity(se);
+
+                            HttpResponse response = httpclient.execute(httppost);
+                            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                                String result = EntityUtils.toString(response.getEntity(), "utf-8");
+                                System.out.println(result);
+                            }
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        } catch (ClientProtocolException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
+            }
+
         });
 
     }
