@@ -2,16 +2,11 @@ package com.lixm.animationdemo.customview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.text.Layout;
-import android.text.Selection;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextPaint;
-import android.text.method.LinkMovementMethod;
-import android.text.method.Touch;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,5 +76,10 @@ public class ClickTextView extends TextView {
     @Override
     public boolean isSelected() {
         return true;
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

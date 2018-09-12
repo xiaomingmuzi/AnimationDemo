@@ -128,7 +128,8 @@
         <activity android:name=".activity.CircularPercentagActivity" />
         <activity android:name=".activity.MarqueeActivity" />
         <activity android:name=".activity.GiftAnimationActivity" />
-        <activity android:name=".activity.ViewPageActivity"></activity>
+        <activity android:name=".activity.ViewPageActivity" />
+        <activity android:name=".activity.ChatbotSendActivity"></activity>
     </application>
 
 </manifest>
