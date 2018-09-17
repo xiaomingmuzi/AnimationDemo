@@ -46,7 +46,8 @@ public class MainActivity extends BaseActivity {
             "Butterknife插件测试", "获取证书信息", "音频录音动画", "JNIDemo", "Kotlin天气预报界面",
             "MessengerDemo", "IBookManager", "全屏详情", "全屏滑动", "发送消息", "音频播放",
             "主题更换1", "主题更换2", "DialogFragment测试", "输入框滑动冲突", "EventBus测试", "手势解锁View",
-            "压缩图片", "Glide学习", "Gson解析","跑马灯","礼物","ViewPager","发消息给钉钉"
+            "压缩图片", "Glide学习", "Gson解析", "跑马灯", "礼物", "ViewPager", "发消息给钉钉",
+            "shape按钮"
 
     };
     private Class<?>[] classes = new Class[]{CircularPercentagActivity.class, ObjectAnimation1Activity.class, AnkoActivity.class, SubwayActivity.class, ObjectAnimation2Activity.class, BezierActivity.class, MyHeartViewActivity.class,
@@ -56,7 +57,8 @@ public class MainActivity extends BaseActivity {
             ButterknifeActivity.class, CertificateFactoryActivity.class, AudioRecoderActivity.class, JNIDemoActivity.class, WeatherMainActivity.class,
             MessengerActivity.class, BookManagerctivity.class, FullScreenDisplayStockInformationActivity.class, FullScrollLayoutActivity.class, MessageActivity.class, MediaPlayerActivity.class,
             ApkThemeActivity.class, ApkThemeJavaActivity.class, DialogFragmentActivity.class, EditTextActivity.class, EventBus1Activity.class, GestureSecretActivity.class,
-            UserImageActivity.class, GlideTestActivity.class, GsonDemoActivity.class,MarqueeActivity.class,GiftAnimationActivity.class,ViewPageActivity.class,ChatbotSendActivity.class
+            UserImageActivity.class, GlideTestActivity.class, GsonDemoActivity.class, MarqueeActivity.class, GiftAnimationActivity.class, ViewPageActivity.class, ChatbotSendActivity.class,
+            CommonShapeButtonActivity.class
     };
 
     @Override
@@ -88,18 +90,18 @@ public class MainActivity extends BaseActivity {
                 .Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
         //创建一个强引用
-        String str=new String("hello");//1
+        String str = new String("hello");//1
         //创建引用队列；表明队列中存放String对象的引用ReferenceQueue;
-        ReferenceQueue rq=new ReferenceQueue();//2
+        ReferenceQueue rq = new ReferenceQueue();//2
         //创建一个弱引用，它引用"hello"对象，并且与rq引用队列关联 表明WeakReference会弱引用String对象
-        WeakReference wf=new WeakReference(str,rq);//3
-        str=null;//4 取消"hello" 对象的强引用
+        WeakReference wf = new WeakReference(str, rq);//3
+        str = null;//4 取消"hello" 对象的强引用
         //两次催促垃圾回收器工作，提高“hello”对象被回收的可能
         System.gc();//5
         System.gc();//6
-        String str1= (String) wf.get();//7 假如“hello”对象没有被回收，str1引用“hello”对象；
+        String str1 = (String) wf.get();//7 假如“hello”对象没有被回收，str1引用“hello”对象；
         // 假如“hello”对象没有被回收，rq.poll()返回null
-        Reference ref=rq.poll();//8
+        Reference ref = rq.poll();//8
 
     }
 

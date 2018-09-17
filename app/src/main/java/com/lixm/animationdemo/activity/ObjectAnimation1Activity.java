@@ -5,8 +5,14 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +32,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Random;
 
 public class ObjectAnimation1Activity extends BaseActivity {
 
@@ -190,5 +197,55 @@ public class ObjectAnimation1Activity extends BaseActivity {
 
         });
 
+        handler.sendEmptyMessageDelayed(1, 1000);
+    }
+
+    private int i = 10;
+
+    private Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            send();
+            i--;
+            if (i > 0) {
+                Random random=new Random();
+                int data=random.nextInt(10);
+                handler.sendEmptyMessageDelayed(1, 1000*(data+1));
+            }
+            return false;
+        }
+    });
+
+    private void send() {
+        /**
+         *  创建通知栏管理工具
+         */
+        NotificationManager notificationManager = (NotificationManager) getSystemService
+                (NOTIFICATION_SERVICE);
+
+        /**
+         *  实例化通知栏构造器
+         */
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+
+        /**
+         *  设置Builder
+         */
+        //设置标题
+        mBuilder.setContentTitle("花生日记")
+                //设置内容
+                .setContentText("又有一笔收益~")
+                //设置大图标
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+                //设置小图标
+                .setSmallIcon(R.mipmap.ic_launcher)
+                //设置通知时间
+                .setWhen(System.currentTimeMillis())
+                //首次进入时显示效果
+                .setTicker("又有一笔收益~")
+                //设置通知方式，声音，震动，呼吸灯等效果，这里通知方式为声音
+                .setDefaults(Notification.DEFAULT_SOUND);
+        //发送通知请求
+        notificationManager.notify(i, mBuilder.build());
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lixm.animationdemo.activity.CommonShapeButtonActivity">
+
+    <com.lixm.animationdemo.customview.CommonShapeButton
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="我是按钮吧"
+        android:textColor="@color/colorAccent"
+        app:csb_activeEnable="true"
+        app:csb_fillColor="@color/live_beauty_progress"
+        app:csb_pressedColor="@color/water_ripple_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.lixm.animationdemo.customview.view.CommonShapeButton
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="我是按钮1吧"
+        android:textColor="@color/colorAccent"
+        app:csb_activeEnable="true"
+        app:csb_fillColor="@color/live_beauty_progress"
+        app:csb_pressedColor="@color/water_ripple_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.674" />
+</android.support.constraint.ConstraintLayout>
