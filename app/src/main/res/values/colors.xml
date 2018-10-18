@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="aaaaa">#88000000</color>
+    <color name="ff">#88ffffff</color>
     <color name="color_333">#333333</color>
     <color name="bank_choose">#e82025</color>
     <color name="color_dialog_bg">#20000000</color>

@@ -21,11 +21,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615" />
 
     <com.lixm.animationdemo.customview.view.CommonShapeButton
-        android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -37,7 +38,28 @@
         app:csb_pressedColor="@color/water_ripple_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:csb_degrees="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674" />
+        app:layout_constraintVertical_bias="0.373" />
+
+    <com.lixm.animationdemo.customview.MySkewWord
+        android:layout_width="200dp"
+        android:layout_height="202dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="假的"
+        android:textColor="#ff0000"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498"
+        app:msw_degrees="-45"
+        app:msw_cornerPosition="topLeft|topRight"
+        app:msw_cornerRadius="5dp"
+        app:msw_fillColor="#59029398" />
 </android.support.constraint.ConstraintLayout>

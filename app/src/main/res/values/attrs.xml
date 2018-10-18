@@ -89,5 +89,19 @@
             <enum name="TOP_BOTTOM" value="0"/>
             <enum name="LEFT_RIGHT" value="1"/>
         </attr>
+        <attr name="csb_degrees" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="MySkewWord">
+        <attr name="msw_degrees" format="float"/>
+        <attr name="msw_fillColor" format="color"/>
+        <attr name="msw_cornerRadius" format="dimension"/>
+        <!--圆角位置-->
+        <attr name="msw_cornerPosition">
+            <flag name="topLeft" value="1" />
+            <flag name="topRight" value="2" />
+            <flag name="bottomRight" value="4" />
+            <flag name="bottomLeft" value="8" />
+        </attr>
     </declare-styleable>
 </resources>
